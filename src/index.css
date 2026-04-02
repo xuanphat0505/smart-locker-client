@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-tap-highlight-color: transparent; }
+
+:root {
+    --bg:           #F2F4F7;
+    --surface:      #FFFFFF;
+    --border:       #E5E7EB;
+    --border-strong:#CBD5E1;
+    --text:         #0F172A;
+    --text-muted:   #6B7280;
+    --blue:         #2563EB;
+    --blue-faint:   rgba(37,99,235,.08);
+    --blue-border:  rgba(37,99,235,.25);
+    --green:        #22C55E;
+    --red:          #DC2626;
+    --shadow:       0 2px 16px rgba(0,0,0,.08);
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100dvh;
+}
+
+#root {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.page {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100dvh;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    #root {
+        background: #E5E7EB;
+        align-items: center;
+        padding: 40px 0;
+        min-height: 100vh;
+    }
+    .page {
+        max-width: 420px;
+        min-height: auto;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: var(--shadow), 0 0 0 1px var(--border);
+    }
+}
+
+.btn {
+    width: 100%; padding: 16px;
+    border-radius: 14px; border: none;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; display: flex; align-items: center;
+    justify-content: center; gap: 8px; transition: all .18s;
+}
+.btn--primary { background: var(--blue); color: #fff; }
+.btn--primary:hover:not(:disabled) { filter: brightness(1.1); }
+.btn--primary:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; }
+.btn--primary:active:not(:disabled) { transform: scale(.98); }
+
+* { scrollbar-width: none; }

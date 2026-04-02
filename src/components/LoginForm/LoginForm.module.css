@@ -1,0 +1,195 @@
+/* LoginForm dùng chung biến và pattern với RegisterForm */
+/* Copy toàn bộ RegisterForm.module.css rồi bỏ .terms, .iconUser, .iconPhone, .iconShield */
+
+:root {
+    --blue: #3B5BDB;
+    --blue-dark: #2F4CC5;
+    --navy: #1A2461;
+    --bg: #EDEEF8;
+    --card-bg: #FFFFFF;
+    --input-bg: #F3F4FB;
+    --label: #6B7280;
+    --placeholder: #C0C4D6;
+    --divider: #EDEEF8;
+}
+
+.page {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px 40px;
+    font-family: 'Be Vietnam Pro', 'Nunito', sans-serif;
+}
+
+
+
+.backBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+}
+
+.backBtn::before {
+    content: '';
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-left: 2.5px solid var(--blue);
+    border-bottom: 2.5px solid var(--blue);
+    transform: rotate(45deg) translateX(2px);
+}
+
+.brandName {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue);
+}
+
+.heading {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.heading h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.25;
+    margin: 0 0 10px;
+}
+
+.heading p {
+    font-size: 14px;
+    color: var(--label);
+    line-height: 1.55;
+    margin: 0;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(59, 91, 219, 0.06);
+}
+
+.card .field + .field {
+    border-top: 1px solid var(--divider);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 18px 12px;
+}
+
+.field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--label);
+    margin-bottom: 6px;
+}
+
+.inputRow {
+    display: flex;
+    align-items: center;
+    background: var(--input-bg);
+    border-radius: 10px;
+    padding: 0 12px;
+    border: 1.5px solid transparent;
+    transition: border-color 0.18s, background 0.18s;
+}
+
+.inputRow:focus-within {
+    border-color: var(--blue);
+    background: #FAFBFF;
+}
+
+.inputRow input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+    color: var(--navy);
+    padding: 10px 0;
+    font-family: inherit;
+}
+
+.inputRow input::placeholder {
+    color: var(--placeholder);
+    font-size: 14px;
+}
+
+.inputRow::after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.45;
+}
+
+.iconEmail::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpolyline points='2,4 12,13 22,4'/%3E%3C/svg%3E");
+}
+
+.iconLock::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 16px;
+    background: var(--blue);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.1s;
+    font-family: inherit;
+}
+
+.submitBtn:hover:not(:disabled) { background: var(--blue-dark); }
+.submitBtn:active:not(:disabled) { transform: scale(0.98); }
+.submitBtn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+.footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--label);
+}
+
+.footer span {
+    color: var(--blue);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.footer span:hover { text-decoration: underline; }
+
+.error {
+    background: #FEE2E2;
+    color: #B91C1C;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

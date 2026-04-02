@@ -1,10 +1,11 @@
-function App() {
+import { AppRouter } from "@/route";
+import './index.css';
 
-  return (
-    <div>
-      <h1>Smart Locker</h1>
-    </div>
-  )
+export function App(){
+    return (
+        <AppRouter/>
+    )
+
 }
 
-export default App
+export default App;

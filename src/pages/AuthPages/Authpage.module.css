@@ -1,0 +1,79 @@
+/* ==========================
+   AuthPage.module.css
+   ========================== */
+
+.page {
+    min-height: 100vh;
+    background: #ecedf6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px 48px;
+    font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 460px;
+    gap: 12px;
+}
+
+/* ---- Nút Quay lại — reset hoàn toàn browser default ---- */
+.backBtn {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    box-shadow: none;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #4f6ef7;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 7px 12px 7px 8px;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+    font-family: 'DM Sans', 'Segoe UI', sans-serif;
+    letter-spacing: 0.1px;
+    line-height: 1;
+}
+
+.backBtn:hover {
+    background: rgba(79, 110, 247, 0.1);
+    color: #3a56e0;
+    transform: translateX(-3px);
+}
+
+.backBtn:active {
+    transform: translateX(-5px);
+}
+
+.backBtn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* ---- Card ---- */
+.card {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow:
+            0 4px 6px -1px rgba(79, 107, 247, 0.06),
+            0 20px 60px -10px rgba(79, 107, 247, 0.14);
+    overflow: hidden;
+}
+
+.card > * {
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
