@@ -1,9 +1,4 @@
-/* ══════════════════════════════════════════
-   RoleSelection.module.css
-   Trang chọn vai trò: Shipper / Khách hàng
-══════════════════════════════════════════ */
 
-/* ── Wrapper ── */
 .container {
     display: flex;
     flex-direction: column;
@@ -12,7 +7,6 @@
     background: var(--surface);
 }
 
-/* ── Header ── */
 .header {
     padding: 20px 20px 0;
     display: flex;
@@ -32,7 +26,6 @@
     letter-spacing: -0.3px;
 }
 
-/* ── Body ── */
 .body {
     flex: 1;
     padding: 40px 20px 24px;
@@ -135,13 +128,6 @@
     flex-shrink: 0;
 }
 
-/* ── Bottom Tab Bar ── */
-.tabBar {
-    display: flex;
-    border-top: 1px solid var(--border);
-    background: var(--surface);
-    overflow: hidden;
-}
 
 .tab {
     flex: 1;

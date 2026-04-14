@@ -1,0 +1,181 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background: var(--color-bg, #f1f3f9);
+    width: 100%; /* ← thêm dòng này */
+    max-width: 480px; /* ← và dòng này */
+    margin: 0 auto;
+}
+
+.body {
+    flex: 1;
+    padding: 24px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* profile card */
+.profileCard {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--color-surface, #fff);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-primary, #4263eb);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.profileInfo {
+    flex: 1;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text, #212529);
+}
+
+.email {
+    font-size: 13px;
+    color: var(--color-text-muted, #868e96);
+    margin-top: 2px;
+}
+
+.editBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: rgba(66, 99, 235, .1);
+    color: var(--color-primary, #4263eb);
+    display: grid;
+    place-items: center;
+}
+
+.statsRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.statBox {
+    background: var(--color-surface, #fff);
+    border-radius: 14px;
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+
+.statVal {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-primary, #4263eb);
+}
+
+.statLabel {
+    font-size: 11px;
+    color: var(--color-text-muted, #868e96);
+    font-weight: 500;
+}
+
+.groupLabel {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-muted, #868e96);
+    letter-spacing: .06em;
+    padding-left: 4px;
+}
+
+.menuCard {
+    background: var(--color-surface, #fff);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    overflow: hidden;
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.menuItemBorder {
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.menuIcon {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--color-bg, #f1f3f9);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.menuText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.menuLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text, #212529);
+}
+
+.menuSub {
+    font-size: 12px;
+    color: var(--color-text-muted, #868e96);
+}
+
+.logoutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 48px;
+    border-radius: 14px;
+    border: 1.5px solid #fa5252;
+    background: none;
+    color: #fa5252;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.version {
+    text-align: center;
+    font-size: 12px;
+    color: var(--color-text-muted, #868e96);
+    padding-bottom: 8px;
+}

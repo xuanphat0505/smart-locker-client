@@ -1,0 +1,225 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background: var(--color-bg, #f1f3f9);
+    width: 100%; /* ← thêm dòng này */
+    max-width: 480px; /* ← và dòng này */
+    margin: 0 auto;
+}
+
+.body {
+    flex: 1;
+    padding: 24px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* greeting */
+.greeting {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.greetSub {
+    font-size: 13px;
+    color: var(--color-text-muted, #868e96);
+}
+
+.greetName {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text, #212529);
+    margin: 2px 0;
+}
+
+.greetDate {
+    font-size: 12px;
+    color: var(--color-text-muted, #868e96);
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-primary, #4263eb);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+}
+
+/* banner */
+.banner {
+    background: var(--color-primary, #4263eb);
+    border-radius: 16px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(66, 99, 235, .35);
+}
+
+.bannerLabel {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    opacity: .8;
+}
+
+.bannerCount {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 4px 0 2px;
+}
+
+.bannerSub {
+    font-size: 13px;
+    opacity: .85;
+}
+
+/* quick */
+.sectionTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text, #212529);
+    margin-bottom: 10px;
+}
+
+.quickGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.quickBtn {
+    background: var(--color-surface, #fff);
+    border: none;
+    border-radius: 14px;
+    padding: 16px;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.quickIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(66, 99, 235, .1);
+    display: grid;
+    place-items: center;
+    color: var(--color-primary, #4263eb);
+    margin-bottom: 4px;
+}
+
+.quickLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text, #212529);
+}
+
+.quickSub {
+    font-size: 11px;
+    color: var(--color-text-muted, #868e96);
+}
+
+.listHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.viewAll {
+    font-size: 13px;
+    color: var(--color-primary, #4263eb);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.pkgCard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-surface, #fff);
+    border: none;
+    border-radius: 14px;
+    padding: 14px 16px;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    margin-bottom: 10px;
+}
+
+.pkgSlot {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--color-primary, #4263eb);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.pkgInfo {
+    flex: 1;
+    text-align: left;
+}
+
+.pkgCode {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text, #212529);
+}
+
+.pkgTime {
+    font-size: 12px;
+    color: var(--color-text-muted, #868e96);
+    margin-top: 2px;
+}
+
+.pkgBadge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-primary, #4263eb);
+    background: rgba(66, 99, 235, .1);
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+.loading {
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #e9ecef;
+    border-top-color: var(--color-primary, #4263eb);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+}
+
+.empty {
+    text-align: center;
+    color: var(--color-text-muted, #868e96);
+    font-size: 14px;
+    padding: 24px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

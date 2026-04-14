@@ -1,4 +1,3 @@
-/* ── Biến màu ── */
 :root {
     --blue: #3B5BDB;
     --blue-dark: #2F4CC5;
@@ -11,7 +10,6 @@
     --divider: #EDEEF8;
 }
 
-/* ── Page wrapper ── */
 .page {
     min-height: 100vh;
     background: var(--bg);
@@ -21,7 +19,6 @@
     font-family: 'Be Vietnam Pro', 'Nunito', sans-serif;
 }
 
-/* ── Top bar ── */
 .topBar {
     display: flex;
     align-items: center;
@@ -41,7 +38,6 @@
     padding: 0;
 }
 
-/* Chevron trái bằng CSS border — không cần SVG */
 .backBtn::before {
     content: '';
     display: block;

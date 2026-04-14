@@ -1,54 +1,76 @@
-import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { LoginForm } from '@/components/LoginForm'
 import { RegisterForm } from '@/components/RegisterForm'
-import { EUserRole } from '@/types/user.type.ts'
+import { EUserRole } from '@/types/user.type'
 import { useAuthStore } from '@/store/useAuthStore'
 import styles from './AuthPage.module.css'
 
 export function AuthPage() {
     const navigate = useNavigate()
-    const { user } = useAuthStore()
     const location = useLocation()
+    const { user } = useAuthStore()
 
     const role = location.pathname.startsWith('/shipper')
         ? EUserRole.shipper
         : EUserRole.user
 
-    const [mode, setMode] = useState<'login' | 'register'>(
-        location.pathname.includes('register') ? 'register' : 'login'
-    )
+    const isRegister = location.pathname.includes('register')
 
     if (user) {
-        if (user.role === EUserRole.shipper) navigate('/shipper')
-        else navigate('/home')
+        if (user.role === EUserRole.shipper) {
+            navigate('/shipper')
+        } else {
+            navigate('/customer')
+        }
         return null
     }
 
     const handleSuccess = () => {
-        if (role === EUserRole.shipper) navigate('/shipper')
-        else navigate('/home')
+        if (role === EUserRole.shipper) {
+            navigate('/shipper')
+        } else {
+            navigate('/customer')
+        }
+    }
+
+    const goToLogin = () => {
+        if (role === EUserRole.shipper) {
+            navigate('/shipper/login')
+        } else {
+            navigate('/customer/login')
+        }
+    }
+
+    const goToRegister = () => {
+        if (role === EUserRole.shipper) {
+            navigate('/shipper/register')
+        } else {
+            navigate('/customer/register')
+        }
     }
 
     return (
         <div className={styles.page}>
             <div className={styles.wrapper}>
-                <button className={styles.backBtn} onClick={() => navigate('/')}>
+                <button
+                    className={styles.backBtn}
+                    onClick={() => navigate('/')}
+                >
                     ← Quay lại
                 </button>
 
                 <div className={styles.card}>
-                    {mode === 'login' ? (
+                    {!isRegister ? (
                         <LoginForm
                             role={role}
                             onSuccess={handleSuccess}
-                            onSwitchToRegister={() => setMode('register')}
+                            onSwitchToRegister={goToRegister}
                         />
                     ) : (
                         <RegisterForm
                             role={role}
                             onSuccess={handleSuccess}
-                            onSwitchToLogin={() => setMode('login')}
+                            onSwitchToLogin={goToLogin}
                         />
                     )}
                 </div>

@@ -1,0 +1,146 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.legend {
+    display: flex;
+    gap: 16px;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dotAvailable {
+    background: var(--green);
+}
+
+.dotOccupied {
+    background: var(--border);
+}
+
+.dotMaintenance {
+    background: var(--red);
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 14px;
+    border: 1px solid var(--border);
+}
+
+/* Slot card */
+.slot {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all .15s ease;
+    position: relative;
+    color: var(--text);
+}
+
+.slotAvail:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.slotSelected {
+    border-color: var(--blue);
+    border-width: 2px;
+    color: var(--blue);
+}
+
+.slotOccupied {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.slotMaintenance {
+    background: rgba(220, 53, 69, .08);
+    border-color: rgba(220, 53, 69, .3);
+    color: var(--red);
+    cursor: not-allowed;
+}
+
+.availDot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+}
+
+.slotId {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+.slotIcon {
+    opacity: .5;
+}
+
+.check {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    background: var(--blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Loading */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+.spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

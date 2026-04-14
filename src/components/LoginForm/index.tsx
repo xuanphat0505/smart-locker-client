@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useAuthStore } from "@/store/useAuthStore.ts";
 import { EUserRole } from "@/types/user.type.ts";
 import styles from './LoginForm.module.css'
+import {useNavigate} from "react-router-dom";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -16,8 +17,7 @@ export function LoginForm({ role, onSuccess, onSwitchToRegister }: Props) {
     const [email, setEmail]       = useState('')
     const [password, setPassword] = useState('')
     const [localErr, setLocalErr] = useState('')
-
-
+    const navigate = useNavigate()
     function validate() {
         if (!emailRegex.test(email.trim())) { setLocalErr('Email không đúng định dạng'); return false }
         if (password.length < 6) { setLocalErr('Mật khẩu phải có ít nhất 6 ký tự'); return false }
@@ -49,7 +49,6 @@ export function LoginForm({ role, onSuccess, onSwitchToRegister }: Props) {
             )}
 
             <form onSubmit={handleSubmit}>
-
                 <div className={styles.card}>
                     <div className={styles.field}>
                         <label>Email</label>
@@ -69,6 +68,25 @@ export function LoginForm({ role, onSuccess, onSwitchToRegister }: Props) {
                     {isLoading ? 'Đang đăng nhập...' : 'Đăng nhập'}
                 </button>
             </form>
+
+            {role === EUserRole.shipper && (
+                <button
+                    type="button"
+                    className={styles.devBtn}
+                    onClick={()=> navigate('/shipper')}
+                >
+                    Đăng nhập làm chóa gì chơi tao để vào shipper
+                </button>
+            )}
+            {role === EUserRole.user && (
+                <button
+                    type="button"
+                    className={styles.devBtn}
+                    onClick={() => navigate('/customer')}
+                >
+                    Đăng nhập làm chóa gì chơi tao để vào customer
+                </button>
+            )}
 
             <p className={styles.footer}>
                 Chưa có tài khoản?{' '}

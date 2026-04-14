@@ -1,0 +1,38 @@
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--color-surface, #fff);
+    border-top: 1px solid var(--color-border, #e9ecef);
+    padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 16px;
+    color: var(--color-text-muted, #adb5bd);
+    transition: color .2s;
+}
+
+.itemActive {
+    color: var(--color-primary, #4263eb);
+}
+
+.icon {
+    line-height: 1;
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 500;
+}

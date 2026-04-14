@@ -1,0 +1,172 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background: var(--color-bg, #f1f3f9);
+    width: 100%; /* ← thêm dòng này */
+    max-width: 480px; /* ← và dòng này */
+    margin: 0 auto;
+}
+
+.body {
+    flex: 1;
+    padding: 24px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.heading {
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text, #212529);
+}
+
+.sub {
+    font-size: 13px;
+    color: var(--color-text-muted, #868e96);
+    margin-top: 2px;
+}
+
+/* list */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    background: var(--color-surface, #fff);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cardTop {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.slotBadge {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--color-primary, #4263eb);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.cardInfo {
+    flex: 1;
+}
+
+.orderCode {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text, #212529);
+}
+
+.shipper {
+    font-size: 12px;
+    color: var(--color-text-muted, #868e96);
+    margin-top: 2px;
+}
+
+.status {
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+
+.waiting {
+    color: #f59f00;
+    background: rgba(245, 159, 0, .12);
+}
+
+.opened {
+    color: var(--color-primary, #4263eb);
+    background: rgba(66, 99, 235, .1);
+}
+
+.received {
+    color: #40c057;
+    background: rgba(64, 192, 87, .12);
+}
+
+.cardBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid #f1f3f5;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--color-text-muted, #868e96);
+}
+
+.date {
+    font-size: 12px;
+    color: var(--color-text-muted, #868e96);
+}
+
+.otpBtn {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: var(--color-primary, #4263eb);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* misc */
+.loadingWrap {
+    display: grid;
+    place-items: center;
+    padding: 40px;
+}
+
+.spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #e9ecef;
+    border-top-color: var(--color-primary, #4263eb);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 60px 0;
+    color: var(--color-text-muted, #868e96);
+    font-size: 14px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
