@@ -1,0 +1,252 @@
+.page {
+    min-height: 100vh;
+    background: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.backBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #f3f4f6;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+    transition: background 0.15s;
+}
+
+.backBtn:active {
+    background: #e5e7eb;
+}
+
+.title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+/* Body */
+.body {
+    flex: 1;
+    padding: 20px 16px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Hero */
+.illustration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0 8px;
+}
+
+.heroCircle {
+    width: 72px;
+    height: 72px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.28);
+    margin-bottom: 4px;
+}
+
+.heroText {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.heroSub {
+    font-size: 13px;
+    color: #9ca3af;
+    margin: 0;
+    text-align: center;
+}
+
+/* Accordion */
+.accordion {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.accordionHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.accordionHeader:active {
+    background: #f9fafb;
+}
+
+.accIconWrap {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.accIcon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.accTitle {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.chevron {
+    transition: transform 0.25s;
+    flex-shrink: 0;
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
+}
+
+/* Accordion body */
+.accordionBody {
+    padding: 4px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid #f3f4f6;
+}
+
+/* Steps */
+.step {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.stepLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.stepNumWrap {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stepNum {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.stepLine {
+    width: 2px;
+    flex: 1;
+    min-height: 16px;
+    border-radius: 99px;
+    margin-top: 4px;
+}
+
+.stepContent {
+    flex: 1;
+    padding-top: 4px;
+}
+
+.stepHeader {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.stepIcon {
+    font-size: 15px;
+}
+
+.stepTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.stepDesc {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Bottom contact card */
+.contactCard {
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.contactText {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    font-weight: 500;
+}
+
+.contactBtn {
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #4f46e5;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.contactBtn:active {
+    opacity: 0.85;
+}

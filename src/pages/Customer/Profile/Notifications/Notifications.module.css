@@ -1,0 +1,238 @@
+.page {
+    min-height: 100vh;
+    background: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.backBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #f3f4f6;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+}
+
+.backBtn:active {
+    background: #e5e7eb;
+}
+
+.title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.body {
+    flex: 1;
+    padding: 20px 16px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Illustration */
+.illustration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0 8px;
+}
+
+.bellCircle {
+    width: 72px;
+    height: 72px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+    margin-bottom: 4px;
+}
+
+.illustrationText {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.illustrationSub {
+    font-size: 13px;
+    color: #9ca3af;
+    margin: 0;
+    text-align: center;
+}
+
+/* Channel card */
+.channelCard {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.channelHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+}
+
+.channelIconWrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.channelIcon {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.channelInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.channelName {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.channelDesc {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Sub list */
+.subList {
+    border-top: 1px solid #f3f4f6;
+    padding: 4px 16px;
+    transition: opacity 0.2s;
+}
+
+.subListDisabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.subItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    gap: 12px;
+}
+
+.subItemBorder {
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.subText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.subLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+}
+
+.subDesc {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Toggle switch */
+.switch {
+    width: 46px;
+    height: 26px;
+    border-radius: 99px;
+    background: #e5e7eb;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.25s;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.switchOn {
+    background: #6366f1;
+}
+
+.switchThumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s;
+}
+
+.switchOn .switchThumb {
+    transform: translateX(20px);
+}
+
+/* Note */
+.note {
+    font-size: 12.5px;
+    color: #6b7280;
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin: 0;
+    line-height: 1.6;
+    border: 1px solid #f3f4f6;
+}
+
+/* Save button */
+.saveBtn {
+    height: 52px;
+    border-radius: 16px;
+    border: none;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+    transition: opacity 0.2s, transform 0.15s;
+    margin-top: 4px;
+}
+
+.saveBtn:active {
+    transform: scale(0.98);
+}

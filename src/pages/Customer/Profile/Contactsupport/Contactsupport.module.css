@@ -1,0 +1,357 @@
+.page {
+    min-height: 100vh;
+    background: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.backBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #f3f4f6;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+}
+
+.backBtn:active {
+    background: #e5e7eb;
+}
+
+.title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.body {
+    flex: 1;
+    padding: 20px 16px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Hero */
+.heroCard {
+    background: linear-gradient(135deg, #059669, #0891b2);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 6px 20px rgba(5, 150, 105, 0.25);
+    margin-bottom: 4px;
+}
+
+.heroCircle {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.heroText {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 4px;
+}
+
+.heroSub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Section label */
+.sectionLabel {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    padding: 4px 4px 0;
+}
+
+/* Methods card */
+.methodsCard {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.methodRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+}
+
+.methodRowBorder {
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.methodIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.methodInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.methodLabel {
+    font-size: 12px;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.methodValue {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.methodSub {
+    font-size: 11.5px;
+    color: #9ca3af;
+}
+
+.methodBtn {
+    border: none;
+    border-radius: 10px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: opacity 0.15s;
+}
+
+.methodBtn:active {
+    opacity: 0.75;
+}
+
+/* FAQ */
+.faqCard {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.faqItem {
+    padding: 0 16px;
+}
+
+.faqItemBorder {
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.faqQ {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.faqChevron {
+    flex-shrink: 0;
+    transition: transform 0.22s;
+}
+
+.faqChevronOpen {
+    transform: rotate(180deg);
+}
+
+.faqA {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0 0 14px;
+    padding: 0;
+}
+
+/* Form */
+.formCard {
+    background: #fff;
+    border-radius: 20px;
+    padding: 18px 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fieldLabel {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.select {
+    height: 50px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 0 14px;
+    font-size: 14px;
+    color: #111827;
+    background: #f9fafb;
+    outline: none;
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    transition: border-color 0.2s;
+}
+
+.select:focus {
+    border-color: #6366f1;
+    background-color: #fff;
+}
+
+.textarea {
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #111827;
+    background: #f9fafb;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+    line-height: 1.6;
+    transition: border-color 0.2s;
+}
+
+.textarea:focus {
+    border-color: #6366f1;
+    background: #fff;
+}
+
+.textarea::placeholder {
+    color: #d1d5db;
+}
+
+.charCount {
+    font-size: 12px;
+    color: #9ca3af;
+    text-align: right;
+    margin: 0;
+}
+
+.sendBtn {
+    height: 52px;
+    border-radius: 16px;
+    border: none;
+    background: linear-gradient(135deg, #059669, #0891b2);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(5, 150, 105, 0.3);
+    transition: opacity 0.2s, transform 0.15s;
+}
+
+.sendBtn:active {
+    transform: scale(0.98);
+}
+
+.sendBtnDisabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Sent success */
+.sentCard {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.sentIcon {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.sentTitle {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.sentSub {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.sentBtn {
+    margin-top: 12px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    border: 1.5px solid #e5e7eb;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+}
