@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useRef, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {BottomNav} from '@/components/Customer/BottomNav.tsx'
 import {MOCK_CUSTOMER_NAME} from "@/data/customer.mock.ts";
@@ -49,9 +49,14 @@ export function PersonalInfo() {
     const [editing, setEditing] = useState(false)
     const [saved, setSaved] = useState(false)
 
-    const handleChange = (key: string, val: string) => {
+    const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
+    const [showPicker, setShowPicker] = useState(false)
+
+    const libraryRef = useRef<HTMLInputElement>(null)
+    const cameraRef = useRef<HTMLInputElement>(null)
+
+    const handleChange = (key: string, val: string) =>
         setFields(f => f.map(x => x.key === key ? {...x, value: val} : x))
-    }
 
     const handleSave = () => {
         setSaved(true)
@@ -59,8 +64,35 @@ export function PersonalInfo() {
         setTimeout(() => setSaved(false), 2500)
     }
 
+    const handleImageFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+        if (!file) return
+        const url = URL.createObjectURL(file)
+        setAvatarUrl(url)
+        setShowPicker(false)
+        // TODO: upload file lên API ở đây
+        e.target.value = '' // reset để chọn lại cùng file được
+    }
+
     return (
         <div className={styles.page}>
+            {/* Hidden inputs */}
+            <input
+                ref={libraryRef}
+                type="file"
+                accept="image/*"
+                style={{display: 'none'}}
+                onChange={handleImageFile}
+            />
+            <input
+                ref={cameraRef}
+                type="file"
+                accept="image/*"
+                capture="environment"
+                style={{display: 'none'}}
+                onChange={handleImageFile}
+            />
+
             {/* Header */}
             <header className={styles.header}>
                 <button className={styles.backBtn} onClick={() => navigate('/customer/profile')}>
@@ -78,13 +110,16 @@ export function PersonalInfo() {
             </header>
 
             <div className={styles.body}>
-
+                {/* Avatar */}
                 <div className={styles.avatarWrap}>
                     <div className={styles.avatar}>
-                        {MOCK_CUSTOMER_NAME.charAt(0)}
+                        {avatarUrl
+                            ? <img src={avatarUrl} alt="avatar" className={styles.avatarImg}/>
+                            : MOCK_CUSTOMER_NAME.charAt(0)
+                        }
                     </div>
                     {editing && (
-                        <button className={styles.avatarEdit}>
+                        <button className={styles.avatarEdit} onClick={() => setShowPicker(true)}>
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                  strokeWidth="2">
                                 <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
@@ -96,7 +131,6 @@ export function PersonalInfo() {
                     <p className={styles.avatarSub}>Thành viên SmartLocker</p>
                 </div>
 
-                {/* Toast */}
                 {saved && (
                     <div className={styles.toast}>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -107,13 +141,10 @@ export function PersonalInfo() {
                     </div>
                 )}
 
-                {/* Fields */}
                 <div className={styles.card}>
                     {fields.map((field, idx) => (
-                        <div
-                            key={field.key}
-                            className={`${styles.fieldRow} ${idx !== fields.length - 1 ? styles.fieldBorder : ''}`}
-                        >
+                        <div key={field.key}
+                             className={`${styles.fieldRow} ${idx !== fields.length - 1 ? styles.fieldBorder : ''}`}>
                             <label className={styles.fieldLabel}>{field.label}</label>
                             {editing && field.editable ? (
                                 <input
@@ -152,6 +183,80 @@ export function PersonalInfo() {
                     </button>
                 )}
             </div>
+
+            {/* Bottom Sheet chọn ảnh */}
+            {showPicker && (
+                <>
+                    <div className={styles.overlay} onClick={() => setShowPicker(false)}/>
+                    <div className={styles.sheet}>
+                        <div className={styles.sheetHandle}/>
+                        <p className={styles.sheetTitle}>Cập nhật ảnh đại diện</p>
+
+                        <button className={styles.sheetBtn} onClick={() => {
+                            setShowPicker(false);
+                            libraryRef.current?.click()
+                        }}>
+                            <span className={styles.sheetBtnIcon}>
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     strokeWidth="1.8">
+                                    <rect x="3" y="3" width="18" height="18" rx="3"/>
+                                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                                    <path d="M21 15l-5-5L5 21"/>
+                                </svg>
+                            </span>
+                            <span className={styles.sheetBtnText}>
+                                <span className={styles.sheetBtnLabel}>Chọn từ thư viện</span>
+                                <span className={styles.sheetBtnSub}>Ảnh có sẵn trên thiết bị</span>
+                            </span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 strokeWidth="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </button>
+
+                        <button className={styles.sheetBtn} onClick={() => {
+                            setShowPicker(false);
+                            cameraRef.current?.click()
+                        }}>
+                            <span className={styles.sheetBtnIcon}>
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     strokeWidth="1.8">
+                                    <path
+                                        d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+                                    <circle cx="12" cy="13" r="4"/>
+                                </svg>
+                            </span>
+                            <span className={styles.sheetBtnText}>
+                                <span className={styles.sheetBtnLabel}>Chụp ảnh mới</span>
+                                <span className={styles.sheetBtnSub}>Mở camera thiết bị</span>
+                            </span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 strokeWidth="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </button>
+
+                        {avatarUrl && (
+                            <button className={styles.sheetBtnDanger} onClick={() => {
+                                setAvatarUrl(null);
+                                setShowPicker(false)
+                            }}>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     strokeWidth="2">
+                                    <polyline points="3 6 5 6 21 6"/>
+                                    <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+                                    <path d="M10 11v6M14 11v6"/>
+                                </svg>
+                                Xoá ảnh đại diện
+                            </button>
+                        )}
+
+                        <button className={styles.sheetCancel} onClick={() => setShowPicker(false)}>
+                            Huỷ
+                        </button>
+                    </div>
+                </>
+            )}
 
             <BottomNav/>
         </div>

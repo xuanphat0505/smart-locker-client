@@ -39,7 +39,7 @@ export function Profile() {
                         <h2 className={styles.name}>{MOCK_CUSTOMER_NAME}</h2>
                         <p className={styles.email}>vanAn@gmail.com</p>
                     </div>
-                    <button className={styles.editBtn}>
+                    <button className={styles.editBtn} onClick={() => navigate('/customer/profile/personal-info')}>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                              strokeWidth="2">
                             <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
