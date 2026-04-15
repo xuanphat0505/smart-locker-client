@@ -12,6 +12,12 @@ import {OpenLocker} from '@/pages/Customer/OpenLocker/OpenLocker.tsx'
 import {OpenSuccess} from '@/pages/Customer/OpenSuccess/OpenSuccess.tsx'
 import {History} from '@/pages/Customer/History/History.tsx'
 import {Profile} from '@/pages/Customer/Profile/Profile.tsx'
+import {PersonalInfo} from "@/pages/Customer/Profile/PersonalInfo";
+import {ChangePassword} from "@/pages/Customer/Profile/Changepassword";
+import {Notifications} from "@/pages/Customer/Profile/Notifications";
+import {AppRating} from "@/pages/Customer/Profile/Apprating";
+import {UserGuide} from "@/pages/Customer/Profile/Userguide/Userguide.tsx";
+import {ContactSupport} from "@/pages/Customer/Profile/Contactsupport/Contactsupport.tsx";
 
 const router = createBrowserRouter([
     {path: '/', element: <RoleSelection/>},
@@ -33,6 +39,12 @@ const router = createBrowserRouter([
             {path: 'open-success', element: <OpenSuccess/>},
             {path: 'history', element: <History/>},
             {path: 'profile', element: <Profile/>},
+            {path: '/customer/profile/personal-info', element: <PersonalInfo/>},
+            {path: 'profile/change-password', element: <ChangePassword/>},
+            {path: 'profile/notifications', element: <Notifications/>},
+            {path: 'profile/app-rating', element: <AppRating/>},
+            {path: 'profile/user-guide', element: <UserGuide/>},
+            {path: 'profile/contact', element: <ContactSupport/>},
         ],
     },
 ])

@@ -33,7 +33,6 @@ export function Profile() {
     return (
         <div className={styles.page}>
             <div className={styles.body}>
-                {/* Avatar + name */}
                 <div className={styles.profileCard}>
                     <div className={styles.avatar}>{MOCK_CUSTOMER_NAME.charAt(0)}</div>
                     <div className={styles.profileInfo}>
@@ -49,7 +48,6 @@ export function Profile() {
                     </button>
                 </div>
 
-                {/* Stats */}
                 <div className={styles.statsRow}>
                     {[
                         {value: totalPkg, label: 'Tổng đơn'},
@@ -63,14 +61,23 @@ export function Profile() {
                     ))}
                 </div>
 
-                {/* Menu groups */}
                 {MENU.map(group => (
                     <div key={group.group} className={styles.menuGroup}>
                         <p className={styles.groupLabel}>{group.group}</p>
                         <div className={styles.menuCard}>
                             {group.items.map((item, idx) => (
+
                                 <button key={item.label}
-                                        className={`${styles.menuItem} ${idx !== group.items.length - 1 ? styles.menuItemBorder : ''}`}>
+                                        className={`${styles.menuItem} ${idx !== group.items.length - 1 ? styles.menuItemBorder : ''}`}
+                                        onClick={() => {
+                                            if (item.label === 'Thông tin cá nhân') navigate('/customer/profile/personal-info')
+                                            if (item.label === 'Đổi mật khẩu') navigate('/customer/profile/change-password')
+                                            if (item.label === 'Thông báo') navigate('/customer/profile/notifications')
+                                            if (item.label === 'Đánh giá ứng dụng') navigate('/customer/profile/app-rating')
+                                            if (item.label === 'Hướng dẫn sử dụng') navigate('/customer/profile/user-guide')
+                                            if (item.label === 'Liên hệ hỗ trợ') navigate('/customer/profile/contact')
+                                        }}>
+
                                     <span className={styles.menuIcon}>{item.icon}</span>
                                     <span className={styles.menuText}>
                                         <span className={styles.menuLabel}>{item.label}</span>
@@ -86,7 +93,7 @@ export function Profile() {
                     </div>
                 ))}
 
-                {/* Logout */}
+
                 <button className={styles.logoutBtn} onClick={() => navigate('/')}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
