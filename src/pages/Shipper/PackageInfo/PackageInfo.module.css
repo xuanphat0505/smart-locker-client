@@ -1,0 +1,164 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+.titleBlock {
+    margin-bottom: 4px;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+.formCard {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fieldLabel {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+}
+
+.inputWrap {
+    position: relative;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+}
+
+.fieldInput {
+    width: 100%;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 13px 14px 13px 42px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    outline: none;
+    transition: border-color .2s;
+}
+
+.fieldInput::placeholder {
+    color: var(--text-muted);
+}
+
+.fieldInput:focus {
+    border-color: var(--blue);
+}
+
+.assignedCard {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--blue-faint);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1.5px solid var(--blue-border);
+}
+
+.assignedIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--blue);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.assignedInfo {
+    flex: 1;
+}
+
+.assignedLabel {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--blue);
+}
+
+.assignedVal {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    margin-top: 2px;
+}
+
+.assignedSize {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.assignedCheck {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.errorBanner {
+    background: rgba(220, 53, 69, .1);
+    border: 1px solid rgba(220, 53, 69, .3);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--red);
+    font-weight: 500;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, .4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

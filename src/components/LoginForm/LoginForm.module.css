@@ -1,6 +1,3 @@
-/* LoginForm dùng chung biến và pattern với RegisterForm */
-/* Copy toàn bộ RegisterForm.module.css rồi bỏ .terms, .iconUser, .iconPhone, .iconShield */
-
 :root {
     --blue: #3B5BDB;
     --blue-dark: #2F4CC5;
@@ -192,4 +189,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.devBtn {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    margin-top: 10px;
+    padding: 13px 16px;
+    background: transparent;
+    border: 1.5px dashed #9CA3AF;
+    border-radius: 12px;
+    color: #6B7280;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.18s, color 0.18s, background 0.18s;
+    letter-spacing: 0.1px;
+}
+.devBtn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: rgba(59, 91, 219, 0.04);
 }

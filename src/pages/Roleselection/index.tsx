@@ -11,6 +11,7 @@ export function RoleSelection(){
     const handleSelectRole = (role: Role) => {
         setActiveTab(role);
         navigate(`/${role}/login`);
+        console.log(activeTab);
     }
 
     return (
@@ -68,20 +69,7 @@ export function RoleSelection(){
                 </div>
             </main>
 
-            <nav className={styles.tabBar}>
-                <button
-                    className={`${styles.tab} ${activeTab === 'shipper' ? styles['tab--active'] : ''}`}
-                    onClick={() => setActiveTab('shipper')}
-                >
-                    Shipper
-                </button>
-                <button
-                    className={`${styles.tab} ${activeTab === 'customer' ? styles['tab--active'] : ''}`}
-                    onClick={() => setActiveTab('customer')}
-                >
-                    Khách hàng
-                </button>
-            </nav>
+
         </div>
     );
 };

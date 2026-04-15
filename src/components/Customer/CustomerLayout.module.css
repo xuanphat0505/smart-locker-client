@@ -1,0 +1,8 @@
+.wrapper {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100dvh;
+    margin: 0 auto;
+    background: var(--color-bg, #f1f3f9);
+    position: relative;
+}

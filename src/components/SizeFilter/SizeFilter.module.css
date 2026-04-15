@@ -1,0 +1,63 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 8px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    transition: all .2s ease;
+    color: var(--text-muted);
+}
+
+.btn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.btnActive {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+}
+
+.btnIcon {
+    width: 28px;
+    height: 28px;
+}
+
+.btnIcon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.btnName {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.btnDim {
+    font-size: 10px;
+    opacity: .75;
+}
