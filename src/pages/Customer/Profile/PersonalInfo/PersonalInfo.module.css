@@ -206,3 +206,136 @@
     color: var(--color-text-muted, #868e96);
     cursor: pointer;
 }
+
+/* overlay mờ nền */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+}
+
+/* bottom sheet */
+.sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    padding: 16px;
+    z-index: 1001;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.25s ease;
+}
+
+/* animation trượt lên */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* thanh nhỏ kéo */
+.sheetHandle {
+    width: 40px;
+    height: 4px;
+    background: #dee2e6;
+    border-radius: 2px;
+    margin: 0 auto 10px;
+}
+
+/* title */
+.sheetTitle {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* button chung */
+.sheetBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 12px;
+    border-radius: 12px;
+    border: none;
+    background: #f8f9fa;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sheetBtn:hover {
+    background: #eef1ff;
+}
+
+/* icon */
+.sheetBtnIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(66, 99, 235, 0.1);
+    display: grid;
+    place-items: center;
+    color: #4263eb;
+}
+
+/* text group */
+.sheetBtnText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 12px;
+}
+
+/* label */
+.sheetBtnLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: #212529;
+}
+
+/* sub text */
+.sheetBtnSub {
+    font-size: 12px;
+    color: #868e96;
+}
+
+/* button danger */
+.sheetBtnDanger {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: #fff5f5;
+    color: #fa5252;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sheetBtnDanger:hover {
+    background: #ffe3e3;
+}
+
+.sheetCancel {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: #f1f3f5;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    cursor: pointer;
+}
