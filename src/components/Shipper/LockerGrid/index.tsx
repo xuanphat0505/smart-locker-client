@@ -1,5 +1,5 @@
-import {SlotStatus} from '@/types/locker.types'
-import {useShipperStore} from '@/store/userShiperStore'
+import {SlotStatus} from '@/types/locker.types.ts'
+import {useShipperStore} from '@/store/userShiperStore.ts'
 import styles from './LockerGrid.module.css'
 
 const LockIcon = () => (

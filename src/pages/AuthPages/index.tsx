@@ -1,14 +1,14 @@
-import { useNavigate, useLocation } from 'react-router-dom'
-import { LoginForm } from '@/components/LoginForm'
-import { RegisterForm } from '@/components/RegisterForm'
-import { EUserRole } from '@/types/user.type'
-import { useAuthStore } from '@/store/useAuthStore'
+import {useLocation, useNavigate} from 'react-router-dom'
+import {LoginForm} from '@/components/shared/LoginForm'
+import {RegisterForm} from '@/components/shared/RegisterForm'
+import {EUserRole} from '@/types/user.types.ts'
+import {useAuthStore} from '@/store/useAuthStore'
 import styles from './AuthPage.module.css'
 
 export function AuthPage() {
     const navigate = useNavigate()
     const location = useLocation()
-    const { user } = useAuthStore()
+    const {user} = useAuthStore()
 
     const role = location.pathname.startsWith('/shipper')
         ? EUserRole.shipper

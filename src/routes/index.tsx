@@ -18,6 +18,7 @@ import {Notifications} from "@/pages/Customer/Profile/Notifications";
 import {AppRating} from "@/pages/Customer/Profile/Apprating";
 import {UserGuide} from "@/pages/Customer/Profile/Userguide/Userguide.tsx";
 import {ContactSupport} from "@/pages/Customer/Profile/Contactsupport/Contactsupport.tsx";
+import {ChatAI} from "@/pages/Customer/ChatAi/ChatAI.tsx";
 
 const router = createBrowserRouter([
     {path: '/', element: <RoleSelection/>},
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
             {path: 'open-locker', element: <OpenLocker/>},
             {path: 'open-success', element: <OpenSuccess/>},
             {path: 'history', element: <History/>},
+            {path: 'chat-ai', element: <ChatAI/>},
             {path: 'profile', element: <Profile/>},
             {path: '/customer/profile/personal-info', element: <PersonalInfo/>},
             {path: 'profile/change-password', element: <ChangePassword/>},

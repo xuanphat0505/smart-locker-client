@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { useAuthStore } from "@/store/useAuthStore.ts";
-import { EUserRole } from "@/types/user.type.ts";
+import {useState} from 'react'
+import {useAuthStore} from "@/store/useAuthStore.ts";
+import {EUserRole} from "@/types/user.types.ts";
 import styles from './LoginForm.module.css'
 import {useNavigate} from "react-router-dom";
 
@@ -12,15 +12,22 @@ type Props = {
     onSwitchToRegister: () => void
 }
 
-export function LoginForm({ role, onSuccess, onSwitchToRegister }: Props) {
-    const { signIn, isLoading, error, clearError } = useAuthStore()
-    const [email, setEmail]       = useState('')
+export function LoginForm({role, onSuccess, onSwitchToRegister}: Props) {
+    const {signIn, isLoading, error, clearError} = useAuthStore()
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [localErr, setLocalErr] = useState('')
     const navigate = useNavigate()
+
     function validate() {
-        if (!emailRegex.test(email.trim())) { setLocalErr('Email không đúng định dạng'); return false }
-        if (password.length < 6) { setLocalErr('Mật khẩu phải có ít nhất 6 ký tự'); return false }
+        if (!emailRegex.test(email.trim())) {
+            setLocalErr('Email không đúng định dạng');
+            return false
+        }
+        if (password.length < 6) {
+            setLocalErr('Mật khẩu phải có ít nhất 6 ký tự');
+            return false
+        }
         return true
     }
 
@@ -29,7 +36,7 @@ export function LoginForm({ role, onSuccess, onSwitchToRegister }: Props) {
         setLocalErr('')
         clearError()
         if (!validate()) return
-        const ok = await signIn({ email: email.trim(), password, role })
+        const ok = await signIn({email: email.trim(), password, role})
         if (ok) onSuccess()
     }
 
@@ -43,7 +50,10 @@ export function LoginForm({ role, onSuccess, onSwitchToRegister }: Props) {
             </div>
 
             {errorMsg && (
-                <div className={styles.error} onClick={() => { setLocalErr(''); clearError() }}>
+                <div className={styles.error} onClick={() => {
+                    setLocalErr('');
+                    clearError()
+                }}>
                     {errorMsg} <span>✕</span>
                 </div>
             )}
@@ -53,13 +63,15 @@ export function LoginForm({ role, onSuccess, onSwitchToRegister }: Props) {
                     <div className={styles.field}>
                         <label>Email</label>
                         <div className={`${styles.inputRow} ${styles.iconEmail}`}>
-                            <input type="email" placeholder="email@vi-du.vn" value={email} onChange={e => setEmail(e.target.value)} required />
+                            <input type="email" placeholder="email@vi-du.vn" value={email}
+                                   onChange={e => setEmail(e.target.value)} required/>
                         </div>
                     </div>
                     <div className={styles.field}>
                         <label>Mật khẩu</label>
                         <div className={`${styles.inputRow} ${styles.iconLock}`}>
-                            <input type="password" placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} required />
+                            <input type="password" placeholder="••••••••" value={password}
+                                   onChange={e => setPassword(e.target.value)} required/>
                         </div>
                     </div>
                 </div>
@@ -73,7 +85,7 @@ export function LoginForm({ role, onSuccess, onSwitchToRegister }: Props) {
                 <button
                     type="button"
                     className={styles.devBtn}
-                    onClick={()=> navigate('/shipper')}
+                    onClick={() => navigate('/shipper')}
                 >
                     Đăng nhập làm chóa gì chơi tao để vào shipper
                 </button>

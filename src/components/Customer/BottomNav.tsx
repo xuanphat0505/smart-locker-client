@@ -33,6 +33,17 @@ const NAV = [
                 <line x1="16" y1="17" x2="8" y2="17"/>
             </svg>
         ),
+    }, {
+        path: '/customer/chat-ai',
+        label: 'Hỏi AI',
+        icon: (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+        ),
     },
     {
         path: '/customer/profile',
