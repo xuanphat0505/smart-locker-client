@@ -1,5 +1,5 @@
-import { LockerSize, SIZE_META } from '@/types/locker.types'
-import { useShipperStore } from '@/store/userShiperStore'
+import {LockerSize, SIZE_META} from '@/types/locker.types.ts'
+import {useShipperStore} from '@/store/userShiperStore.ts'
 import styles from './SizeFilter.module.css'
 
 const SizeIcons: Record<LockerSize, React.ReactNode> = {
@@ -24,7 +24,7 @@ const SizeIcons: Record<LockerSize, React.ReactNode> = {
 }
 
 export function SizeFilter() {
-    const { selectedSize, setSelectedSize, fetchSlotsBySize } = useShipperStore()
+    const {selectedSize, setSelectedSize, fetchSlotsBySize} = useShipperStore()
 
     const handleSelect = (size: LockerSize) => {
         setSelectedSize(size)
@@ -36,7 +36,7 @@ export function SizeFilter() {
             <p className={styles.label}>KÍCH THƯỚC TỦ</p>
             <div className={styles.grid}>
                 {(Object.values(LockerSize) as LockerSize[]).map(size => {
-                    const meta   = SIZE_META[size]
+                    const meta = SIZE_META[size]
                     const active = selectedSize === size
                     return (
                         <button

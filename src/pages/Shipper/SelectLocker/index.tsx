@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { SizeFilter } from '@/components/SizeFilter'
-import { LockerGrid } from '@/components/LockerGrid'
-import { useShipperStore } from '@/store/userShiperStore'
+import {useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
+import {SizeFilter} from '@/components/Shipper/SizeFilter'
+import {LockerGrid} from '@/components/Shipper/LockerGrid'
+import {useShipperStore} from '@/store/userShiperStore'
 import styles from './SelectLocker.module.css'
 
 const MoonIcon = () => (
@@ -22,7 +22,7 @@ const SunIcon = () => (
     </svg>
 )
 
-const SIZE_LABEL: Record<string, string> = { SMALL: 'Nhỏ', MEDIUM: 'Vừa', LARGE: 'Lớn' }
+const SIZE_LABEL: Record<string, string> = {SMALL: 'Nhỏ', MEDIUM: 'Vừa', LARGE: 'Lớn'}
 
 export function SelectLocker() {
     const navigate = useNavigate()
@@ -35,7 +35,9 @@ export function SelectLocker() {
     } = useShipperStore()
 
     // load toàn bộ slots (mock) khi mount
-    useEffect(() => { void fetchSlots() }, [fetchSlots])
+    useEffect(() => {
+        void fetchSlots()
+    }, [fetchSlots])
 
     return (
         <div className={`page ${styles.page}`}>

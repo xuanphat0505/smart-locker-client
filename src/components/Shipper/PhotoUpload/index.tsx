@@ -1,10 +1,10 @@
-import { useRef } from 'react'
-import { useShipperStore } from '@/store/userShiperStore'
+import {useRef} from 'react'
+import {useShipperStore} from '@/store/userShiperStore.ts'
 import styles from './PhotoUpload.module.css'
 
 export function PhotoUpload() {
     const inputRef = useRef<HTMLInputElement>(null)
-    const { formData, setFormField } = useShipperStore()
+    const {formData, setFormField} = useShipperStore()
     const hasPhoto = !!formData.photoPreviewUrl
 
     const handlePhotoChange = (file: File) => {
@@ -27,7 +27,8 @@ export function PhotoUpload() {
                 ) : (
                     <>
                         <div className={styles.icon}>
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 strokeWidth="2">
                                 <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
                                 <circle cx="12" cy="13" r="4"/>
                             </svg>
@@ -42,7 +43,7 @@ export function PhotoUpload() {
                 type="file"
                 accept="image/*"
                 capture="environment"
-                style={{ display: 'none' }}
+                style={{display: 'none'}}
                 onChange={e => {
                     const file = e.target.files?.[0]
                     if (file) handlePhotoChange(file)
