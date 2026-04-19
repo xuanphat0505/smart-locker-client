@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     padding: 0 24px 40px;
-    font-family: 'Be Vietnam Pro', 'Nunito', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .topBar {
@@ -126,7 +126,7 @@
     font-size: 15px;
     color: var(--navy);
     padding: 10px 0;
-    font-family: inherit;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .inputRow input::placeholder {
@@ -209,12 +209,21 @@
     border-radius: 14px;
     cursor: pointer;
     transition: background 0.18s, transform 0.1s;
-    font-family: inherit;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.submitBtn:hover:not(:disabled) { background: var(--blue-dark); }
-.submitBtn:active:not(:disabled) { transform: scale(0.98); }
-.submitBtn:disabled { opacity: 0.65; cursor: not-allowed; }
+.submitBtn:hover:not(:disabled) {
+    background: var(--blue-dark);
+}
+
+.submitBtn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.submitBtn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
 
 /* ── Footer ── */
 .footer {
@@ -230,7 +239,9 @@
     cursor: pointer;
 }
 
-.footer span:hover { text-decoration: underline; }
+.footer span:hover {
+    text-decoration: underline;
+}
 
 /* ── Error banner ── */
 .error {
@@ -244,4 +255,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.linkBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #3b5bdb;
+    font-weight: 600;
+    font-size: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-family: inherit;
+}
+
+.linkBtn:hover {
+    color: #2344b8;
 }

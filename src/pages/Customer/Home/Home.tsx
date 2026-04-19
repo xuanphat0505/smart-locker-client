@@ -51,7 +51,7 @@ export function CustomerHome() {
                 {allWaiting > 0 && (
                     <div className={styles.banner}>
                         <p className={styles.bannerLabel}>HÀNG ĐANG CHỜ BẠN</p>
-                        <p className={styles.bannerCount}>{allWaiting} gói</p>
+                        <p className={styles.bannerCount}>{allWaiting} đơn hàng</p>
                         <p className={styles.bannerSub}>
                             Ngăn {waiting[0].slotId} · {waiting[0].slotLocation}
                         </p>

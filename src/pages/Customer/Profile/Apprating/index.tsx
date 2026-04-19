@@ -46,7 +46,7 @@ export function AppRating() {
                     <h2 className={styles.thankTitle}>Cảm ơn bạn!</h2>
                     <p className={styles.thankText}>Đánh giá của bạn giúp chúng tôi cải thiện SmartLocker tốt hơn mỗi
                         ngày.</p>
-                    <button className={styles.saveBtn} onClick={() => navigate(-1)}>Quay lại</button>
+                    <button className={styles.goBackBtn} onClick={() => navigate(-1)}>Quay lại</button>
                 </div>
             </div>
         )

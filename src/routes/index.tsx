@@ -19,6 +19,8 @@ import {AppRating} from "@/pages/Customer/Profile/Apprating";
 import {UserGuide} from "@/pages/Customer/Profile/Userguide/Userguide.tsx";
 import {ContactSupport} from "@/pages/Customer/Profile/Contactsupport/Contactsupport.tsx";
 import {ChatAI} from "@/pages/Customer/ChatAi/ChatAI.tsx";
+import TermsOfService from "@/components/shared/RegisterForm/TermsOfService";
+import PrivacyPolicy from "@/components/shared/RegisterForm/PrivacyPolicy";
 
 const router = createBrowserRouter([
     {path: '/', element: <RoleSelection/>},
@@ -31,6 +33,8 @@ const router = createBrowserRouter([
 
     {path: '/customer/login', element: <AuthPage/>},
     {path: '/customer/register', element: <AuthPage/>},
+    {path: '/terms-of-service', element: <TermsOfService/>},
+    {path: '/privacy-policy', element: <PrivacyPolicy/>},
     {
         path: '/customer',
         element: <CustomerLayout/>,
