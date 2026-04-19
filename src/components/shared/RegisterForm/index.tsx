@@ -2,6 +2,7 @@ import {useState} from 'react'
 import {EUserRole} from "@/types/user.types.ts";
 import {useAuthStore} from "@/store/useAuthStore.ts";
 import styles from './RegisterForm.module.css'
+import {useNavigate} from "react-router-dom";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const phoneRegex = /^(0[3|5|7|8|9])+([0-9]{8})$/
@@ -20,7 +21,8 @@ export function RegisterForm({role, onSuccess, onSwitchToLogin}: Props) {
     const [password, setPassword] = useState('')
     const [confirm, setConfirm] = useState('')
     const [localErr, setLocalErr] = useState('')
-    const [agreed, setAgreed] = useState(false)  // thêm state terms
+    const [agreed, setAgreed] = useState(false)
+    const navigate = useNavigate()
 
     function validate() {
         if (name.trim().length < 2) {
@@ -127,13 +129,27 @@ export function RegisterForm({role, onSuccess, onSwitchToLogin}: Props) {
                     </div>
                 </div>
 
-                {/* Terms */}
                 <div className={styles.terms}>
                     <input id="terms" type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)}/>
-                    <label htmlFor="terms">
-                        Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a> của
-                        SmartLocker.
-                    </label>
+                    <span>
+        Tôi đồng ý với{' '}
+                        <button
+                            type="button"
+                            className={styles.linkBtn}
+                            onClick={() => navigate('/terms-of-service')}
+                        >
+            Điều khoản dịch vụ
+        </button>
+                        {' '}và{' '}
+                        <button
+                            type="button"
+                            className={styles.linkBtn}
+                            onClick={() => navigate('/privacy-policy')}
+                        >
+            Chính sách bảo mật
+        </button>
+                        {' '}của SmartLocker.
+    </span>
                 </div>
 
                 <button className={styles.submitBtn} type="submit" disabled={isLoading}>

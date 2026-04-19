@@ -3,8 +3,8 @@
     flex-direction: column;
     min-height: 100dvh;
     background: var(--color-bg, #f1f3f9);
-    width: 100%; /* ← thêm dòng này */
-    max-width: 480px; /* ← và dòng này */
+    width: 100%;
+    max-width: 480px;
     margin: 0 auto;
 }
 
@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* greeting */

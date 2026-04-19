@@ -3,7 +3,7 @@
     flex-direction: column;
     min-height: 100dvh;
 }
-    
+
 .topbar {
     display: flex;
     align-items: center;
