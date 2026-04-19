@@ -1,7 +1,6 @@
-import {useEffect} from 'react'
+    import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useCustomerStore} from '@/store/useCustomerStore.ts'
-import {BottomNav} from "@/components/Customer/BottomNav.tsx";
 import {EPackageStatus} from '@/types/customer.types.ts'
 import styles from './History.module.css'
 
@@ -99,7 +98,6 @@ export function History() {
                 )}
             </div>
 
-            <BottomNav/>
         </div>
     )
 }

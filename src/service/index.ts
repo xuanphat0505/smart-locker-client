@@ -13,11 +13,11 @@ import type {
 } from "@/types/locker.service.types.ts";
 
 export async function signInRequest(params: TAuthSigninRequestParam): Promise<TAuthResponse> {
-    return apiService.postRequest<TAuthResponse>(ApiPath.SignIn, params)
+    return apiService.post<TAuthResponse>(ApiPath.SignIn, params)
 }
 
 export async function signUpRequest(params: TAuthSignupRequestParam): Promise<TAuthResponse> {
-    return apiService.postRequest<TAuthResponse>(ApiPath.SignUp, params)
+    return apiService.post<TAuthResponse>(ApiPath.SignUp, params)
 }
 
 const toBase64 = (file: File): Promise<string> =>
@@ -30,11 +30,11 @@ const toBase64 = (file: File): Promise<string> =>
 
 
 export async function getSlots(): Promise<TGetSlotsResponse> {
-    return apiService.getRequest<TGetSlotsResponse>(ApiPath.Lockers)
+    return apiService.get<TGetSlotsResponse>(ApiPath.Lockers)
 }
 
 export async function getSlotsBySize(size: LockerSize): Promise<TGetSlotsResponse> {
-    return apiService.getRequest<TGetSlotsResponse>(ApiPath.Lockers, {size} satisfies TGetSlotsBySizeParam)
+    return apiService.get<TGetSlotsResponse>(ApiPath.Lockers, {size} satisfies TGetSlotsBySizeParam)
 }
 
 export async function confirmShipment(
@@ -44,16 +44,16 @@ export async function confirmShipment(
     const photoUrl = form.photoFile ? await toBase64(form.photoFile) : ''
 
     const body: TConfirmShipmentParam = {
-        slotId: slot._id ?? slot.id,
+        slotId: slot.id,
         recipientName: form.recipientName,
         recipientPhone: form.recipientPhone,
         note: form.note ?? '',
         photoUrl,
     }
 
-    return apiService.postRequest<TConfirmShipmentResponse>(ApiPath.Shipments, body)
+    return apiService.post<TConfirmShipmentResponse>(ApiPath.Shipments, body)
 }
 
 export async function verifyOTP(otpCode: string): Promise<TVerifyOtpResponse> {
-    return apiService.postRequest<TVerifyOtpResponse>(ApiPath.VerifyOTP, {otpCode} satisfies TVerifyOtpParam)
+    return apiService.post<TVerifyOtpResponse>(ApiPath.VerifyOTP, {otpCode} satisfies TVerifyOtpParam)
 }

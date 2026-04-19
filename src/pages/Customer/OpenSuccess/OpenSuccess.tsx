@@ -1,7 +1,6 @@
 import {useNavigate} from 'react-router-dom'
 import {useEffect} from 'react'
 import {useCustomerStore} from '@/store/useCustomerStore.ts'
-import {BottomNav} from "@/components/Customer/BottomNav.tsx";
 import styles from './OpenSuccess.module.css'
 
 export function OpenSuccess() {
@@ -74,7 +73,6 @@ export function OpenSuccess() {
                 </button>
             </footer>
 
-            <BottomNav/>
         </div>
     )
 }

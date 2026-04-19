@@ -1,7 +1,6 @@
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useCustomerStore} from '@/store/useCustomerStore.ts'
-import {BottomNav} from "@/components/Customer/BottomNav.tsx";
 import styles from './OpenLocker.module.css'
 
 const DIGITS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫']
@@ -13,7 +12,6 @@ export function OpenLocker() {
         inputOtpDigit, deleteOtpDigit, clearOtp, submitOtp, openResult,
     } = useCustomerStore()
 
-    // navigate khi mở thành công
     useEffect(() => {
         if (openResult) navigate('/customer/open-success')
     }, [openResult, navigate])
@@ -32,7 +30,6 @@ export function OpenLocker() {
             </header>
 
             <div className={styles.body}>
-                {/* Package info */}
                 {activePackage && (
                     <div className={styles.pkgCard}>
                         <div className={styles.pkgSlot}>{activePackage.slotId}</div>
@@ -44,10 +41,8 @@ export function OpenLocker() {
                     </div>
                 )}
 
-                {/* OTP hint */}
                 <p className={styles.otpHint}>Nhập mã OTP 6 số đã gửi qua Zalo</p>
 
-                {/* OTP boxes */}
                 <div className={styles.otpRow}>
                     {Array.from({length: 6}, (_, i) => (
                         <div
@@ -86,7 +81,6 @@ export function OpenLocker() {
                     })}
                 </div>
 
-                {/* Resend */}
                 <button className={styles.resend} onClick={clearOtp}>Gửi lại</button>
             </div>
 
@@ -103,7 +97,6 @@ export function OpenLocker() {
                 </button>
             </footer>
 
-            <BottomNav/>
         </div>
     )
 }

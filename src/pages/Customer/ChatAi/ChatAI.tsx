@@ -41,6 +41,28 @@ const getMockBotResponse = (userText: string): string => {
     return "Xin chào! Tôi là trợ lý SmartLocker 🤖\nTôi có thể giúp bạn:\n• Hướng dẫn nhận hàng\n• Giải đáp về OTP\n• Tìm vị trí tủ\n• Các thắc mắc khác\n\nBạn cần hỗ trợ gì ạ?";
 };
 
+/** Ngoài component — tránh `react-hooks/purity` (Date / Math trong thân component). */
+let chatMessageIdSeq = 0;
+
+function createChatMessageId(): string {
+    return `${Date.now()}-${++chatMessageIdSeq}`;
+}
+
+function getMockReplyDelayMs(): number {
+    return 1000 + Math.random() * 800;
+}
+
+function createInitialChatMessages(): ChatMessage[] {
+    return [
+        {
+            id: "welcome",
+            role: "bot",
+            text: "Xin chào! Tôi là trợ lý SmartLocker 🤖\nTôi có thể giúp bạn về OTP, nhận hàng, vị trí tủ và nhiều thứ khác. Bạn cần hỗ trợ gì ạ?",
+            timestamp: new Date(),
+        },
+    ];
+}
+
 const BotAvatar = () => (
     <div className={styles.botAvatar}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -66,29 +88,22 @@ const TypingIndicator = () => (
 const formatText = (text: string) => {
     return text.split("\n").map((line, i) => (
         <span key={i}>
-      {line
-          .split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g)
-          .map((part, j) => {
-              if (part.startsWith("**") && part.endsWith("**"))
-                  return <strong key={j}>{part.slice(2, -2)}</strong>;
-              if (part.startsWith("*") && part.endsWith("*"))
-                  return <em key={j}>{part.slice(1, -1)}</em>;
-              return part;
-          })}
+            {line
+                .split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g)
+                .map((part, j) => {
+                    if (part.startsWith("**") && part.endsWith("**"))
+                        return <strong key={j}>{part.slice(2, -2)}</strong>;
+                    if (part.startsWith("*") && part.endsWith("*"))
+                        return <em key={j}>{part.slice(1, -1)}</em>;
+                    return part;
+                })}
             {i < text.split("\n").length - 1 && <br/>}
-    </span>
+        </span>
     ));
 };
 
 export function ChatAI() {
-    const [messages, setMessages] = useState<ChatMessage[]>([
-        {
-            id: "welcome",
-            role: "bot",
-            text: "Xin chào! Tôi là trợ lý SmartLocker 🤖\nTôi có thể giúp bạn về OTP, nhận hàng, vị trí tủ và nhiều thứ khác. Bạn cần hỗ trợ gì ạ?",
-            timestamp: new Date(),
-        },
-    ]);
+    const [messages, setMessages] = useState<ChatMessage[]>(() => createInitialChatMessages());
     const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [showSuggestions, setShowSuggestions] = useState(true);
@@ -103,7 +118,7 @@ export function ChatAI() {
         if (!text.trim() || isLoading) return;
 
         const userMsg: ChatMessage = {
-            id: Date.now().toString(),
+            id: createChatMessageId(),
             role: "user",
             text: text.trim(),
             timestamp: new Date(),
@@ -115,12 +130,11 @@ export function ChatAI() {
         setIsLoading(true);
 
         // TODO: Thay bằng API call tới BE khi có service
-        // const response = await ChatAIService.sendMessage(text);
-        await new Promise((r) => setTimeout(r, 1000 + Math.random() * 800));
+        await new Promise((r) => setTimeout(r, getMockReplyDelayMs()));
         const botText = getMockBotResponse(text);
 
         const botMsg: ChatMessage = {
-            id: (Date.now() + 1).toString(),
+            id: createChatMessageId(),
             role: "bot",
             text: botText,
             timestamp: new Date(),
@@ -133,7 +147,7 @@ export function ChatAI() {
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
-            sendMessage(input);
+            void sendMessage(input);
         }
     };
 
@@ -152,8 +166,13 @@ export function ChatAI() {
                     aria-label="Quay lại"
                 >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-                              strokeLinejoin="round"/>
+                        <path
+                            d="M15 18l-6-6 6-6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
                     </svg>
                 </button>
                 <div className={styles.headerInfo}>
@@ -205,7 +224,8 @@ export function ChatAI() {
                                 <button
                                     key={s.id}
                                     className={styles.suggestionChip}
-                                    onClick={() => sendMessage(s.prompt)}
+                                    type="button"
+                                    onClick={() => void sendMessage(s.prompt)}
                                 >
                                     {s.label}
                                 </button>
@@ -219,26 +239,37 @@ export function ChatAI() {
 
             <div className={styles.inputArea}>
                 <div className={styles.inputWrapper}>
-          <textarea
-              ref={inputRef}
-              className={styles.textInput}
-              placeholder="Nhập câu hỏi của bạn..."
-              value={input}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
-              rows={1}
-          />
+                    <textarea
+                        ref={inputRef}
+                        className={styles.textInput}
+                        placeholder="Nhập câu hỏi của bạn..."
+                        value={input}
+                        onChange={handleInputChange}
+                        onKeyDown={handleKeyDown}
+                        rows={1}
+                    />
                     <button
+                        type="button"
                         className={`${styles.sendBtn} ${input.trim() ? styles.sendBtnActive : ""}`}
-                        onClick={() => sendMessage(input)}
+                        onClick={() => void sendMessage(input)}
                         disabled={!input.trim() || isLoading}
                         aria-label="Gửi"
                     >
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                            <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-                                  strokeLinejoin="round"/>
-                            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2"
-                                  strokeLinecap="round" strokeLinejoin="round"/>
+                            <path
+                                d="M22 2L11 13"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                            <path
+                                d="M22 2L15 22L11 13L2 9L22 2Z"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
                         </svg>
                     </button>
                 </div>
@@ -249,4 +280,3 @@ export function ChatAI() {
         </div>
     );
 }
-

@@ -1,6 +1,5 @@
 import {useRef, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-import {BottomNav} from '@/components/Customer/BottomNav.tsx'
 import {MOCK_CUSTOMER_NAME} from "@/data/customer.mock.ts";
 import styles from './PersonalInfo.module.css'
 
@@ -257,8 +256,6 @@ export function PersonalInfo() {
                     </div>
                 </>
             )}
-
-            <BottomNav/>
         </div>
     )
 }
