@@ -1,5 +1,4 @@
 import {useNavigate} from 'react-router-dom'
-import {BottomNav} from "@/components/Customer/BottomNav.tsx";
 import {MOCK_CUSTOMER_NAME, MOCK_PACKAGES} from "@/data/customer.mock.ts";
 import {EPackageStatus} from '@/types/customer.types.ts'
 import styles from './Profile.module.css'
@@ -106,7 +105,6 @@ export function Profile() {
                 <p className={styles.version}>🛡 SmartLocker v1.0.0</p>
             </div>
 
-            <BottomNav/>
         </div>
     )
 }

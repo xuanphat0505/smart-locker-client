@@ -1,7 +1,6 @@
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useCustomerStore} from '@/store/useCustomerStore.ts'
-import {BottomNav} from "@/components/Customer/BottomNav.tsx";
 import {EPackageStatus} from '@/types/customer.types.ts'
 import {MOCK_CUSTOMER_NAME} from "@/data/customer.mock.ts";
 import styles from './Home.module.css'
@@ -117,7 +116,6 @@ export function CustomerHome() {
                 </div>
             </div>
 
-            <BottomNav/>
         </div>
     )
 }

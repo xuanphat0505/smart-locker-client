@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-    background: var(--color-bg, #f1f3f9);
-    width: 100%; /* ← thêm dòng này */
-    max-width: 480px; /* ← và dòng này */
+    background: #f1f3f9;
+    width: 100%;
+    max-width: 480px;
     margin: 0 auto;
 }
 
@@ -20,18 +20,17 @@
 }
 
 .title {
-    font-size: 22px;
+    font-size: 25px;
     font-weight: 700;
-    color: var(--color-text, #212529);
+    color: #212529;
 }
 
 .sub {
-    font-size: 13px;
-    color: var(--color-text-muted, #868e96);
+    font-size: 14px;
+    color: #868e96;
     margin-top: 2px;
 }
 
-/* list */
 .list {
     display: flex;
     flex-direction: column;
@@ -39,7 +38,7 @@
 }
 
 .card {
-    background: var(--color-surface, #fff);
+    background: #fff;
     border-radius: 16px;
     padding: 14px 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
@@ -58,7 +57,7 @@
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: var(--color-primary, #4263eb);
+    background: #4263eb;
     color: #fff;
     font-size: 13px;
     font-weight: 700;
@@ -72,14 +71,14 @@
 }
 
 .orderCode {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-text, #212529);
+    font-size: 15px;
+    font-weight: 700;
+    color: #212529;
 }
 
 .shipper {
-    font-size: 12px;
-    color: var(--color-text-muted, #868e96);
+    font-size: 14px;
+    color: #868e96;
     margin-top: 2px;
 }
 
@@ -97,7 +96,7 @@
 }
 
 .opened {
-    color: var(--color-primary, #4263eb);
+    color: #4263eb;
     background: rgba(66, 99, 235, .1);
 }
 
@@ -118,13 +117,11 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 12px;
-    color: var(--color-text-muted, #868e96);
+    font-size: 14px;
 }
 
 .date {
-    font-size: 12px;
-    color: var(--color-text-muted, #868e96);
+    font-size: 13px;
 }
 
 .otpBtn {
@@ -133,13 +130,12 @@
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    background: var(--color-primary, #4263eb);
+    background: #4263eb;
     color: #fff;
     font-size: 13px;
     font-weight: 600;
 }
 
-/* misc */
 .loadingWrap {
     display: grid;
     place-items: center;
@@ -150,7 +146,7 @@
     width: 28px;
     height: 28px;
     border: 3px solid #e9ecef;
-    border-top-color: var(--color-primary, #4263eb);
+    border-top-color: #4263eb;
     border-radius: 50%;
     animation: spin .7s linear infinite;
 }
@@ -161,7 +157,7 @@
     align-items: center;
     gap: 12px;
     padding: 60px 0;
-    color: var(--color-text-muted, #868e96);
+    color: #868e96;
     font-size: 14px;
 }
 
