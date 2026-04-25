@@ -1,52 +1,32 @@
+import {useEffect} from 'react'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {LoginForm} from '@/components/shared/LoginForm'
 import {RegisterForm} from '@/components/shared/RegisterForm'
-import {EUserRole} from '@/types/user.types.ts'
 import {useAuthStore} from '@/store/useAuthStore'
-import styles from './AuthPage.module.css'
+import {getDefaultLoginPath, getDefaultRegisterPath, getHomePathByRole, getRoleFromPath} from "@/util/auth.ts";
+import styles from './Authpage.module.css'
 
 export function AuthPage() {
     const navigate = useNavigate()
     const location = useLocation()
     const {user} = useAuthStore()
 
-    const role = location.pathname.startsWith('/shipper')
-        ? EUserRole.shipper
-        : EUserRole.user
-
+    const role = getRoleFromPath(location.pathname)
     const isRegister = location.pathname.includes('register')
 
-    if (user) {
-        if (user.role === EUserRole.shipper) {
-            navigate('/shipper')
-        } else {
-            navigate('/customer')
-        }
-        return null
-    }
+    useEffect(() => {
+        if (!user) return
+        navigate(getHomePathByRole(user.role), {replace: true})
+    }, [navigate, user])
 
     const handleSuccess = () => {
-        if (role === EUserRole.shipper) {
-            navigate('/shipper')
-        } else {
-            navigate('/customer')
-        }
+        const signedInUser = useAuthStore.getState().user
+        if (!signedInUser) return
+        navigate(getHomePathByRole(signedInUser.role), {replace: true})
     }
 
-    const goToLogin = () => {
-        if (role === EUserRole.shipper) {
-            navigate('/shipper/login')
-        } else {
-            navigate('/customer/login')
-        }
-    }
-
-    const goToRegister = () => {
-        if (role === EUserRole.shipper) {
-            navigate('/shipper/register')
-        } else {
-            navigate('/customer/register')
-        }
+    if (user) {
+        return null
     }
 
     return (
@@ -64,13 +44,13 @@ export function AuthPage() {
                         <LoginForm
                             role={role}
                             onSuccess={handleSuccess}
-                            onSwitchToRegister={goToRegister}
+                            onSwitchToRegister={() => navigate(getDefaultRegisterPath(role))}
                         />
                     ) : (
                         <RegisterForm
                             role={role}
                             onSuccess={handleSuccess}
-                            onSwitchToLogin={goToLogin}
+                            onSwitchToLogin={() => navigate(getDefaultLoginPath(role))}
                         />
                     )}
                 </div>

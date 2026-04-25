@@ -1,9 +1,9 @@
+import {TAuthSigninRequestParam, TAuthSignupRequestParam} from '@/types/auth.service.types.ts'
 import {create} from 'zustand'
 import {createJSONStorage, persist} from 'zustand/middleware'
 import {apiService} from '../controller/service.controller'
-import {signInRequest, signUpRequest} from "@/service";
-import {TUserInfo} from "../types/user.types.ts";
-import {TAuthSigninRequestParam, TAuthSignupRequestParam} from "@/types/auth.service.types.ts";
+import {signInRequest, signUpRequest} from '@/service'
+import {TUserInfo} from '../types/user.types.ts'
 
 type TAuthStore = {
     user: TUserInfo | null
@@ -32,15 +32,18 @@ export const useAuthStore = create<TAuthStore>()(
                         set({error: res.message ?? 'Đăng nhập thất bại', isLoading: false})
                         return false
                     }
+
                     apiService.token = res.token
                     set({
                         user: {...res.user, token: res.token},
                         token: res.token,
                         isLoading: false,
+                        error: null,
                     })
                     return true
-                } catch {
-                    set({error: 'Lỗi kết nối server', isLoading: false})
+                } catch (error) {
+                    const message = error instanceof Error ? error.message : 'Lỗi kết nối server'
+                    set({error: message, isLoading: false})
                     return false
                 }
             },
@@ -53,22 +56,25 @@ export const useAuthStore = create<TAuthStore>()(
                         set({error: res.message ?? 'Đăng ký thất bại', isLoading: false})
                         return false
                     }
+
                     apiService.token = res.token
                     set({
                         user: {...res.user, token: res.token},
                         token: res.token,
                         isLoading: false,
+                        error: null,
                     })
                     return true
-                } catch {
-                    set({error: 'Lỗi kết nối server', isLoading: false})
+                } catch (error) {
+                    const message = error instanceof Error ? error.message : 'Lỗi kết nối server'
+                    set({error: message, isLoading: false})
                     return false
                 }
             },
 
             signOut: () => {
                 apiService.token = undefined
-                set({user: null, token: null})
+                set({user: null, token: null, error: null, isLoading: false})
             },
 
             clearError: () => set({error: null}),

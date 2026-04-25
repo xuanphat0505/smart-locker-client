@@ -24,29 +24,31 @@ export function RegisterForm({role, onSuccess, onSwitchToLogin}: Props) {
     const [agreed, setAgreed] = useState(false)
     const navigate = useNavigate()
 
+    const roleLabel = role === EUserRole.shipper ? 'Shipper' : 'Khách hàng'
+
     function validate() {
         if (name.trim().length < 2) {
-            setLocalErr('Họ tên phải có ít nhất 2 ký tự');
+            setLocalErr('Họ tên phải có ít nhất 2 ký tự')
             return false
         }
         if (!emailRegex.test(email.trim())) {
-            setLocalErr('Email không đúng định dạng');
+            setLocalErr('Email không đúng định dạng')
             return false
         }
         if (phone && !phoneRegex.test(phone.trim())) {
-            setLocalErr('Số điện thoại không đúng định dạng');
+            setLocalErr('Số điện thoại không đúng định dạng')
             return false
         }
         if (password.length < 6) {
-            setLocalErr('Mật khẩu phải có ít nhất 6 ký tự');
+            setLocalErr('Mật khẩu phải có ít nhất 6 ký tự')
             return false
         }
         if (password !== confirm) {
-            setLocalErr('Mật khẩu xác nhận không khớp');
+            setLocalErr('Mật khẩu xác nhận không khớp')
             return false
         }
         if (!agreed) {
-            setLocalErr('Vui lòng đồng ý với điều khoản dịch vụ');
+            setLocalErr('Vui lòng đồng ý với điều khoản dịch vụ')
             return false
         }
         return true
@@ -56,7 +58,9 @@ export function RegisterForm({role, onSuccess, onSwitchToLogin}: Props) {
         e.preventDefault()
         setLocalErr('')
         clearError()
+
         if (!validate()) return
+
         const ok = await signUp({
             name: name.trim(),
             email: email.trim(),
@@ -64,25 +68,26 @@ export function RegisterForm({role, onSuccess, onSwitchToLogin}: Props) {
             password,
             role
         })
+
         if (ok) onSuccess()
     }
 
     const errorMsg = localErr || error
-
     return (
         <div className={styles.page}>
-
-
             <div className={styles.heading}>
-                <h1>Đăng ký tài khoản</h1>
+                <h1>Đăng ký tài khoản {roleLabel}</h1>
                 <p>Tham gia cộng đồng SmartLocker ngay hôm nay để trải nghiệm dịch vụ lưu trữ thông minh.</p>
             </div>
 
             {errorMsg && (
-                <div className={styles.error} onClick={() => {
-                    setLocalErr('');
-                    clearError()
-                }}>
+                <div
+                    className={styles.error}
+                    onClick={() => {
+                        setLocalErr('')
+                        clearError()
+                    }}
+                >
                     {errorMsg} <span>✕</span>
                 </div>
             )}
@@ -92,64 +97,96 @@ export function RegisterForm({role, onSuccess, onSwitchToLogin}: Props) {
                     <div className={styles.field}>
                         <label>Họ và tên</label>
                         <div className={`${styles.inputRow} ${styles.iconUser}`}>
-                            <input type="text" placeholder="Nguyễn Văn A" value={name}
-                                   onChange={e => setName(e.target.value)} required/>
+                            <input
+                                type="text"
+                                placeholder="Nguyễn Văn A"
+                                value={name}
+                                onChange={e => setName(e.target.value)}
+                                required
+                            />
                         </div>
                     </div>
+
                     <div className={styles.field}>
                         <label>Số điện thoại (tuỳ chọn)</label>
-                        <div className={`${styles.inputRow} ${styles.iconPhone}`}>
-                            <input type="tel" placeholder="090 123 4567" value={phone}
-                                   onChange={e => setPhone(e.target.value)}/>
+                        <div className={
+                            `${styles.inputRow} ${styles.iconPhone}`}>
+                            <input
+                                type="tel"
+                                placeholder="0901234567"
+                                value={phone}
+                                onChange={e => setPhone(e.target.value)}
+                            />
                         </div>
                     </div>
                 </div>
-
                 <div className={styles.card}>
                     <div className={styles.field}>
                         <label>Email</label>
                         <div className={`${styles.inputRow} ${styles.iconEmail}`}>
-                            <input type="email" placeholder="email@vi-du.vn" value={email}
-                                   onChange={e => setEmail(e.target.value)} required/>
+                            <input
+                                type="email"
+                                placeholder="email@vi-du.vn"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                required
+                            />
                         </div>
                     </div>
+
                     <div className={styles.field}>
                         <label>Mật khẩu</label>
                         <div className={`${styles.inputRow} ${styles.iconLock}`}>
-                            <input type="password" placeholder="Tối thiểu 6 ký tự" value={password}
-                                   onChange={e => setPassword(e.target.value)} required/>
+                            <input
+                                type="password"
+                                placeholder="Tối thiểu 6 ký tự"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                                required
+                            />
                         </div>
                     </div>
+
                     <div className={styles.field}>
                         <label>Xác nhận mật khẩu</label>
                         <div className={`${styles.inputRow} ${styles.iconShield}`}>
-                            <input type="password" placeholder="Nhập lại mật khẩu" value={confirm}
-                                   onChange={e => setConfirm(e.target.value)} required/>
+                            <input
+                                type="password"
+                                placeholder="Nhập lại mật khẩu"
+                                value={confirm}
+                                onChange={e => setConfirm(e.target.value)}
+                                required
+                            />
                         </div>
                     </div>
                 </div>
 
                 <div className={styles.terms}>
-                    <input id="terms" type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)}/>
+                    <input
+                        id="terms"
+                        type="checkbox"
+                        checked={agreed}
+                        onChange={e => setAgreed(e.target.checked)}
+                    />
                     <span>
-        Tôi đồng ý với{' '}
+                        Tôi đồng ý với{' '}
                         <button
                             type="button"
                             className={styles.linkBtn}
                             onClick={() => navigate('/terms-of-service')}
                         >
-            Điều khoản dịch vụ
-        </button>
+                            Điều khoản dịch vụ
+                        </button>
                         {' '}và{' '}
                         <button
                             type="button"
                             className={styles.linkBtn}
                             onClick={() => navigate('/privacy-policy')}
                         >
-            Chính sách bảo mật
-        </button>
+                            Chính sách bảo mật
+                        </button>
                         {' '}của SmartLocker.
-    </span>
+                    </span>
                 </div>
 
                 <button className={styles.submitBtn} type="submit" disabled={isLoading}>
