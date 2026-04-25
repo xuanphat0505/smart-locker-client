@@ -10,6 +10,7 @@ const MoonIcon = () => (
         <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
     </svg>
 )
+
 const SunIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <circle cx="12" cy="12" r="5"/>
@@ -22,19 +23,21 @@ const SunIcon = () => (
     </svg>
 )
 
-const SIZE_LABEL: Record<string, string> = {SMALL: 'Nhỏ', MEDIUM: 'Vừa', LARGE: 'Lớn'}
+const SIZE_LABEL: Record<string, string> = {
+    SMALL: 'Nhỏ',
+    MEDIUM: 'Vừa',
+    LARGE: 'Lớn',
+}
 
 export function SelectLocker() {
     const navigate = useNavigate()
     const {
         selectedSlot,
-        selectedSize,
         isDark,
         toggleTheme,
         fetchSlots,
     } = useShipperStore()
 
-    // load toàn bộ slots (mock) khi mount
     useEffect(() => {
         void fetchSlots()
     }, [fetchSlots])
@@ -47,7 +50,9 @@ export function SelectLocker() {
                         <path d="M19 12H5M12 5l-7 7 7 7"/>
                     </svg>
                 </button>
+
                 <h1 className="page-header__title">Chọn ô tủ gửi hàng</h1>
+
                 <button className="icon-btn" onClick={toggleTheme}>
                     {isDark ? <SunIcon/> : <MoonIcon/>}
                 </button>
