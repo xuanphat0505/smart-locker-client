@@ -8,16 +8,10 @@
     color: var(--text);
 }
 
-.themeToggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 120;
-    box-shadow: var(--shadow);
-}
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
     .themeToggle {
-        right: max(16px, calc(50% - 210px + 16px));
+        right: 16px;
+        top: 16px;
     }
 }
