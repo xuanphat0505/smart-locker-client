@@ -1,9 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap');
 
-*, *::before, *::after {
+:root,
+[data-theme="light"] {
+    --bg: #f4f6f8;
+    --surface: #ffffff;
+    --surface-2: #f8fafc;
+    --border: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-soft: rgba(37, 99, 235, 0.12);
+    --success: #16a34a;
+    --danger: #dc2626;
+    --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+    --root-bg: #e5e7eb;
+
+    /* alias cho code cũ */
+    --color-bg: var(--bg);
+    --color-surface: var(--surface);
+    --color-border: var(--border);
+    --color-text: var(--text);
+    --color-text-muted: var(--text-muted);
+    --color-primary: var(--primary);
+}
+
+[data-theme="dark"] {
+    --bg: #0f172a;
+    --surface: #111827;
+    --surface-2: #1e293b;
+    --border: #334155;
+    --border-strong: #475569;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #3b82f6;
+    --primary-hover: #60a5fa;
+    --primary-soft: rgba(59, 130, 246, 0.18);
+    --success: #22c55e;
+    --danger: #ef4444;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --root-bg: #020617;
+
+    /* alias cho code cũ */
+    --color-bg: var(--bg);
+    --color-surface: var(--surface);
+    --color-border: var(--border);
+    --color-text: var(--text);
+    --color-text-muted: var(--text-muted);
+    --color-primary: var(--primary);
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scrollbar-width: none;
 }
 
 html {
@@ -11,45 +65,19 @@ html {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* ── LIGHT MODE (default) ── */
-:root,
-[data-theme="light"] {
-    --bg: #F2F4F7;
-    --surface: #FFFFFF;
-    --border: #E5E7EB;
-    --border-strong: #CBD5E1;
-    --text: #0F172A;
-    --text-muted: #6B7280;
-    --blue: #2563EB;
-    --blue-faint: rgba(37, 99, 235, .08);
-    --blue-border: rgba(37, 99, 235, .25);
-    --green: #22C55E;
-    --red: #DC2626;
-    --shadow: 0 2px 16px rgba(0, 0, 0, .08);
-}
-
-/* ── DARK MODE ── */
-[data-theme="dark"] {
-    --bg: #111111;
-    --surface: #1C1C1C;
-    --border: #2E2E2E;
-    --border-strong: #444444;
-    --text: #F1F5F9;
-    --text-muted: #6B7280;
-    --blue: #3B82F6;
-    --blue-faint: rgba(59, 130, 246, .12);
-    --blue-border: rgba(59, 130, 246, .30);
-    --green: #22C55E;
-    --red: #EF4444;
-    --shadow: 0 2px 20px rgba(0, 0, 0, .5);
-}
-
 body {
     font-family: 'Barlow', sans-serif;
     background: var(--bg);
     color: var(--text);
     min-height: 100dvh;
-    transition: background .25s, color .25s;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
 }
 
 #root {
@@ -67,18 +95,15 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 @media (min-width: 768px) {
     #root {
-        background: #E5E7EB;
+        background: var(--root-bg);
         align-items: center;
         padding: 40px 0;
         min-height: 100vh;
-    }
-
-    [data-theme="dark"] #root {
-        background: #0a0a0a;
     }
 
     .page {
@@ -90,7 +115,6 @@ body {
     }
 }
 
-/* ── SHARED PAGE PARTS (dùng chung giữa auth + shipper pages) ── */
 .page-header {
     display: flex;
     align-items: center;
@@ -110,23 +134,27 @@ body {
     color: var(--text);
 }
 
-.back-btn, .icon-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: var(--bg);
+.back-btn,
+.icon-btn,
+.theme-fab {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--surface-2);
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: var(--text);
-    flex-shrink: 0;
-    transition: background .15s;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
-.back-btn:hover, .icon-btn:hover {
-    background: var(--border);
+.back-btn:hover,
+.icon-btn:hover,
+.theme-fab:hover {
+    background: var(--primary-soft);
+    border-color: var(--primary);
 }
 
 .page-body {
@@ -138,10 +166,6 @@ body {
     gap: 18px;
 }
 
-.page-body::-webkit-scrollbar {
-    width: 0;
-}
-
 .page-footer {
     padding: 14px 18px 20px;
     background: var(--surface);
@@ -151,13 +175,11 @@ body {
     gap: 10px;
 }
 
-/* ── BUTTONS ── */
 .btn {
     width: 100%;
     padding: 16px;
     border-radius: 14px;
     border: none;
-    font-family: 'Barlow', sans-serif;
     font-size: 14px;
     font-weight: 800;
     letter-spacing: 1.5px;
@@ -167,16 +189,16 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: all .18s;
+    transition: all 0.18s ease;
 }
 
 .btn--primary {
-    background: var(--blue);
+    background: var(--primary);
     color: #fff;
 }
 
 .btn--primary:hover:not(:disabled) {
-    filter: brightness(1.1);
+    background: var(--primary-hover);
 }
 
 .btn--primary:disabled {
@@ -186,24 +208,5 @@ body {
 }
 
 .btn--primary:active:not(:disabled) {
-    transform: scale(.98);
-}
-
-* {
-    scrollbar-width: none;
-}
-
-:root {
-    --font-primary: 'Montserrat', sans-serif;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    /* hoặc dùng biến: font-family: var(--font-primary); */
+    transform: scale(0.98);
 }

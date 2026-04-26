@@ -3,6 +3,21 @@
     max-width: 480px;
     min-height: 100dvh;
     margin: 0 auto;
-    background: var(--color-bg, #f1f3f9);
+    background: var(--bg);
     position: relative;
+    color: var(--text);
+}
+
+.themeToggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 120;
+    box-shadow: var(--shadow);
+}
+
+@media (min-width: 768px) {
+    .themeToggle {
+        right: max(16px, calc(50% - 210px + 16px));
+    }
 }

@@ -1,7 +1,11 @@
+import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {PhotoUpload} from "@/components/Shipper/PhotoUpload";
 import {useShipperStore} from '@/store/userShiperStore'
+import {useTheme} from '@/hooks/useTheme'
+import {useAuthStore} from '@/store/useAuthStore'
 import styles from './PackageInfo.module.css'
+
 
 const SIZE_LABEL: Record<string, string> = {SMALL: 'Nhỏ', MEDIUM: 'Vừa', LARGE: 'Lớn'}
 
@@ -12,9 +16,17 @@ const SunIcon = () => (
             d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
     </svg>
 )
+const MoonIcon = () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </svg>
+)
 
 export function PackageInfo() {
     const navigate = useNavigate()
+    const {signOut} = useAuthStore()
+    const {isDark, toggleTheme} = useTheme()
+
     const {
         selectedSlot,
         formData,
@@ -22,20 +34,27 @@ export function PackageInfo() {
         error,
         setFormField,
         submitShipment,
-        toggleTheme,
     } = useShipperStore()
 
+    useEffect(() => {
+        if (!selectedSlot) {
+            navigate('/shipper', {replace: true})
+        }
+    }, [navigate, selectedSlot])
+
     if (!selectedSlot) {
-        navigate('/shipper')
         return null
     }
 
     const handleSubmit = async () => {
         await submitShipment()
-        // chỉ navigate khi không có lỗi – store set error nếu thất bại
         const {error: currentError, shipmentResult} = useShipperStore.getState()
-        if (!currentError && shipmentResult) navigate('/shipper/success')
+
+        if (!currentError && shipmentResult) {
+            navigate('/shipper/success')
+        }
     }
+
 
     return (
         <div className={`page ${styles.page}`}>
@@ -45,11 +64,32 @@ export function PackageInfo() {
                         <path d="M19 12H5M12 5l-7 7 7 7"/>
                     </svg>
                 </button>
+
                 <h1 className="page-header__title">SmartLocker</h1>
-                <button className="icon-btn" onClick={toggleTheme}>
-                    <SunIcon/>
-                </button>
+
+                <div style={{display: 'flex', gap: '8px'}}>
+                    <button className="icon-btn" onClick={toggleTheme} title="Đổi giao diện">
+                        {isDark ? <SunIcon/> : <MoonIcon/>}
+                    </button>
+
+                    <button
+                        className="icon-btn"
+                        title="Đăng xuất"
+                        onClick={() => {
+                            signOut()
+                            navigate('/', {replace: true})
+                        }}
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             strokeWidth="2">
+                            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+                            <polyline points="16 17 21 12 16 7"/>
+                            <line x1="21" y1="12" x2="9" y2="12"/>
+                        </svg>
+                    </button>
+                </div>
             </header>
+
 
             <div className="page-body">
                 <div className={styles.titleBlock}>

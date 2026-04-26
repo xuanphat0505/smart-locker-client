@@ -1,10 +1,12 @@
-import {useShipperStore} from "@/store/userShiperStore.ts";
+import {useThemeStore} from '@/store/useThemeStore'
 
-/**
- * Thin hooks — chỉ expose theme state + toggleTheme.
- * DOM sync (data-theme) được xử lý bởi ThemeSync trong App.tsx.
- */
 export function useTheme() {
-    const {theme, isDark, toggleTheme} = useShipperStore()
-    return {theme, isDark, toggleTheme}
+    const {theme, isDark, toggleTheme, setTheme} = useThemeStore()
+
+    return {
+        theme,
+        isDark,
+        toggleTheme,
+        setTheme,
+    }
 }
