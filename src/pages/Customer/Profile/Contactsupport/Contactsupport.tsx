@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-import styles from './ContactSupport.module.css'
+import styles from './Contactsupport.module.css'
+
 
 const CONTACT_METHODS = [
     {

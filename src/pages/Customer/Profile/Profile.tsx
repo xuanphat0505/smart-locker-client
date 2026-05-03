@@ -2,6 +2,7 @@ import {useNavigate} from 'react-router-dom'
 import {MOCK_CUSTOMER_NAME, MOCK_PACKAGES} from "@/data/customer.mock.ts";
 import {EPackageStatus} from '@/types/customer.types.ts'
 import styles from './Profile.module.css'
+import {useAuthStore} from '@/store/useAuthStore'
 
 const MENU = [
     {
@@ -24,6 +25,7 @@ const MENU = [
 
 export function Profile() {
     const navigate = useNavigate()
+    const {signOut} = useAuthStore()
 
     const totalPkg = MOCK_PACKAGES.length
     const receivedPkg = MOCK_PACKAGES.filter(p => p.status === EPackageStatus.RECEIVED).length
@@ -93,7 +95,14 @@ export function Profile() {
                 ))}
 
 
-                <button className={styles.logoutBtn} onClick={() => navigate('/')}>
+                <button
+                    className={styles.logoutBtn}
+                    onClick={() => {
+                        signOut()
+                        navigate('/', {replace: true})
+                    }}
+                >
+
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
                         <polyline points="16 17 21 12 16 7"/>

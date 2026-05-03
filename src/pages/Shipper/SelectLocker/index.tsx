@@ -3,7 +3,9 @@ import {useNavigate} from 'react-router-dom'
 import {SizeFilter} from '@/components/Shipper/SizeFilter'
 import {LockerGrid} from '@/components/Shipper/LockerGrid'
 import {useShipperStore} from '@/store/userShiperStore'
+import {useTheme} from '@/hooks/useTheme'
 import styles from './SelectLocker.module.css'
+import {useAuthStore} from '@/store/useAuthStore'
 
 const MoonIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -31,12 +33,14 @@ const SIZE_LABEL: Record<string, string> = {
 
 export function SelectLocker() {
     const navigate = useNavigate()
+    const {signOut} = useAuthStore()
+
     const {
         selectedSlot,
-        isDark,
-        toggleTheme,
         fetchSlots,
     } = useShipperStore()
+
+    const {isDark, toggleTheme} = useTheme()
 
     useEffect(() => {
         void fetchSlots()
@@ -53,9 +57,28 @@ export function SelectLocker() {
 
                 <h1 className="page-header__title">Chọn ô tủ gửi hàng</h1>
 
-                <button className="icon-btn" onClick={toggleTheme}>
-                    {isDark ? <SunIcon/> : <MoonIcon/>}
-                </button>
+                <div style={{display: 'flex', gap: '8px'}}>
+                    <button className="icon-btn" onClick={toggleTheme} title="Đổi giao diện">
+                        {isDark ? <SunIcon/> : <MoonIcon/>}
+                    </button>
+
+                    <button
+                        className="icon-btn"
+                        title="Đăng xuất"
+                        onClick={() => {
+                            signOut()
+                            navigate('/', {replace: true})
+                        }}
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             strokeWidth="2">
+                            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+                            <polyline points="16 17 21 12 16 7"/>
+                            <line x1="21" y1="12" x2="9" y2="12"/>
+                        </svg>
+                    </button>
+                </div>
+
             </header>
 
             <div className="page-body">

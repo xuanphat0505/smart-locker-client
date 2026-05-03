@@ -2,13 +2,14 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: var(--color-surface, #fff);
-    border-top: 1px solid var(--color-border, #e9ecef);
+    background: var(--surface);
+    border-top: 1px solid var(--border);
     padding: 8px 0 max(8px, env(safe-area-inset-bottom));
     position: sticky;
     bottom: 0;
     z-index: 100;
     width: 100%;
+    box-shadow: 0 -6px 20px rgba(15, 23, 42, 0.06);
 }
 
 .item {
@@ -19,13 +20,17 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px 16px;
-    color: var(--color-text-muted, #adb5bd);
-    transition: color .2s;
+    padding: 6px 16px;
+    color: var(--text-muted);
+    transition: color .2s ease, transform .15s ease;
+}
+
+.item:active {
+    transform: scale(0.98);
 }
 
 .itemActive {
-    color: var(--color-primary, #4263eb);
+    color: var(--primary);
 }
 
 .icon {

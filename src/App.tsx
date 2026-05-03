@@ -1,11 +1,10 @@
 import {useEffect} from 'react'
 import {AppRouter} from '@/routes'
-import {useShipperStore} from "@/store/userShiperStore.ts";
+import {useThemeStore} from '@/store/useThemeStore'
 import './index.css'
 
-
 function ThemeSync() {
-    const theme = useShipperStore((s) => s.theme)
+    const theme = useThemeStore((s) => s.theme)
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme)

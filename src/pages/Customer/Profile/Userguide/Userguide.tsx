@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-import styles from './UserGuide.module.css'
+import styles from './Userguide.module.css'
+
 
 const GUIDES = [
     {
