@@ -2,12 +2,12 @@ import {useEffect, useState} from 'react'
 import {Navigate, Outlet} from 'react-router-dom'
 import {useAuthStore} from '@/store/useAuthStore'
 import {EUserRole} from '@/types/user.types'
+import {getHomePathByRole} from "@/util/auth.ts";
 
 type Props = {
     allowedRole: EUserRole
     loginPath: string
 }
-
 
 export function RequireRoleOutlet({allowedRole, loginPath}: Props) {
     const user = useAuthStore((s) => s.user)
@@ -28,10 +28,7 @@ export function RequireRoleOutlet({allowedRole, loginPath}: Props) {
     }
 
     if (user.role !== allowedRole) {
-        if (user.role === EUserRole.shipper) {
-            return <Navigate to="/shipper" replace/>
-        }
-        return <Navigate to="/customer" replace/>
+        return <Navigate to={getHomePathByRole(user.role)} replace/>
     }
 
     return <Outlet/>
