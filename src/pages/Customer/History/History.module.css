@@ -111,6 +111,7 @@
     align-items: center;
     padding-top: 10px;
     border-top: 1px solid #f1f3f5;
+
 }
 
 .location {
@@ -118,6 +119,7 @@
     align-items: center;
     gap: 4px;
     font-size: 14px;
+    color: black;
 }
 
 .date {

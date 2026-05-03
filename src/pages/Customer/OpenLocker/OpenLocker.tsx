@@ -56,10 +56,8 @@ export function OpenLocker() {
 
                 {otpError && <p className={styles.otpError}>{otpError}</p>}
 
-                {/* Countdown */}
                 <div className={styles.countdown}>Hết hạn sau 08:12</div>
 
-                {/* Numpad */}
                 <div className={styles.numpad}>
                     {DIGITS.map((d, i) => {
                         if (d === '') return <div key={i}/>
@@ -84,7 +82,6 @@ export function OpenLocker() {
                 <button className={styles.resend} onClick={clearOtp}>Gửi lại</button>
             </div>
 
-            {/* Submit */}
             <footer className={styles.footer}>
                 <button
                     className={styles.submitBtn}

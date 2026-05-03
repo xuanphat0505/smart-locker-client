@@ -34,13 +34,17 @@
 .btn:hover {
     border-color: var(--blue);
     color: var(--blue);
+    background: var(--surface-2);
 }
 
+
 .btnActive {
-    background: var(--blue);
+    background: linear-gradient(135deg, var(--blue), var(--primary-hover));
     border-color: var(--blue);
     color: #fff;
+    box-shadow: 0 10px 20px var(--blue-faint);
 }
+
 
 .btnIcon {
     width: 28px;
@@ -59,5 +63,6 @@
 
 .btnDim {
     font-size: 10px;
-    opacity: .75;
+    opacity: .82;
 }
+
