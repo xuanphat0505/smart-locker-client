@@ -1,4 +1,5 @@
 import {useRef} from 'react'
+import type {MouseEvent} from 'react'
 import {useShipperStore} from '@/store/userShiperStore.ts'
 import styles from './PhotoUpload.module.css'
 
@@ -8,8 +9,23 @@ export function PhotoUpload() {
     const hasPhoto = !!formData.photoPreviewUrl
 
     const handlePhotoChange = (file: File) => {
+        if (formData.photoPreviewUrl) {
+            URL.revokeObjectURL(formData.photoPreviewUrl)
+        }
         setFormField('photoFile', file)
         setFormField('photoPreviewUrl', URL.createObjectURL(file))
+    }
+
+    const handleRemovePhoto = (e: MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
+        if (formData.photoPreviewUrl) {
+            URL.revokeObjectURL(formData.photoPreviewUrl)
+        }
+        setFormField('photoFile', null)
+        setFormField('photoPreviewUrl', '')
+        if (inputRef.current) {
+            inputRef.current.value = ''
+        }
     }
 
     return (
@@ -23,7 +39,22 @@ export function PhotoUpload() {
                 onKeyDown={(e) => e.key === 'Enter' && inputRef.current?.click()}
             >
                 {hasPhoto ? (
-                    <img src={formData.photoPreviewUrl} alt="Preview" className={styles.preview}/>
+                    <div className={styles.previewWrap}>
+                        <img src={formData.photoPreviewUrl} alt="Preview" className={styles.preview}/>
+                        <button
+                            type="button"
+                            className={styles.removeBtn}
+                            onClick={handleRemovePhoto}
+                            aria-label="Xóa ảnh"
+                            title="Xóa ảnh"
+                        >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 strokeWidth="2">
+                                <path d="M18 6L6 18"/>
+                                <path d="M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
                 ) : (
                     <>
                         <div className={styles.icon}>

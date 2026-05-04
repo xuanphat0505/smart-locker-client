@@ -1,275 +1,166 @@
 :root {
-    --blue: #3B5BDB;
-    --blue-dark: #2F4CC5;
-    --navy: #1A2461;
-    --bg: #EDEEF8;
-    --card-bg: #FFFFFF;
-    --input-bg: #F3F4FB;
-    --label: #6B7280;
-    --placeholder: #C0C4D6;
-    --divider: #EDEEF8;
+  --blue: #3b5bdb;
+  --blue-dark: #2f4cc5;
+  --navy: #1a2461;
+  --bg: #edeef8;
+  --card-bg: #ffffff;
+  --input-bg: #f3f4fb;
+  --label: #6b7280;
+  --placeholder: #c0c4d6;
+  --divider: #edeef8;
 }
 
 .page {
-    min-height: 100vh;
-    background: var(--bg);
-    display: flex;
-    flex-direction: column;
-    padding: 0 24px 40px;
-    font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px 40px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .topBar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0 0;
 }
 
 .backBtn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
 }
 
 .backBtn::before {
-    content: '';
-    display: block;
-    width: 9px;
-    height: 9px;
-    border-left: 2.5px solid var(--blue);
-    border-bottom: 2.5px solid var(--blue);
-    transform: rotate(45deg) translateX(2px);
+  content: "";
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-left: 2.5px solid var(--blue);
+  border-bottom: 2.5px solid var(--blue);
+  transform: rotate(45deg) translateX(2px);
 }
 
 .brandName {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--blue);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue);
 }
 
 /* ── Heading ── */
 .heading {
-    margin-top: 32px;
-    margin-bottom: 32px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 .heading h1 {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--navy);
-    line-height: 1.25;
-    margin: 0 0 10px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.25;
+  margin: 0 0 10px;
 }
 
 .heading p {
-    font-size: 14px;
-    color: var(--label);
-    line-height: 1.55;
-    margin: 0;
+  font-size: 14px;
+  color: var(--label);
+  line-height: 1.55;
+  margin: 0;
 }
 
 /* ── Card nhóm input ── */
 .card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 12px rgba(59, 91, 219, 0.06);
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 12px rgba(59, 91, 219, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
 }
 
-.card .field + .field {
-    border-top: 1px solid var(--divider);
-}
-
-/* ── Field ── */
-.field {
-    display: flex;
-    flex-direction: column;
-    padding: 14px 18px 12px;
-}
-
-.field label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--label);
-    margin-bottom: 6px;
-}
-
-/* ── Input row ── */
-.inputRow {
-    display: flex;
-    align-items: center;
-    background: var(--input-bg);
-    border-radius: 10px;
-    padding: 0 12px;
-    border: 1.5px solid transparent;
-    transition: border-color 0.18s, background 0.18s;
-}
-
-.inputRow:focus-within {
-    border-color: var(--blue);
-    background: #FAFBFF;
-}
-
-.inputRow input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 15px;
-    color: var(--navy);
-    padding: 10px 0;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.inputRow input::placeholder {
-    color: var(--placeholder);
-    font-size: 14px;
-}
-
-/* Icon qua ::after — truyền icon bằng class bổ sung */
-.inputRow::after {
-    content: '';
-    display: block;
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.45;
-}
-
-.iconUser::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 20c0-4 3.6-7 8-7s8 3 8 7'/%3E%3C/svg%3E");
-}
-
-.iconPhone::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Crect x='5' y='2' width='14' height='20' rx='2'/%3E%3Ccircle cx='12' cy='17' r='1'/%3E%3C/svg%3E");
-}
-
-.iconEmail::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpolyline points='2,4 12,13 22,4'/%3E%3C/svg%3E");
-}
-
-.iconLock::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
-}
-
-.iconShield::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E");
-}
-
-/* ── Terms ── */
 .terms {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin: 4px 0 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 4px 0 28px;
 }
 
-.terms input[type='checkbox'] {
-    margin-top: 2px;
-    width: 18px;
-    height: 18px;
-    accent-color: var(--blue);
-    cursor: pointer;
-    flex-shrink: 0;
+.terms input[type="checkbox"] {
+  margin-top: 2px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue);
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .terms label {
-    font-size: 13px;
-    color: #4B5563;
-    line-height: 1.5;
-    cursor: pointer;
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.5;
+  cursor: pointer;
 }
 
 .terms a {
-    color: var(--blue);
-    font-weight: 700;
-    text-decoration: none;
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: none;
 }
 
-/* ── Submit button ── */
-.submitBtn {
-    width: 100%;
-    padding: 16px;
-    background: var(--blue);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    transition: background 0.18s, transform 0.1s;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.submitBtn:hover:not(:disabled) {
-    background: var(--blue-dark);
-}
-
-.submitBtn:active:not(:disabled) {
-    transform: scale(0.98);
-}
-
-.submitBtn:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-}
-
-/* ── Footer ── */
 .footer {
-    text-align: center;
-    margin-top: 24px;
-    font-size: 14px;
-    color: var(--label);
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--label);
 }
 
 .footer span {
-    color: var(--blue);
-    font-weight: 700;
-    cursor: pointer;
+  color: var(--blue);
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .footer span:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* ── Error banner ── */
 .error {
-    background: #FEE2E2;
-    color: #B91C1C;
-    border-radius: 10px;
-    padding: 10px 14px;
-    font-size: 13px;
-    margin-bottom: 16px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .linkBtn {
-    background: none;
-    border: none;
-    padding: 0;
-    color: #3b5bdb;
-    font-weight: 600;
-    font-size: inherit;
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-family: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #3b5bdb;
+  font-weight: 600;
+  font-size: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-family: inherit;
 }
 
 .linkBtn:hover {
-    color: #2344b8;
+  color: #2344b8;
 }

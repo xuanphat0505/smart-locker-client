@@ -35,11 +35,40 @@
     overflow: hidden;
 }
 
+.previewWrap {
+    position: relative;
+    width: 100%;
+}
+
 .preview {
     width: 100%;
     max-height: 200px;
     object-fit: cover;
     border-radius: 12px;
+    display: block;
+}
+
+.removeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, .78);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: transform .2s, background-color .2s;
+}
+
+.removeBtn:hover {
+    background: rgba(220, 38, 38, .92);
+    transform: scale(1.04);
 }
 
 .icon {
