@@ -1,5 +1,8 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import {AppButton} from '@/components/Ui/AppButton'
+import {AppInput} from '@/components/Ui/AppInput'
+import {AppText} from '@/components/Ui/AppText'
 import styles from './Changepassword.module.css'
 
 export function ChangePassword() {
@@ -49,21 +52,26 @@ export function ChangePassword() {
         </svg>
     )
 
+    const lockIcon = (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+    )
+
     return (
         <div className={styles.page}>
-            {/* Header */}
             <div className={styles.header}>
                 <button className={styles.backBtn} onClick={() => navigate(-1)}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <path d="M19 12H5M12 5l-7 7 7 7"/>
                     </svg>
                 </button>
-                <h1 className={styles.title}>Đổi mật khẩu</h1>
+                <AppText as="h1" variant="body" className={styles.title}>Đổi mật khẩu</AppText>
                 <div style={{width: 40}}/>
             </div>
 
             <div className={styles.body}>
-                {/* Lock illustration */}
                 <div className={styles.illustration}>
                     <div className={styles.lockCircle}>
                         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
@@ -71,62 +79,54 @@ export function ChangePassword() {
                             <path d="M7 11V7a5 5 0 0110 0v4"/>
                         </svg>
                     </div>
-                    <p className={styles.illustrationText}>Bảo mật tài khoản của bạn</p>
-                    <p className={styles.illustrationSub}>Sử dụng mật khẩu mạnh để bảo vệ tài khoản</p>
+                    <AppText variant="body" className={styles.illustrationText}>Bảo mật tài khoản của bạn</AppText>
+                    <AppText variant="caption" className={styles.illustrationSub}>
+                        Sử dụng mật khẩu mạnh để bảo vệ tài khoản
+                    </AppText>
                 </div>
 
-                {/* Form card */}
                 <div className={styles.card}>
-                    {/* Current password */}
-                    <div className={styles.field}>
-                        <label className={styles.label}>Mật khẩu hiện tại</label>
-                        <div className={`${styles.inputWrap} ${errors.current ? styles.inputError : ''}`}>
-                            <svg className={styles.inputIcon} width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" strokeWidth="2">
-                                <rect x="3" y="11" width="18" height="11" rx="2"/>
-                                <path d="M7 11V7a5 5 0 0110 0v4"/>
-                            </svg>
-                            <input
-                                className={styles.input}
-                                type={showCurrent ? 'text' : 'password'}
-                                placeholder="Nhập mật khẩu hiện tại"
-                                value={form.current}
-                                onChange={e => setForm(f => ({...f, current: e.target.value}))}
-                                onBlur={() => setTouched(t => ({...t, current: true}))}
-                            />
+                    <AppInput
+                        label="Mật khẩu hiện tại"
+                        type={showCurrent ? 'text' : 'password'}
+                        placeholder="Nhập mật khẩu hiện tại"
+                        value={form.current}
+                        onChange={e => setForm(f => ({...f, current: e.target.value}))}
+                        onBlur={() => setTouched(t => ({...t, current: true}))}
+                        error={errors.current}
+                        icon={lockIcon}
+                        rightElement={
                             <button className={styles.eyeBtn} onClick={() => setShowCurrent(v => !v)} type="button">
                                 <EyeIcon open={showCurrent}/>
                             </button>
-                        </div>
-                        {errors.current && <p className={styles.errorMsg}>{errors.current}</p>}
-                    </div>
+                        }
+                    />
 
                     <div className={styles.divider}/>
 
-                    {/* New password */}
-                    <div className={styles.field}>
-                        <label className={styles.label}>Mật khẩu mới</label>
-                        <div className={`${styles.inputWrap} ${errors.newPass ? styles.inputError : ''}`}>
-                            <svg className={styles.inputIcon} width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" strokeWidth="2">
-                                <path
-                                    d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
-                            </svg>
-                            <input
-                                className={styles.input}
-                                type={showNew ? 'text' : 'password'}
-                                placeholder="Tối thiểu 8 ký tự"
-                                value={form.newPass}
-                                onChange={e => setForm(f => ({...f, newPass: e.target.value}))}
-                                onBlur={() => setTouched(t => ({...t, newPass: true}))}
-                            />
-                            <button className={styles.eyeBtn} onClick={() => setShowNew(v => !v)} type="button">
-                                <EyeIcon open={showNew}/>
-                            </button>
-                        </div>
-                        {errors.newPass && <p className={styles.errorMsg}>{errors.newPass}</p>}
+                    <div className={styles.passwordGroup}>
+                        <AppInput
+                            label="Mật khẩu mới"
+                            type={showNew ? 'text' : 'password'}
+                            placeholder="Tối thiểu 8 ký tự"
+                            value={form.newPass}
+                            onChange={e => setForm(f => ({...f, newPass: e.target.value}))}
+                            onBlur={() => setTouched(t => ({...t, newPass: true}))}
+                            error={errors.newPass}
+                            icon={
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" strokeWidth="2">
+                                    <path
+                                        d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                                </svg>
+                            }
+                            rightElement={
+                                <button className={styles.eyeBtn} onClick={() => setShowNew(v => !v)} type="button">
+                                    <EyeIcon open={showNew}/>
+                                </button>
+                            }
+                        />
 
-                        {/* Strength bar */}
                         {form.newPass && (
                             <div className={styles.strengthWrap}>
                                 <div className={styles.strengthBars}>
@@ -145,54 +145,49 @@ export function ChangePassword() {
                         )}
                     </div>
 
-                    <div className={styles.field}>
-                        <label className={styles.label}>Xác nhận mật khẩu mới</label>
-                        <div
-                            className={`${styles.inputWrap} ${errors.confirm ? styles.inputError : form.confirm && form.confirm === form.newPass ? styles.inputSuccess : ''}`}>
-                            <svg className={styles.inputIcon} width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" strokeWidth="2">
-                                <polyline points="9 11 12 14 22 4"/>
-                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
-                            </svg>
-                            <input
-                                className={styles.input}
-                                type={showConfirm ? 'text' : 'password'}
-                                placeholder="Nhập lại mật khẩu mới"
-                                value={form.confirm}
-                                onChange={e => setForm(f => ({...f, confirm: e.target.value}))}
-                                onBlur={() => setTouched(t => ({...t, confirm: true}))}
-                            />
-                            <button className={styles.eyeBtn} onClick={() => setShowConfirm(v => !v)} type="button">
-                                <EyeIcon open={showConfirm}/>
-                            </button>
-                        </div>
-                        {errors.confirm && <p className={styles.errorMsg}>{errors.confirm}</p>}
+                    <div className={styles.passwordGroup}>
+                        <AppInput
+                            label="Xác nhận mật khẩu mới"
+                            type={showConfirm ? 'text' : 'password'}
+                            placeholder="Nhập lại mật khẩu mới"
+                            value={form.confirm}
+                            onChange={e => setForm(f => ({...f, confirm: e.target.value}))}
+                            onBlur={() => setTouched(t => ({...t, confirm: true}))}
+                            error={errors.confirm}
+                            icon={
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                     stroke="currentColor" strokeWidth="2">
+                                    <polyline points="9 11 12 14 22 4"/>
+                                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                                </svg>
+                            }
+                            rightElement={
+                                <button className={styles.eyeBtn} onClick={() => setShowConfirm(v => !v)} type="button">
+                                    <EyeIcon open={showConfirm}/>
+                                </button>
+                            }
+                        />
                         {!errors.confirm && form.confirm && form.confirm === form.newPass && (
-                            <p className={styles.successMsg}>✓ Mật khẩu khớp</p>
+                            <AppText variant="caption" className={styles.successMsg}>✓ Mật khẩu khớp</AppText>
                         )}
                     </div>
                 </div>
 
-                {/* Tips */}
                 <div className={styles.tipsCard}>
-                    <p className={styles.tipsTitle}>💡 Gợi ý mật khẩu mạnh</p>
+                    <AppText variant="body" className={styles.tipsTitle}>Gợi ý mật khẩu mạnh</AppText>
                     {[
                         'Ít nhất 8 ký tự',
                         'Chứa chữ hoa và chữ thường',
                         'Có ít nhất 1 chữ số',
                         'Thêm ký tự đặc biệt (!@#$...)',
                     ].map(tip => (
-                        <p key={tip} className={styles.tipItem}>• {tip}</p>
+                        <AppText key={tip} variant="caption" className={styles.tipItem}>• {tip}</AppText>
                     ))}
                 </div>
 
-                {/* Submit */}
-                <button
-                    className={`${styles.submitBtn} ${!isValid ? styles.submitDisabled : ''}`}
-                    disabled={!isValid}
-                >
+                <AppButton fullWidth size="lg" disabled={!isValid}>
                     Xác nhận đổi mật khẩu
-                </button>
+                </AppButton>
             </div>
         </div>
     )

@@ -1,17 +1,19 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import {AppButton} from '@/components/Ui/AppButton'
+import {AppInput} from '@/components/Ui/AppInput'
+import {AppText} from '@/components/Ui/AppText'
 import styles from './Contactsupport.module.css'
-
 
 const CONTACT_METHODS = [
     {
         id: 'hotline',
-        icon: '📞',
+        icon: '☎',
         color: '#059669',
         bg: '#d1fae5',
         label: 'Hotline',
         value: '1900 1234',
-        sub: 'Miễn phí • 7:00 – 22:00 hàng ngày',
+        sub: 'Miễn phí - 7:00 đến 22:00 hằng ngày',
         action: 'Gọi ngay',
     },
     {
@@ -26,7 +28,7 @@ const CONTACT_METHODS = [
     },
     {
         id: 'email',
-        icon: '✉️',
+        icon: '✉',
         color: '#7c3aed',
         bg: '#f5f3ff',
         label: 'Email',
@@ -39,7 +41,7 @@ const CONTACT_METHODS = [
 const FAQS = [
     {q: 'Tủ không mở được?', a: 'Thử lại OTP, nếu vẫn lỗi gọi hotline 1900 1234 để được hỗ trợ mở tủ từ xa.'},
     {q: 'Hàng bị hư hỏng trong tủ?', a: 'Chụp ảnh ngay và liên hệ hotline trong vòng 24h để được xử lý bồi thường.'},
-    {q: 'Đổi số điện thoại nhận OTP?', a: 'Vào Thông tin cá nhân → cập nhật số điện thoại mới và xác thực OTP.'},
+    {q: 'Đổi số điện thoại nhận OTP?', a: 'Vào Thông tin cá nhân, cập nhật số điện thoại mới và xác thực OTP.'},
     {q: 'Quá thời gian 48h chưa lấy?', a: 'Liên hệ hotline để gia hạn. Phí giữ hàng thêm là 5.000đ/giờ.'},
 ]
 
@@ -58,12 +60,11 @@ export function ContactSupport() {
                         <path d="M19 12H5M12 5l-7 7 7 7"/>
                     </svg>
                 </button>
-                <h1 className={styles.title}>Liên hệ hỗ trợ</h1>
+                <AppText as="h1" variant="body" className={styles.title}>Liên hệ hỗ trợ</AppText>
                 <div style={{width: 40}}/>
             </div>
 
             <div className={styles.body}>
-                {/* Hero */}
                 <div className={styles.heroCard}>
                     <div className={styles.heroCircle}>
                         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
@@ -72,12 +73,13 @@ export function ContactSupport() {
                         </svg>
                     </div>
                     <div>
-                        <p className={styles.heroText}>Chúng tôi luôn ở đây</p>
-                        <p className={styles.heroSub}>Đội ngũ hỗ trợ sẵn sàng giúp bạn 7 ngày/tuần</p>
+                        <AppText variant="body" className={styles.heroText}>Chúng tôi luôn ở đây</AppText>
+                        <AppText variant="caption" className={styles.heroSub}>
+                            Đội ngũ hỗ trợ sẵn sàng giúp bạn 7 ngày/tuần
+                        </AppText>
                     </div>
                 </div>
 
-                {/* Contact methods */}
                 <div className={styles.sectionLabel}>Kênh liên hệ</div>
                 <div className={styles.methodsCard}>
                     {CONTACT_METHODS.map((m, idx) => (
@@ -98,7 +100,6 @@ export function ContactSupport() {
                     ))}
                 </div>
 
-                {/* FAQ */}
                 <div className={styles.sectionLabel}>Câu hỏi thường gặp</div>
                 <div className={styles.faqCard}>
                     {FAQS.map((faq, i) => (
@@ -121,20 +122,21 @@ export function ContactSupport() {
                     ))}
                 </div>
 
-                {/* Send message form */}
                 <div className={styles.sectionLabel}>Gửi yêu cầu hỗ trợ</div>
                 {sent ? (
                     <div className={styles.sentCard}>
-                        <span className={styles.sentIcon}>✅</span>
-                        <p className={styles.sentTitle}>Đã gửi thành công!</p>
-                        <p className={styles.sentSub}>Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.</p>
-                        <button className={styles.sentBtn} onClick={() => {
-                            setSent(false);
-                            setTopic('');
+                        <span className={styles.sentIcon}>✓</span>
+                        <AppText variant="body" className={styles.sentTitle}>Đã gửi thành công!</AppText>
+                        <AppText variant="caption" className={styles.sentSub}>
+                            Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.
+                        </AppText>
+                        <AppButton variant="secondary" onClick={() => {
+                            setSent(false)
+                            setTopic('')
                             setMessage('')
                         }}>
                             Gửi yêu cầu khác
-                        </button>
+                        </AppButton>
                     </div>
                 ) : (
                     <div className={styles.formCard}>
@@ -154,23 +156,23 @@ export function ContactSupport() {
                             </select>
                         </div>
                         <div className={styles.field}>
-                            <label className={styles.fieldLabel}>Mô tả chi tiết</label>
-                            <textarea
-                                className={styles.textarea}
+                            <AppInput
+                                multiline
+                                rows={4}
+                                label="Mô tả chi tiết"
                                 placeholder="Mô tả vấn đề bạn gặp phải..."
                                 value={message}
                                 onChange={e => setMessage(e.target.value)}
-                                rows={4}
                             />
                             <p className={styles.charCount}>{message.length}/500</p>
                         </div>
-                        <button
-                            className={`${styles.sendBtn} ${(!topic || !message) ? styles.sendBtnDisabled : ''}`}
+                        <AppButton
+                            fullWidth
                             disabled={!topic || !message}
                             onClick={() => setSent(true)}
                         >
-                            📨 Gửi yêu cầu
-                        </button>
+                            Gửi yêu cầu
+                        </AppButton>
                     </div>
                 )}
             </div>

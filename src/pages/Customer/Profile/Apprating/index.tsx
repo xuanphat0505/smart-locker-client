@@ -1,5 +1,8 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import {AppButton} from '@/components/Ui/AppButton'
+import {AppInput} from '@/components/Ui/AppInput'
+import {AppText} from '@/components/Ui/AppText'
 import styles from './Apprating.module.css'
 
 const ASPECTS = [
@@ -38,15 +41,16 @@ export function AppRating() {
                             <path d="M19 12H5M12 5l-7 7 7 7"/>
                         </svg>
                     </button>
-                    <h1 className={styles.title}>Đánh giá ứng dụng</h1>
+                    <AppText as="h1" variant="body" className={styles.title}>Đánh giá ứng dụng</AppText>
                     <div style={{width: 40}}/>
                 </div>
                 <div className={styles.thankWrap}>
-                    <div className={styles.thankCircle}>🎉</div>
-                    <h2 className={styles.thankTitle}>Cảm ơn bạn!</h2>
-                    <p className={styles.thankText}>Đánh giá của bạn giúp chúng tôi cải thiện SmartLocker tốt hơn mỗi
-                        ngày.</p>
-                    <button className={styles.goBackBtn} onClick={() => navigate(-1)}>Quay lại</button>
+                    <div className={styles.thankCircle}>★</div>
+                    <AppText as="h2" variant="title" className={styles.thankTitle}>Cảm ơn bạn!</AppText>
+                    <AppText variant="body" className={styles.thankText}>
+                        Đánh giá của bạn giúp chúng tôi cải thiện SmartLocker tốt hơn mỗi ngày.
+                    </AppText>
+                    <AppButton onClick={() => navigate(-1)}>Quay lại</AppButton>
                 </div>
             </div>
         )
@@ -60,18 +64,16 @@ export function AppRating() {
                         <path d="M19 12H5M12 5l-7 7 7 7"/>
                     </svg>
                 </button>
-                <h1 className={styles.title}>Đánh giá ứng dụng</h1>
+                <AppText as="h1" variant="body" className={styles.title}>Đánh giá ứng dụng</AppText>
                 <div style={{width: 40}}/>
             </div>
 
             <div className={styles.body}>
-                {/* Hero */}
                 <div className={styles.heroCard}>
-                    <div className={styles.appIcon}>📦</div>
-                    <p className={styles.appName}>SmartLocker</p>
-                    <p className={styles.appSub}>Ứng dụng nhận hàng thông minh</p>
+                    <div className={styles.appIcon}>★</div>
+                    <AppText variant="body" className={styles.appName}>SmartLocker</AppText>
+                    <AppText variant="caption" className={styles.appSub}>Ứng dụng nhận hàng thông minh</AppText>
 
-                    {/* Stars */}
                     <div className={styles.starsRow}>
                         {[1, 2, 3, 4, 5].map(i => (
                             <button
@@ -97,18 +99,17 @@ export function AppRating() {
                     </div>
 
                     {display > 0 && (
-                        <p className={styles.starLabel} style={{color: STAR_COLORS[display]}}>
+                        <AppText variant="body" className={styles.starLabel} style={{color: STAR_COLORS[display]}}>
                             {STAR_LABELS[display]}
-                        </p>
+                        </AppText>
                     )}
-                    {display === 0 && <p className={styles.starPlaceholder}>Chạm để đánh giá</p>}
+                    {display === 0 && <AppText variant="body" className={styles.starPlaceholder}>Chạm để đánh giá</AppText>}
                 </div>
 
-                {/* Aspects */}
                 {stars > 0 && (
                     <>
                         <div className={styles.card}>
-                            <p className={styles.sectionLabel}>Điều bạn thích ở SmartLocker</p>
+                            <AppText variant="body" className={styles.sectionLabel}>Điều bạn thích ở SmartLocker</AppText>
                             <div className={styles.aspectGrid}>
                                 {ASPECTS.map(a => (
                                     <button
@@ -125,30 +126,30 @@ export function AppRating() {
                         </div>
 
                         <div className={styles.card}>
-                            <p className={styles.sectionLabel}>Góp ý thêm (không bắt buộc)</p>
-                            <textarea
-                                className={styles.textarea}
+                            <AppInput
+                                multiline
+                                rows={4}
+                                label="Góp ý thêm (không bắt buộc)"
                                 placeholder="Chia sẻ trải nghiệm của bạn để chúng tôi cải thiện..."
                                 value={comment}
                                 onChange={e => setComment(e.target.value)}
-                                rows={4}
                             />
                             <p className={styles.charCount}>{comment.length}/300</p>
                         </div>
                     </>
                 )}
 
-                <button
-                    className={`${styles.saveBtn} ${stars === 0 ? styles.saveBtnDisabled : ''}`}
+                <AppButton
+                    fullWidth
                     disabled={stars === 0}
                     onClick={() => setSubmitted(true)}
                 >
-                    ⭐ Gửi đánh giá
-                </button>
+                    Gửi đánh giá
+                </AppButton>
 
-                <button className={styles.skipBtn} onClick={() => navigate(-1)}>
+                <AppButton variant="ghost" fullWidth onClick={() => navigate(-1)}>
                     Bỏ qua
-                </button>
+                </AppButton>
             </div>
         </div>
     )
