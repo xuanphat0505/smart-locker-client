@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     height: calc(100dvh - 64px);
-    background: #f0f2ff;
+    background: var(--bg);
     font-family: -apple-system, "SF Pro Display", "Segoe UI", sans-serif;
     position: relative;
     max-width: 480px;
@@ -14,8 +14,8 @@
     align-items: center;
     gap: 12px;
     padding: 14px 16px;
-    background: #fff;
-    border-bottom: 1px solid #e8eaf6;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -29,16 +29,16 @@
     width: 36px;
     height: 36px;
     border: none;
-    background: #f0f2ff;
+    background: var(--bg);
     border-radius: 10px;
-    color: #3b5bdb;
+    color: var(--primary);
     cursor: pointer;
     flex-shrink: 0;
     transition: background 0.15s;
 }
 
 .backBtn:hover {
-    background: #e0e4ff;
+    background: var(--primary-soft);
 }
 
 .headerInfo {
@@ -62,7 +62,7 @@
 .headerName {
     font-size: 16px;
     font-weight: 700;
-    color: #1a1d2e;
+    color: var(--text);
     margin: 0;
     line-height: 1.2;
 }
@@ -72,7 +72,7 @@
     align-items: center;
     gap: 5px;
     font-size: 12px;
-    color: black;
+    color: var(--text);
     margin: 0;
 }
 
@@ -155,15 +155,15 @@
 }
 
 .botBubble {
-    background: #fff;
-    color: #1a1d2e;
+    background: var(--surface);
+    color: var(--text);
     border-bottom-left-radius: 5px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
 }
 
 .botBubble strong {
     font-weight: 600;
-    color: #3b5bdb;
+    color: var(--primary);
 }
 
 .botBubble em {
@@ -180,7 +180,7 @@
 }
 
 .typingBubble {
-    background: #fff;
+    background: var(--surface);
     border-radius: 18px;
     padding: 14px 18px;
     display: flex;
@@ -224,7 +224,7 @@
 .suggestionsLabel {
     font-size: 11px;
     font-weight: 600;
-    color: #9ca3af;
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin: 0 0 8px 4px;
@@ -237,9 +237,9 @@
 }
 
 .suggestionChip {
-    background: #fff;
-    border: 1.5px solid #e0e4ff;
-    color: #3b5bdb;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    color: var(--primary);
     font-size: 13px;
     font-weight: 500;
     padding: 7px 14px;
@@ -253,7 +253,7 @@
 .suggestionChip:hover,
 .suggestionChip:active {
     background: #3b5bdb;
-    border-color: #3b5bdb;
+    border-color: var(--primary);
     color: #fff;
     transform: translateY(-1px);
     box-shadow: 0 3px 10px rgba(59, 91, 219, 0.25);
@@ -261,7 +261,7 @@
 
 .inputArea {
     padding: 12px 16px 20px;
-    background: #fff;
+    background: var(--surface);
     border-top: 1px solid #e8eaf6;
 }
 
@@ -269,17 +269,17 @@
     display: flex;
     align-items: flex-end;
     gap: 10px;
-    background: #f5f6ff;
-    border: 1.5px solid #e0e4ff;
+    background: var(--surface-2);
+    border: 1.5px solid var(--border);
     border-radius: 20px;
     padding: 8px 8px 8px 16px;
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .inputWrapper:focus-within {
-    border-color: #3b5bdb;
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1);
-    background: #fff;
+    background: var(--surface);
 }
 
 .textInput {
@@ -287,7 +287,7 @@
     border: none;
     background: transparent;
     font-size: 14px;
-    color: #1a1d2e;
+    color: var(--text);
     resize: none;
     outline: none;
     line-height: 1.5;
@@ -297,7 +297,7 @@
 }
 
 .textInput::placeholder {
-    color: #a0aec0;
+    color: var(--placeholder);
 }
 
 .sendBtn {
@@ -305,8 +305,8 @@
     height: 36px;
     border: none;
     border-radius: 12px;
-    background: #e0e4ff;
-    color: #9ca3af;
+    background: var(--primary-soft);
+    color: var(--text-muted);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -333,7 +333,7 @@
 
 .disclaimer {
     font-size: 11px;
-    color: #b0b8d1;
+    color: var(--text-muted);
     text-align: center;
     margin: 8px 0 0;
 }

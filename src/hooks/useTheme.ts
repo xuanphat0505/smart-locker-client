@@ -1,12 +1,12 @@
-import {useThemeStore} from '@/store/useThemeStore'
+import {useDarkMode} from '@/hooks/useDarkMode'
 
 export function useTheme() {
-    const {theme, isDark, toggleTheme, setTheme} = useThemeStore()
+    const {theme, isDark, toggle, setTheme} = useDarkMode()
 
     return {
         theme,
         isDark,
-        toggleTheme,
+        toggleTheme: toggle,
         setTheme,
     }
 }

@@ -1,22 +1,19 @@
-:root {
-  --blue: #3b5bdb;
-  --blue-dark: #2f4cc5;
-  --navy: #1a2461;
-  --bg: #edeef8;
-  --card-bg: #ffffff;
-  --input-bg: #f3f4fb;
-  --label: #6b7280;
-  --placeholder: #c0c4d6;
-  --divider: #edeef8;
-}
-
 .page {
+  --blue: var(--primary);
+  --blue-dark: var(--primary-hover);
+  --navy: var(--text);
+  --bg: var(--bg-primary);
+  --card-bg: var(--surface-glass);
+  --input-bg: var(--surface-2);
+  --label: var(--text-muted);
+  --placeholder: var(--placeholder);
+  --divider: var(--border);
   min-height: 100vh;
   background: var(--bg);
   display: flex;
   flex-direction: column;
   padding: 0 24px 40px;
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
 }
 
 .backBtn {
@@ -53,7 +50,7 @@
 }
 
 .heading h1 {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 800;
   color: var(--navy);
   line-height: 1.25;
@@ -68,15 +65,24 @@
 }
 
 .card {
-  background: var(--card-bg);
-  border-radius: 16px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 16px;
-  box-shadow: 0 2px 12px rgba(59, 91, 219, 0.06);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: 18px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .footer {
@@ -97,8 +103,9 @@
 }
 
 .error {
-  background: #fee2e2;
-  color: #b91c1c;
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
   border-radius: 10px;
   padding: 10px 14px;
   font-size: 13px;
@@ -116,13 +123,13 @@
   margin-top: 10px;
   padding: 13px 16px;
   background: transparent;
-  border: 1.5px dashed #9ca3af;
-  border-radius: 12px;
-  color: #6b7280;
+  border: 1.5px dashed var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
   transition:
     border-color 0.18s,
     color 0.18s,
@@ -131,7 +138,7 @@
 }
 
 .devBtn:hover {
-  border-color: var(--blue);
-  color: var(--blue);
-  background: rgba(59, 91, 219, 0.04);
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-soft);
 }

@@ -1,6 +1,6 @@
 .page {
     min-height: 100vh;
-    background: #f3f4f6;
+    background: var(--bg);
     display: flex;
     flex-direction: column;
 }
@@ -10,8 +10,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px;
-    background: #fff;
-    border-bottom: 1px solid #f1f1f1;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -21,23 +21,23 @@
     width: 40px;
     height: 40px;
     border-radius: 12px;
-    background: #f3f4f6;
+    background: var(--bg);
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #374151;
+    color: var(--text);
 }
 
 .backBtn:active {
-    background: #e5e7eb;
+    background: var(--surface-2);
 }
 
 .title {
     font-size: 17px;
     font-weight: 700;
-    color: #111827;
+    color: var(--text);
     margin: 0;
 }
 
@@ -73,20 +73,20 @@
 .illustrationText {
     font-size: 15px;
     font-weight: 600;
-    color: #111827;
+    color: var(--text);
     margin: 0;
 }
 
 .illustrationSub {
     font-size: 13px;
-    color: #9ca3af;
+    color: var(--text-muted);
     margin: 0;
     text-align: center;
 }
 
 /* Channel card */
 .channelCard {
-    background: #fff;
+    background: var(--surface);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -128,12 +128,12 @@
 
 .channelDesc {
     font-size: 12px;
-    color: #9ca3af;
+    color: var(--text-muted);
 }
 
 /* Sub list */
 .subList {
-    border-top: 1px solid #f3f4f6;
+    border-top: 1px solid var(--border);
     padding: 4px 16px;
     transition: opacity 0.2s;
 }
@@ -152,7 +152,7 @@
 }
 
 .subItemBorder {
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid var(--border);
 }
 
 .subText {
@@ -164,12 +164,12 @@
 .subLabel {
     font-size: 14px;
     font-weight: 500;
-    color: #111827;
+    color: var(--text);
 }
 
 .subDesc {
     font-size: 12px;
-    color: #9ca3af;
+    color: var(--text-muted);
 }
 
 /* Toggle switch */
@@ -177,7 +177,7 @@
     width: 46px;
     height: 26px;
     border-radius: 99px;
-    background: #e5e7eb;
+    background: var(--surface-2);
     border: none;
     cursor: pointer;
     position: relative;
@@ -197,7 +197,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--surface);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     transition: transform 0.25s;
 }
@@ -209,13 +209,13 @@
 /* Note */
 .note {
     font-size: 12.5px;
-    color: #6b7280;
-    background: #fff;
+    color: var(--text-muted);
+    background: var(--surface);
     border-radius: 14px;
     padding: 12px 14px;
     margin: 0;
     line-height: 1.6;
-    border: 1px solid #f3f4f6;
+    border: 1px solid var(--border);
 }
 
 /* Save button */

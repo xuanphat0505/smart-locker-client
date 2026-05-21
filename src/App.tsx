@@ -1,16 +1,9 @@
-import {useEffect} from 'react'
 import {AppRouter} from '@/routes'
-import {useThemeStore} from '@/store/useThemeStore'
+import {useDarkMode} from '@/hooks/useDarkMode'
 import './index.css'
 
 function ThemeSync() {
-    const theme = useThemeStore((s) => s.theme)
-
-    useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme)
-        localStorage.setItem('sl-theme', theme)
-    }, [theme])
-
+    useDarkMode()
     return null
 }
 

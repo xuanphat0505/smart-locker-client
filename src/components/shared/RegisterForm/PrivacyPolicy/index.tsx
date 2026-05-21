@@ -105,7 +105,7 @@ export default function PrivacyPolicy() {
                         <p>📞 1900 1234</p>
                         <p>🏢 Tầng 5, Tòa nhà Tech Hub, TP. Hồ Chí Minh</p>
                     </div>
-                    <p style={{marginTop: '12px', fontSize: '13px', color: '#888'}}>
+                    <p className={styles.responseNote}>
                         Chúng tôi sẽ phản hồi trong vòng 30 ngày làm việc kể từ khi nhận được yêu cầu.
                     </p>
                 </section>

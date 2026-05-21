@@ -56,7 +56,7 @@ export default function TermsOfService() {
                         <li>Yêu cầu hỗ trợ kỹ thuật khi gặp sự cố.</li>
                         <li>Xóa tài khoản và yêu cầu xóa dữ liệu cá nhân.</li>
                     </ul>
-                    <p style={{marginTop: '12px'}}>Người dùng có nghĩa vụ:</p>
+                    <p className={styles.spacedText}>Người dùng có nghĩa vụ:</p>
                     <ul className={styles.list}>
                         <li>Không sử dụng dịch vụ cho các mục đích bất hợp pháp.</li>
                         <li>Không cố gắng truy cập trái phép vào hệ thống.</li>

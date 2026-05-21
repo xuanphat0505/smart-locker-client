@@ -1,22 +1,19 @@
-:root {
-  --blue: #3b5bdb;
-  --blue-dark: #2f4cc5;
-  --navy: #1a2461;
-  --bg: #edeef8;
-  --card-bg: #ffffff;
-  --input-bg: #f3f4fb;
-  --label: #6b7280;
-  --placeholder: #c0c4d6;
-  --divider: #edeef8;
-}
-
 .page {
+  --blue: var(--primary);
+  --blue-dark: var(--primary-hover);
+  --navy: var(--text);
+  --bg: var(--bg-primary);
+  --card-bg: var(--surface-glass);
+  --input-bg: var(--surface-2);
+  --label: var(--text-muted);
+  --placeholder: var(--placeholder);
+  --divider: var(--border);
   min-height: 100vh;
   background: var(--bg);
   display: flex;
   flex-direction: column;
   padding: 0 24px 40px;
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
 }
 
 .topBar {
@@ -61,7 +58,7 @@
 }
 
 .heading h1 {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 800;
   color: var(--navy);
   line-height: 1.25;
@@ -78,14 +75,23 @@
 /* ── Card nhóm input ── */
 .card {
   background: var(--card-bg);
-  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 16px;
-  box-shadow: 0 2px 12px rgba(59, 91, 219, 0.06);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: 18px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .terms {
@@ -106,7 +112,7 @@
 
 .terms label {
   font-size: 13px;
-  color: #4b5563;
+  color: var(--text-secondary, var(--text-muted));
   line-height: 1.5;
   cursor: pointer;
 }
@@ -136,8 +142,9 @@
 
 /* ── Error banner ── */
 .error {
-  background: #fee2e2;
-  color: #b91c1c;
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
   border-radius: 10px;
   padding: 10px 14px;
   font-size: 13px;
@@ -152,15 +159,16 @@
   background: none;
   border: none;
   padding: 0;
-  color: #3b5bdb;
+  color: var(--primary);
   font-weight: 600;
   font-size: inherit;
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 2px;
   font-family: inherit;
+  transition: color 0.2s ease;
 }
 
 .linkBtn:hover {
-  color: #2344b8;
+  color: var(--primary-hover);
 }

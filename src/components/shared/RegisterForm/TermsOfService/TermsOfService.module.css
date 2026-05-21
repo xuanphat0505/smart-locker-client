@@ -1,6 +1,6 @@
 .page {
     min-height: 100vh;
-    background: var(--bg, #f4f6fb);
+    background: var(--bg);
     display: flex;
     flex-direction: column;
 }
@@ -10,8 +10,10 @@
     align-items: center;
     gap: 12px;
     padding: 16px 20px;
-    background: #fff;
-    border-bottom: 1px solid #e8eaf0;
+    background: var(--surface-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -23,23 +25,23 @@
     justify-content: center;
     width: 36px;
     height: 36px;
-    border: none;
-    background: #f4f6fb;
-    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    border-radius: 8px;
     cursor: pointer;
-    color: #3b5bdb;
+    color: var(--primary);
     flex-shrink: 0;
     transition: background 0.15s;
 }
 
 .backBtn:hover {
-    background: #e8edf8;
+    background: var(--primary-soft);
 }
 
 .title {
     font-size: 18px;
     font-weight: 700;
-    color: #1a1a2e;
+    color: var(--text);
     margin: 0;
 }
 
@@ -53,31 +55,42 @@
 
 .updated {
     font-size: 12px;
-    color: #888;
+    color: var(--text-muted);
     margin-bottom: 24px;
     font-style: italic;
 }
 
 .section {
-    background: #fff;
-    border-radius: 14px;
+    background: var(--surface);
+    border-radius: 12px;
     padding: 18px;
     margin-bottom: 14px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.section:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .sectionTitle {
     font-size: 15px;
     font-weight: 700;
-    color: #3b5bdb;
+    color: var(--primary);
     margin: 0 0 10px 0;
 }
 
 .section p {
     font-size: 14px;
-    color: #444;
+    color: var(--text-muted);
     line-height: 1.7;
     margin: 0;
+}
+
+.spacedText {
+    margin-top: 12px !important;
 }
 
 .list {
@@ -87,13 +100,14 @@
 
 .list li {
     font-size: 14px;
-    color: #444;
+    color: var(--text-muted);
     line-height: 1.7;
     margin-bottom: 4px;
 }
 
 .contactBox {
-    background: #f4f6fb;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 14px;
     margin-top: 10px;
@@ -104,6 +118,6 @@
 
 .contactBox p {
     font-size: 14px;
-    color: #444;
+    color: var(--text-muted);
     margin: 0;
 }

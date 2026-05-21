@@ -1,6 +1,6 @@
 .page {
     min-height: 100vh;
-    background: #f3f4f6;
+    background: var(--bg);
     display: flex;
     flex-direction: column;
 }
@@ -10,8 +10,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px;
-    background: #fff;
-    border-bottom: 1px solid #f1f1f1;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -21,23 +21,23 @@
     width: 40px;
     height: 40px;
     border-radius: 12px;
-    background: #f3f4f6;
+    background: var(--bg);
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #374151;
+    color: var(--text);
 }
 
 .backBtn:active {
-    background: #e5e7eb;
+    background: var(--surface-2);
 }
 
 .title {
     font-size: 17px;
     font-weight: 700;
-    color: #111827;
+    color: var(--text);
     margin: 0;
 }
 
@@ -51,7 +51,7 @@
 
 /* Hero card */
 .heroCard {
-    background: #fff;
+    background: var(--surface);
     border-radius: 24px;
     padding: 28px 20px 24px;
     display: flex;
@@ -70,13 +70,13 @@
 .appName {
     font-size: 18px;
     font-weight: 800;
-    color: #111827;
+    color: var(--text);
     margin: 0;
 }
 
 .appSub {
     font-size: 13px;
-    color: #9ca3af;
+    color: var(--text-muted);
     margin: 0 0 12px;
 }
 
@@ -121,7 +121,7 @@
 
 /* Generic card */
 .card {
-    background: #fff;
+    background: var(--surface);
     border-radius: 20px;
     padding: 18px 16px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -133,7 +133,7 @@
 .sectionLabel {
     font-size: 13px;
     font-weight: 600;
-    color: #6b7280;
+    color: var(--text-muted);
     margin: 0;
 }
 
@@ -146,19 +146,19 @@
 .aspectChip {
     padding: 7px 14px;
     border-radius: 99px;
-    border: 1.5px solid #e5e7eb;
-    background: #f9fafb;
+    border: 1.5px solid var(--border);
+    background: var(--surface-2);
     font-size: 13px;
     font-weight: 500;
-    color: #374151;
+    color: var(--text);
     cursor: pointer;
     transition: all 0.15s;
 }
 
 .aspectChipOn {
     background: #ede9fe;
-    border-color: #6366f1;
-    color: #4f46e5;
+    border-color: var(--primary);
+    color: var(--primary);
 }
 
 .chipCheck {
@@ -167,7 +167,7 @@
 
 .charCount {
     font-size: 12px;
-    color: #9ca3af;
+    color: var(--text-muted);
     text-align: right;
     margin: 0;
 }
@@ -192,13 +192,13 @@
 .thankTitle {
     font-size: 35px;
     font-weight: 800;
-    color: #111827;
+    color: var(--text);
     margin: 10px;
 }
 
 .thankText {
     font-size: 16px;
-    color: #6b7280;
+    color: var(--text-muted);
     line-height: 1.6;
     margin: 0 0 16px;
 }
