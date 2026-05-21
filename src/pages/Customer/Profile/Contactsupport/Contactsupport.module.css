@@ -1,6 +1,6 @@
 .page {
     min-height: 100vh;
-    background: #f3f4f6;
+    background: var(--bg);
     display: flex;
     flex-direction: column;
 }
@@ -10,8 +10,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px;
-    background: #fff;
-    border-bottom: 1px solid #f1f1f1;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -21,23 +21,23 @@
     width: 40px;
     height: 40px;
     border-radius: 12px;
-    background: #f3f4f6;
+    background: var(--bg);
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #374151;
+    color: var(--text);
 }
 
 .backBtn:active {
-    background: #e5e7eb;
+    background: var(--surface-2);
 }
 
 .title {
     font-size: 17px;
     font-weight: 700;
-    color: #111827;
+    color: var(--text);
     margin: 0;
 }
 
@@ -90,13 +90,13 @@
 .sectionLabel {
     font-size: 13px;
     font-weight: 600;
-    color: #6b7280;
+    color: var(--text-muted);
     padding: 4px 4px 0;
 }
 
 /* Methods card */
 .methodsCard {
-    background: #fff;
+    background: var(--surface);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -110,7 +110,7 @@
 }
 
 .methodRowBorder {
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid var(--border);
 }
 
 .methodIcon {
@@ -133,7 +133,7 @@
 
 .methodLabel {
     font-size: 12px;
-    color: #9ca3af;
+    color: var(--text-muted);
     font-weight: 500;
 }
 
@@ -144,7 +144,7 @@
 
 .methodSub {
     font-size: 11.5px;
-    color: #9ca3af;
+    color: var(--text-muted);
 }
 
 .methodBtn {
@@ -164,7 +164,7 @@
 
 /* FAQ */
 .faqCard {
-    background: #fff;
+    background: var(--surface);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -175,7 +175,7 @@
 }
 
 .faqItemBorder {
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid var(--border);
 }
 
 .faqQ {
@@ -191,7 +191,7 @@
     text-align: left;
     font-size: 14px;
     font-weight: 600;
-    color: #111827;
+    color: var(--text);
 }
 
 .faqChevron {
@@ -205,7 +205,7 @@
 
 .faqA {
     font-size: 13px;
-    color: #6b7280;
+    color: var(--text-muted);
     line-height: 1.6;
     margin: 0 0 14px;
     padding: 0;
@@ -213,7 +213,7 @@
 
 /* Form */
 .formCard {
-    background: #fff;
+    background: var(--surface);
     border-radius: 20px;
     padding: 18px 16px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -231,17 +231,17 @@
 .fieldLabel {
     font-size: 13px;
     font-weight: 600;
-    color: #6b7280;
+    color: var(--text-muted);
 }
 
 .select {
     height: 50px;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
     padding: 0 14px;
     font-size: 14px;
-    color: #111827;
-    background: #f9fafb;
+    color: var(--text);
+    background-color: var(--surface-2);
     outline: none;
     font-family: inherit;
     cursor: pointer;
@@ -250,24 +250,35 @@
     background-repeat: no-repeat;
     background-position: right 14px center;
     padding-right: 36px;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .select:focus {
-    border-color: #6366f1;
-    background-color: #fff;
+    border-color: transparent;
+    background-color: var(--surface);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.select option {
+    background: var(--surface);
+    color: var(--text);
+}
+
+.select option:disabled,
+.select option[value=""] {
+    color: var(--text-muted);
 }
 
 .charCount {
     font-size: 12px;
-    color: #9ca3af;
+    color: var(--text-muted);
     text-align: right;
     margin: 0;
 }
 
 /* Sent success */
 .sentCard {
-    background: #fff;
+    background: var(--surface);
     border-radius: 20px;
     padding: 32px 20px;
     display: flex;
@@ -287,13 +298,13 @@
 .sentTitle {
     font-size: 17px;
     font-weight: 700;
-    color: #111827;
+    color: var(--text);
     margin: 0;
 }
 
 .sentSub {
     font-size: 13px;
-    color: #6b7280;
+    color: var(--text-muted);
     margin: 0;
     line-height: 1.6;
 }

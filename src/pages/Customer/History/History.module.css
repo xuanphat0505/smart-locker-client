@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-    background: #f1f3f9;
+    background: var(--bg);
     width: 100%;
     max-width: 480px;
     margin: 0 auto;
@@ -22,12 +22,12 @@
 .title {
     font-size: 25px;
     font-weight: 700;
-    color: #212529;
+    color: var(--text);
 }
 
 .sub {
     font-size: 14px;
-    color: #868e96;
+    color: var(--text-muted);
     margin-top: 2px;
 }
 
@@ -38,10 +38,11 @@
 }
 
 .card {
-    background: #fff;
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 14px 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -57,7 +58,7 @@
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: #4263eb;
+    background: var(--brand-gradient);
     color: #fff;
     font-size: 13px;
     font-weight: 700;
@@ -73,12 +74,12 @@
 .orderCode {
     font-size: 15px;
     font-weight: 700;
-    color: #212529;
+    color: var(--text);
 }
 
 .shipper {
     font-size: 14px;
-    color: #868e96;
+    color: var(--text-muted);
     margin-top: 2px;
 }
 
@@ -91,18 +92,18 @@
 }
 
 .waiting {
-    color: #f59f00;
-    background: rgba(245, 159, 0, .12);
+    color: var(--warning);
+    background: var(--warning-soft);
 }
 
 .opened {
-    color: #4263eb;
-    background: rgba(66, 99, 235, .1);
+    color: var(--primary);
+    background: var(--primary-soft);
 }
 
 .received {
-    color: #40c057;
-    background: rgba(64, 192, 87, .12);
+    color: var(--success);
+    background: var(--success-soft);
 }
 
 .cardBottom {
@@ -110,7 +111,7 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 10px;
-    border-top: 1px solid #f1f3f5;
+    border-top: 1px solid var(--border);
 
 }
 
@@ -119,7 +120,7 @@
     align-items: center;
     gap: 4px;
     font-size: 14px;
-    color: black;
+    color: var(--text);
 }
 
 .date {
@@ -132,7 +133,7 @@
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    background: #4263eb;
+    background: var(--brand-gradient);
     color: #fff;
     font-size: 13px;
     font-weight: 600;
@@ -147,8 +148,8 @@
 .spinner {
     width: 28px;
     height: 28px;
-    border: 3px solid #e9ecef;
-    border-top-color: #4263eb;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
     border-radius: 50%;
     animation: spin .7s linear infinite;
 }
@@ -159,7 +160,7 @@
     align-items: center;
     gap: 12px;
     padding: 60px 0;
-    color: #868e96;
+    color: var(--text-muted);
     font-size: 14px;
 }
 

@@ -134,12 +134,12 @@ export function UserGuide() {
                                 <div className={styles.accIconWrap} style={{background: guide.bg}}>
                                     <span className={styles.accIcon}>{guide.icon}</span>
                                 </div>
-                                <span className={styles.accTitle} style={{color: isOpen ? guide.color : '#111827'}}>
+                                <span className={`${styles.accTitle} ${isOpen ? styles.accTitleOpen : ''}`}>
                                     {guide.title}
                                 </span>
                                 <svg
                                     width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                    stroke={isOpen ? guide.color : '#9ca3af'} strokeWidth="2.5"
+                                    stroke="currentColor" strokeWidth="2.5"
                                     className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ''}`}
                                 >
                                     <path d="M6 9l6 6 6-6"/>

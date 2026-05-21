@@ -10,26 +10,26 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px;
-    background: #fff;
-    border-bottom: 1px solid #f1f3f5;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
 }
 
 .backBtn {
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: #f1f3f5;
+    background: var(--surface-2);
     border: none;
     cursor: pointer;
     display: grid;
     place-items: center;
-    color: #212529;
+    color: var(--text);
 }
 
 .title {
     font-size: 17px;
     font-weight: 700;
-    color: #212529;
+    color: var(--text);
 }
 
 .editToggle {
@@ -39,7 +39,7 @@
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
-    background: rgba(66, 99, 235, .1);
+    background: var(--primary-soft);
     color: var(--color-primary, #4263eb);
 }
 
@@ -96,13 +96,13 @@
 .avatarName {
     font-size: 18px;
     font-weight: 700;
-    color: black;
+    color: var(--text);
     margin-top: 4px;
 }
 
 .avatarSub {
     font-size: 12px;
-    color: #9ca3af;
+    color: var(--text-muted);
 }
 
 .toast {
@@ -130,7 +130,7 @@
 }
 
 .card {
-    background: #fff;
+    background: var(--surface);
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
     overflow: hidden;
@@ -146,12 +146,12 @@
 }
 
 .fieldBorder {
-    border-bottom: 1px solid #f1f3f5;
+    border-bottom: 1px solid var(--border);
 }
 
 .fieldLabel {
     font-size: 13px;
-    color: #868e96;
+    color: var(--text-muted);
     flex-shrink: 0;
     width: 110px;
 }
@@ -159,7 +159,7 @@
 .fieldValue {
     font-size: 14px;
     font-weight: 600;
-    color: #212529;
+    color: var(--text);
     text-align: right;
     display: flex;
     align-items: center;
@@ -201,7 +201,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #fff;
+    background: var(--surface);
     border-radius: 20px 20px 0 0;
     padding: 16px;
     z-index: 1001;
@@ -241,24 +241,24 @@
     padding: 14px 12px;
     border-radius: 12px;
     border: none;
-    background: #f8f9fa;
+    background: var(--surface-2);
     margin-bottom: 10px;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .sheetBtn:hover {
-    background: #eef1ff;
+    background: var(--primary-soft);
 }
 
 .sheetBtnIcon {
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: rgba(66, 99, 235, 0.1);
+    background: var(--primary-soft);
     display: grid;
     place-items: center;
-    color: #4263eb;
+    color: var(--primary);
 }
 
 .sheetBtnText {
@@ -272,12 +272,12 @@
 .sheetBtnLabel {
     font-size: 14px;
     font-weight: 600;
-    color: #212529;
+    color: var(--text);
 }
 
 .sheetBtnSub {
     font-size: 12px;
-    color: #868e96;
+    color: var(--text-muted);
 }
 
 .sheetBtnDanger {
