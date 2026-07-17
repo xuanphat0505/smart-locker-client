@@ -1,18 +1,19 @@
 .page {
     display: flex;
     flex-direction: column;
-    min-height: 100dvh;
-    background: var(--color-bg, #f1f3f9);
+    height: 100%;
+    max-height: 100dvh;
+    background: var(--bg);
     width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
+    overflow: hidden;
 }
 
 .header {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 20px 16px 0;
+    padding: 24px 24px 0;
+    flex-shrink: 0;
 }
 
 .backBtn {
@@ -23,36 +24,72 @@
     border: none;
     color: var(--primary);
     font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
     width: fit-content;
     padding: 0;
+    transition: color 0.2s ease;
+}
+
+.backBtn:hover {
+    color: var(--primary-hover);
 }
 
 .title {
-    font-size: 23px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 800;
     color: var(--text);
+    letter-spacing: -0.5px;
 }
 
 .body {
     flex: 1;
-    padding: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+}
+
+.splitLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.leftCol {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.rightCol {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    width: 100%;
 }
 
 .pkgCard {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 14px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 14px 16px;
+    border-radius: 16px;
+    padding: 16px;
     width: 100%;
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+}
+
+.pkgCard:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
 }
 
 .pkgSlot {
@@ -62,7 +99,7 @@
     background: var(--brand-gradient);
     color: #fff;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
     display: grid;
     place-items: center;
     flex-shrink: 0;
@@ -72,154 +109,229 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    text-align: left;
 }
 
 .pkgCode {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text);
 }
 
 .pkgLoc {
     font-size: 12px;
     color: var(--text-muted);
+    font-weight: 500;
 }
 
 .pkgBadge {
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--primary);
     background: var(--primary-soft);
     border-radius: 20px;
-    padding: 2px 8px;
+    padding: 4px 10px;
     width: fit-content;
 }
 
-.otpHint {
-    font-size: 14px;
-    text-align: center;
-    color: var(--text);
-}
-
-.otpRow {
-    display: flex;
-    gap: 8px;
-}
-
-.otpBox {
-    width: 44px;
-    height: 52px;
-    border-radius: 10px;
-    border: 2px solid var(--border);
+/* Guide Card */
+.guideCard {
     background: var(--surface);
-    display: grid;
-    place-items: center;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text);
-    transition: border-color .2s;
-}
-
-.otpBoxActive {
-    border-color: var(--primary);
-}
-
-.otpBoxError {
-    border-color: var(--danger);
-}
-
-.otpError {
-    font-size: 12px;
-    color: var(--danger);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.guideIcon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.guideTitle {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.guideDesc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.statusBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--surface);
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+}
+
+.otpHint {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 700;
 }
 
 .countdown {
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--success);
     background: var(--success-soft);
     border-radius: 20px;
     padding: 4px 12px;
+    white-space: nowrap;
 }
 
+/* OTP Row */
+.otpRow {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.otpBox {
+    width: 42px;
+    height: 52px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.otpBoxActive {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.otpBoxError {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.otpError {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--danger);
+    text-align: center;
+    margin-top: 4px;
+}
+
+/* Numpad */
 .numpad {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     width: 100%;
-    max-width: 320px;
+    max-width: 300px;
 }
 
 .key {
-    height: 56px;
+    height: 48px;
     border-radius: 12px;
     background: var(--surface);
-    border: none;
-    font-size: 22px;
-    font-weight: 500;
+    border: 1.5px solid var(--border);
+    font-size: 18px;
+    font-weight: 700;
     color: var(--text);
     cursor: pointer;
-    box-shadow: var(--shadow-card);
-    transition: transform .1s, background .1s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.key:hover {
+    border-color: var(--primary-soft);
+    background: var(--surface-2);
 }
 
 .key:active {
-    transform: scale(.94);
-    background: var(--surface-2);
+    transform: scale(0.95);
+    background: var(--border);
 }
 
 .keyDel {
     color: var(--text-muted);
 }
 
+.keyDel svg {
+    width: 20px;
+    height: 20px;
+}
+
 .resend {
     font-size: 14px;
-    padding: 6px 6px;
+    font-weight: 700;
+    padding: 8px 16px;
     color: var(--primary);
     border: none;
     border-radius: 12px;
-    background: none;
+    background: transparent;
     cursor: pointer;
+    transition: all 0.25s ease;
 }
 
 .resend:hover {
-    background: var(--surface);
-}
-
-.resend:active {
-    transform: scale(0.99);
+    background: var(--primary-soft);
+    color: var(--primary-hover);
 }
 
 .footer {
-    padding: 12px 16px;
+    padding: 16px 24px 24px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
 }
 
 .submitBtn {
     width: 100%;
-    height: 52px;
+    height: 48px;
     border-radius: 14px;
     border: none;
     cursor: pointer;
     background: var(--brand-gradient);
     color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    transition: opacity .2s;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.submitBtn:hover:not(:disabled) {
+    background: var(--primary-hover);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
 }
 
 .submitBtn:disabled {
-    opacity: .5;
+    opacity: 0.5;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 .spinner {
     width: 22px;
     height: 22px;
-    border: 3px solid rgba(255, 255, 255, .4);
+    border: 3px solid rgba(255, 255, 255, 0.4);
     border-top-color: #fff;
     border-radius: 50%;
-    animation: spin .7s linear infinite;
+    animation: spin 0.8s linear infinite;
     display: inline-block;
 }
 
@@ -228,3 +340,104 @@
         transform: rotate(360deg);
     }
 }
+
+/* ── Responsive Styling ── */
+@media (min-width: 1024px) {
+    .splitLayout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        align-items: start;
+    }
+    
+    .statusBox {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .submitBtn {
+        max-width: 300px;
+    }
+}
+
+/* ── Guide Card Steps Grid & Animations ── */
+.stepsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.stepItem {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.stepIcon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stepText {
+    flex: 1;
+}
+
+.stepTitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+}
+
+.stepDesc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* Micro-animations on hover */
+.stepItem:hover .stepIcon {
+    border-color: var(--primary-soft);
+    background: var(--primary-soft);
+    transform: translateY(-2px);
+}
+
+.stepItem:hover .bellRingIcon svg {
+    animation: bell-ring 0.6s ease;
+}
+
+.stepItem:hover .lockIcon svg {
+    transform: rotate(-10deg) scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+.stepItem:hover .boxIcon svg {
+    transform: translateY(-2px) scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+@keyframes bell-ring {
+    0%, 100% { transform: rotate(0); }
+    15%, 45% { transform: rotate(12deg); }
+    30%, 60% { transform: rotate(-12deg); }
+}
+
+

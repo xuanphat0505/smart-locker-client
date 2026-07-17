@@ -4,6 +4,7 @@ import {SizeFilter} from '@/components/Shipper/SizeFilter'
 import {LockerGrid} from '@/components/Shipper/LockerGrid'
 import {useShipperStore} from '@/store/userShiperStore'
 import {useTheme} from '@/hooks/useTheme'
+import {CursorGrid} from '@/components/Ui/CursorGrid/CursorGrid'
 import styles from './SelectLocker.module.css'
 import {useAuthStore} from '@/store/useAuthStore'
 
@@ -48,6 +49,7 @@ export function SelectLocker() {
 
     return (
         <div className={`page ${styles.page}`}>
+            <CursorGrid />
             <header className="page-header">
                 <h1 className="page-header__title">Chọn ô tủ gửi hàng</h1>
 
@@ -76,20 +78,25 @@ export function SelectLocker() {
             </header>
 
             <div className="page-body">
-                <SizeFilter/>
-                <LockerGrid/>
-
-                {selectedSlot && (
-                    <div className={styles.summary}>
-                        <div className={styles.summaryBadge}>{selectedSlot.id}</div>
-                        <div className={styles.summaryInfo}>
-                            <p className={styles.summaryName}>Locker {selectedSlot.id}</p>
-                            <p className={styles.summaryMeta}>
-                                {SIZE_LABEL[selectedSlot.size]} • {selectedSlot.floor} • {selectedSlot.zone}
-                            </p>
-                        </div>
+                <div className={styles.splitLayout}>
+                    <div className={styles.leftCol}>
+                        <SizeFilter />
+                        {selectedSlot && (
+                            <div className={styles.summary}>
+                                <div className={styles.summaryBadge}>{selectedSlot.id}</div>
+                                <div className={styles.summaryInfo}>
+                                    <p className={styles.summaryName}>Locker {selectedSlot.id}</p>
+                                    <p className={styles.summaryMeta}>
+                                        {SIZE_LABEL[selectedSlot.size]} • {selectedSlot.floor} • {selectedSlot.zone}
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                     </div>
-                )}
+                    <div className={styles.rightCol}>
+                        <LockerGrid />
+                    </div>
+                </div>
             </div>
 
             <footer className="page-footer">

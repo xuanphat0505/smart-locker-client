@@ -1,25 +1,27 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: calc(100dvh - 64px);
+    height: 100%;
+    max-height: 100dvh;
     background: var(--bg);
     font-family: -apple-system, "SF Pro Display", "Segoe UI", sans-serif;
     position: relative;
-    max-width: 480px;
-    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
 }
 
 .header {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 14px 16px;
+    padding: 14px 20px;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 1px 8px rgba(59, 91, 219, 0.06);
+    box-shadow: 0 1px 8px rgba(59, 91, 219, 0.04);
+    flex-shrink: 0;
 }
 
 .backBtn {
@@ -34,7 +36,7 @@
     color: var(--primary);
     cursor: pointer;
     flex-shrink: 0;
-    transition: background 0.15s;
+    transition: all 0.2s;
 }
 
 .backBtn:hover {
@@ -61,7 +63,7 @@
 
 .headerName {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--text);
     margin: 0;
     line-height: 1.2;
@@ -72,8 +74,9 @@
     align-items: center;
     gap: 5px;
     font-size: 12px;
-    color: var(--text);
+    color: var(--text-muted);
     margin: 0;
+    font-weight: 500;
 }
 
 .statusDot {
@@ -96,10 +99,10 @@
 .messageList {
     flex: 1;
     overflow-y: auto;
-    padding: 20px 16px 12px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     scrollbar-width: none;
 }
 
@@ -110,8 +113,8 @@
 .messageRow {
     display: flex;
     align-items: flex-end;
-    gap: 8px;
-    animation: slideIn 0.2s ease-out;
+    gap: 10px;
+    animation: slideIn 0.25s ease-out;
 }
 
 @keyframes slideIn {
@@ -146,8 +149,8 @@
 }
 
 .bubble {
-    max-width: 72%;
-    padding: 10px 14px;
+    max-width: 70%;
+    padding: 12px 16px;
     border-radius: 18px;
     font-size: 14px;
     line-height: 1.55;
@@ -158,25 +161,26 @@
     background: var(--surface);
     color: var(--text);
     border-bottom-left-radius: 5px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--border);
 }
 
 .botBubble strong {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--primary);
 }
 
 .botBubble em {
     font-style: italic;
     color: #5c7cfa;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .userBubble {
     background: linear-gradient(135deg, #3b5bdb 0%, #5c7cfa 100%);
     color: #fff;
     border-bottom-right-radius: 5px;
-    box-shadow: 0 2px 10px rgba(59, 91, 219, 0.3);
+    box-shadow: 0 4px 12px rgba(59, 91, 219, 0.25);
 }
 
 .typingBubble {
@@ -186,7 +190,8 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--border);
 }
 
 .dot {
@@ -223,10 +228,10 @@
 
 .suggestionsLabel {
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     margin: 0 0 8px 4px;
 }
 
@@ -241,11 +246,11 @@
     border: 1.5px solid var(--border);
     color: var(--primary);
     font-size: 13px;
-    font-weight: 500;
-    padding: 7px 14px;
+    font-weight: 600;
+    padding: 8px 16px;
     border-radius: 20px;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.2s ease;
     white-space: nowrap;
     font-family: inherit;
 }
@@ -256,13 +261,14 @@
     border-color: var(--primary);
     color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(59, 91, 219, 0.25);
+    box-shadow: 0 4px 12px rgba(59, 91, 219, 0.2);
 }
 
 .inputArea {
-    padding: 12px 16px 20px;
+    padding: 16px 24px 24px;
     background: var(--surface);
-    border-top: 1px solid #e8eaf6;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
 }
 
 .inputWrapper {
@@ -273,12 +279,12 @@
     border: 1.5px solid var(--border);
     border-radius: 20px;
     padding: 8px 8px 8px 16px;
-    transition: border-color 0.15s, box-shadow 0.15s;
+    transition: all 0.25s ease;
 }
 
 .inputWrapper:focus-within {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1);
+    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.15);
     background: var(--surface);
 }
 
@@ -319,12 +325,12 @@
     background: linear-gradient(135deg, #3b5bdb 0%, #5c7cfa 100%);
     color: #fff;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(59, 91, 219, 0.35);
+    box-shadow: 0 2px 8px rgba(59, 91, 219, 0.3);
 }
 
 .sendBtnActive:hover {
     transform: scale(1.06);
-    box-shadow: 0 3px 12px rgba(59, 91, 219, 0.45);
+    box-shadow: 0 3px 12px rgba(59, 91, 219, 0.4);
 }
 
 .sendBtnActive:active {
@@ -336,4 +342,15 @@
     color: var(--text-muted);
     text-align: center;
     margin: 8px 0 0;
+    font-weight: 500;
+}
+
+/* ── Responsive Styling ── */
+@media (min-width: 1024px) {
+    .messageList, .inputArea {
+        max-width: 720px;
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
 }

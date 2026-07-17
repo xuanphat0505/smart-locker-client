@@ -6,7 +6,7 @@
 
 .label {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 1.5px;
     color: var(--text-muted);
 }
@@ -14,41 +14,52 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 12px;
 }
 
 .btn {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-    padding: 14px 8px;
-    border-radius: 14px;
+    gap: 8px;
+    padding: 16px 12px;
+    border-radius: 16px;
     background: var(--surface);
     border: 1.5px solid var(--border);
     cursor: pointer;
-    transition: all .2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: var(--text-muted);
+    outline: none;
 }
 
 .btn:hover {
-    border-color: var(--blue);
+    border-color: rgba(37, 99, 235, 0.4);
     color: var(--blue);
     background: var(--surface-2);
+    transform: translateY(-2px);
 }
-
 
 .btnActive {
-    background: linear-gradient(135deg, var(--blue), var(--primary-hover));
-    border-color: var(--blue);
-    color: #fff;
-    box-shadow: 0 10px 20px var(--blue-faint);
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    border-color: #2563EB;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
 }
 
+.btnActive:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #1D4ED8, #1E40AF);
+    border-color: #1D4ED8;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+}
 
 .btnIcon {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btnIcon svg {
@@ -57,12 +68,13 @@
 }
 
 .btnName {
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 800;
+    color: currentColor;
 }
 
 .btnDim {
     font-size: 10px;
-    opacity: .82;
+    font-weight: 500;
+    opacity: 0.85;
 }
-
