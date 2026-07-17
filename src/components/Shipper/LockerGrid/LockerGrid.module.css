@@ -46,44 +46,72 @@
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
-    background-color: var(--surface);
-    border: 1px solid var(--border);
+    justify-content: center;
+    background: linear-gradient(180deg, var(--surface), var(--surface-2));
+    border: 2px solid var(--border);
+    border-top: 6px solid #475569; /* Physical steel header beam */
     border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    padding: 22px 20px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .grid:hover {
-    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.06);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    border-color: var(--border-strong, #94a3b8);
 }
 
 .slot {
-    aspect-ratio: 1;
-    border-radius: 14px;
+    width: 64px; /* Perfect square size for mobile screen layout wrapping */
+    height: 64px;
+    border-radius: 12px;
     border: 1.5px solid var(--border);
     background-color: var(--surface-2);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     color: var(--text);
     outline: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Chrome door handle/latch slot on the right to resemble actual physical metal locker doors */
+.slot::before {
+    content: '';
+    position: absolute;
+    right: 5px; /* Safely near the right edge to prevent label collision */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5px;
+    height: 18px;
+    border-radius: 1.5px;
+    background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+    border: 1px solid var(--border-strong, #64748b);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+    opacity: 0.9;
+    transition: all 0.2s ease;
 }
 
 .slotAvail:hover {
     border-color: var(--primary);
     background: var(--surface);
     color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.1);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 22px var(--primary-soft), inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.slotAvail:hover::before {
+    background: linear-gradient(to bottom, var(--primary), var(--primary-hover, #2563eb));
+    border-color: var(--primary);
+    opacity: 1;
 }
 
 .slotSelected {
@@ -91,38 +119,73 @@
     border-width: 2px;
     color: var(--primary);
     background: var(--surface);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15), 0 8px 20px rgba(37, 99, 235, 0.15);
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 12px 28px var(--primary-soft), inset 0 1px 0 rgba(255,255,255,0.5);
+    animation: pulseSelectedLocker 2.2s infinite ease-in-out;
+}
+
+.slotSelected::before {
+    background: var(--primary);
+    border-color: var(--primary);
+    height: 20px;
+    opacity: 1;
+    box-shadow: 0 0 8px var(--primary);
 }
 
 .slotOccupied {
     opacity: 0.45;
     cursor: not-allowed;
-    background: rgba(148, 163, 184, 0.06);
+    background: rgba(148, 163, 184, 0.04);
     border-color: var(--border);
     color: var(--text-muted);
 }
 
+.slotOccupied::before {
+    background: #64748b;
+    border-color: #475569;
+    width: 2.5px;
+    height: 12px;
+    opacity: 0.4;
+}
+
 .slotMaintenance {
-    background: rgba(220, 38, 38, 0.05);
+    background: rgba(220, 38, 38, 0.03);
     border-color: rgba(220, 38, 38, 0.16);
     color: var(--danger);
     cursor: not-allowed;
     opacity: 0.85;
 }
 
+.slotMaintenance::before {
+    background: #ef4444;
+    border-color: #b91c1c;
+    width: 2.5px;
+    height: 12px;
+    opacity: 0.5;
+}
+
+@keyframes pulseSelectedLocker {
+    0%, 100% {
+        box-shadow: 0 12px 28px var(--primary-soft), inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+    50% {
+        box-shadow: 0 12px 36px rgba(37, 99, 235, 0.45), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+}
+
 .availDot {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 6px;
-    height: 6px;
+    top: 6px;
+    right: 6px; /* Restored to top-right */
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: var(--success);
     box-shadow: 0 0 6px var(--success);
 }
 
 .slotId {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 800;
     letter-spacing: 0.3px;
 }
@@ -138,8 +201,8 @@
     position: absolute;
     bottom: -4px;
     right: -4px;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     background: var(--primary);
     border-radius: 50%;
     display: flex;
@@ -179,17 +242,31 @@
 
 @media (min-width: 768px) {
     .grid {
-        grid-template-columns: repeat(6, 1fr);
         gap: 14px;
         padding: 24px;
+    }
+    
+    .slot {
+        width: 72px; /* Explicit size for desktop to ensure comfortable size without overflow */
+        height: 72px;
     }
 }
 
 @media (min-width: 1024px) {
     .grid {
-        grid-template-columns: repeat(8, 1fr);
         gap: 16px;
         padding: 28px;
+    }
+    
+    .slot {
+        width: 72px; /* Fits perfectly and wraps if narrow */
+        height: 72px;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }
 

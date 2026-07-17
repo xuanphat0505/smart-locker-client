@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useShipperStore } from '@/store/userShiperStore'
 import { LockerSize } from '@/types/locker.types'
-import { CursorGrid } from '@/components/Ui/CursorGrid/CursorGrid'
 import styles from './Success.module.css'
 
 const SIZE_SHORT: Record<LockerSize, string> = {
@@ -18,9 +17,79 @@ const formatTime = (d: Date) => {
     return `${hh}:${mm} • ${dd}/${mo}/${d.getFullYear()}`
 }
 
+import { useEffect, useRef } from 'react'
+
+interface ConfettiParticle {
+  x: number;
+  y: number;
+  size: number;
+  color: string;
+  speedX: number;
+  speedY: number;
+  rotation: number;
+  rotationSpeed: number;
+}
+
 export function Success() {
     const navigate = useNavigate()
     const { shipmentResult, resetAll } = useShipperStore()
+    const canvasRef = useRef<HTMLCanvasElement | null>(null)
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const parent = canvas.parentElement || document.body;
+        const rect = parent.getBoundingClientRect();
+        canvas.width = rect.width || window.innerWidth;
+        canvas.height = rect.height || window.innerHeight;
+
+        const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+        const particles: ConfettiParticle[] = Array.from({ length: 80 }).map(() => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * -canvas.height - 20, // Start above the screen
+            size: Math.random() * 6 + 5,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            speedX: Math.random() * 4 - 2,
+            speedY: Math.random() * 3 + 2.5,
+            rotation: Math.random() * 360,
+            rotationSpeed: Math.random() * 8 - 4
+        }));
+
+        let raf = 0;
+        const draw = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let active = false;
+
+            particles.forEach(p => {
+                p.y += p.speedY;
+                p.x += p.speedX;
+                p.rotation += p.rotationSpeed;
+
+                if (p.y < canvas.height) {
+                    active = true;
+                }
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                ctx.restore();
+            });
+
+            if (active) {
+                raf = requestAnimationFrame(draw);
+            }
+        };
+        raf = requestAnimationFrame(draw);
+
+        return () => {
+            cancelAnimationFrame(raf);
+        };
+    }, [shipmentResult]);
 
     if (!shipmentResult) {
         navigate('/shipper')
@@ -32,7 +101,7 @@ export function Success() {
 
     return (
         <div className={`page ${styles.page}`}>
-            <CursorGrid />
+            <canvas ref={canvasRef} className={styles.confetti} />
             <header className={styles.topbar}>
                 <div className={styles.brand}>
                     <span className={styles.brandName}>SmartLocker</span>

@@ -1,0 +1,436 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Barlow', sans-serif;
+    color: var(--text);
+    overflow: hidden;
+}
+
+.header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 4px 0 0 0;
+}
+
+.body {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Toast alert notification styling */
+.toast {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f172a;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    animation: fadeInOut 3.5s ease-in-out forwards;
+    border: 1px solid var(--border);
+}
+
+.toastContent {
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}
+
+@keyframes fadeInOut {
+    0% {
+        transform: translate(-50%, -20px);
+        opacity: 0;
+    }
+    10%, 90% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -20px);
+        opacity: 0;
+    }
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    height: 100%;
+}
+
+/* Form panel styling */
+.formCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    background: var(--surface-2);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.cardTitle {
+    font-size: 17px;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.4px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.select, .input, .textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.select:focus, .input:focus, .textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.textarea {
+    resize: none;
+}
+
+/* Dropzone for Photo Upload */
+.photoUploadWrapper {
+    width: 100%;
+}
+
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 2px dashed var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    cursor: pointer;
+    background: var(--surface);
+    transition: all 0.2s ease;
+}
+
+.dropzone:hover {
+    border-color: var(--primary);
+    background: var(--surface-2);
+}
+
+.dropzone svg {
+    color: var(--text-muted);
+}
+
+.dropzone span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.fileInput {
+    display: none;
+}
+
+.previewContainer {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.previewImage {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+.btnRemovePhoto {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(15, 23, 42, 0.75);
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s;
+}
+
+.btnRemovePhoto:hover {
+    background: #ef4444;
+}
+
+.btnSubmit {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 4px 12px var(--primary-soft);
+    transition: all 0.2s;
+    margin-top: 4px;
+}
+
+.btnSubmit:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px var(--primary-soft);
+}
+
+.btnSubmit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Incident Tickets History list styling */
+.historyCol {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+}
+
+.ticketsList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+.ticketCard {
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.ticketHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticketId {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-muted);
+}
+
+.statusBadge {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.statusBadge.PENDING {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.statusBadge.RESOLVED {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.statusBadge.CANCELLED {
+    background: rgba(148, 163, 184, 0.1);
+    color: #64748b;
+}
+
+.ticketBody {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ticketStation {
+    font-size: 14px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.2px;
+}
+
+.ticketMeta {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.ticketMeta strong {
+    color: var(--text);
+}
+
+.ticketDesc {
+    font-size: 12px;
+    margin: 4px 0 0 0;
+    line-height: 1.4;
+    color: var(--text);
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.ticketPhotoWrapper {
+    width: 100%;
+    margin-top: 4px;
+}
+
+.ticketPhoto {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+/* Admin Response block */
+.adminReplyBlock {
+    margin-top: 8px;
+    padding: 12px;
+    background: rgba(59, 130, 246, 0.05);
+    border-left: 3px solid var(--primary);
+    border-radius: 4px 10px 10px 4px;
+}
+
+.adminReplyTitle {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.adminReplyText {
+    font-size: 11.5px;
+    margin: 4px 0 0 0;
+    line-height: 1.45;
+    color: var(--text);
+}
+
+.ticketFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    margin-top: 4px;
+}
+
+.ticketTime {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.btnCancelReport {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.btnCancelReport:hover {
+    color: var(--danger);
+    background: rgba(239, 68, 68, 0.08);
+}
+
+/* ── Desktop Styling Layout (>=1024px) ── */
+@media (min-width: 1024px) {
+    .layout {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 32px;
+    }
+
+    .formCol {
+        height: 100%;
+    }
+
+    .historyCol {
+        height: 100%;
+    }
+
+    .ticketsList {
+        max-height: 520px;
+        overflow-y: auto;
+    }
+}

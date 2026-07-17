@@ -4,7 +4,6 @@ import {SizeFilter} from '@/components/Shipper/SizeFilter'
 import {LockerGrid} from '@/components/Shipper/LockerGrid'
 import {useShipperStore} from '@/store/userShiperStore'
 import {useTheme} from '@/hooks/useTheme'
-import {CursorGrid} from '@/components/Ui/CursorGrid/CursorGrid'
 import styles from './SelectLocker.module.css'
 import {useAuthStore} from '@/store/useAuthStore'
 
@@ -49,7 +48,6 @@ export function SelectLocker() {
 
     return (
         <div className={`page ${styles.page}`}>
-            <CursorGrid />
             <header className="page-header">
                 <h1 className="page-header__title">Chọn ô tủ gửi hàng</h1>
 

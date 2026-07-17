@@ -7,6 +7,11 @@ import { RequireRoleOutlet } from "@/routes/RequireRoleOutlet";
 import { SelectLocker } from "@/pages/Shipper/SelectLocker";
 import { PackageInfo } from "@/pages/Shipper/PackageInfo";
 import { Success } from "@/pages/Shipper/Success";
+import { ShipperLayout } from "@/components/Shipper/ShipperLayout";
+import { LockerMap } from "@/pages/Shipper/LockerMap/LockerMap";
+import { ShipmentHistory } from "@/pages/Shipper/ShipmentHistory/ShipmentHistory";
+import { ReportIncident } from "@/pages/Shipper/ReportIncident/ReportIncident";
+import { ShipperProfile } from "@/pages/Shipper/Profile/Profile";
 
 import { CustomerLayout } from "@/components/Customer/CustomerLayout";
 import { CustomerHome } from "@/pages/Customer/Home/Home.tsx";
@@ -38,9 +43,18 @@ const router = createBrowserRouter([
       />
     ),
     children: [
-      { index: true, element: <SelectLocker /> },
-      { path: "package-info", element: <PackageInfo /> },
-      { path: "success", element: <Success /> },
+      {
+        element: <ShipperLayout />,
+        children: [
+          { index: true, element: <SelectLocker /> },
+          { path: "package-info", element: <PackageInfo /> },
+          { path: "success", element: <Success /> },
+          { path: "map", element: <LockerMap /> },
+          { path: "history", element: <ShipmentHistory /> },
+          { path: "report", element: <ReportIncident /> },
+          { path: "profile", element: <ShipperProfile /> },
+        ],
+      },
     ],
   },
 

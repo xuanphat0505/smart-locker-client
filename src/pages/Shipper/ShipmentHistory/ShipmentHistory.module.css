@@ -1,0 +1,357 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Barlow', sans-serif;
+    color: var(--text);
+    overflow: hidden;
+}
+
+.header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 4px 0 0 0;
+}
+
+.body {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.statsSummary {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: var(--surface-2);
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    width: max-content;
+}
+
+.statsSummary strong {
+    color: var(--primary);
+    font-size: 16px;
+    margin-left: 4px;
+}
+
+/* Controls */
+.controlsRow {
+    display: flex;
+    align-items: center;
+}
+
+.searchWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 11px 16px 11px 36px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft);
+    background: var(--surface);
+}
+
+/* List and split details */
+.listLayout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+}
+
+.cardsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+.card {
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02);
+}
+
+.cardActive {
+    border-color: var(--primary);
+    background: var(--surface);
+    box-shadow: 0 6px 20px var(--primary-soft), inset 0 0 0 1px var(--primary-soft);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orderCode {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.statusBadge {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
+    text-transform: uppercase;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.infoRow {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.infoRow .label {
+    color: var(--text-muted);
+    font-weight: 700;
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.infoRow .value {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.cardActions {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px dashed var(--border);
+    padding-top: 12px;
+    margin-top: 4px;
+}
+
+.btnDetails {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    border: none;
+    background: var(--surface-3, #e2e8f0);
+    color: var(--text);
+}
+
+.btnDetails:hover {
+    background: var(--border-strong, #cbd5e1);
+}
+
+/* Details Panel */
+.detailsPanel {
+    background: var(--surface);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.panelHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+}
+
+.panelTitle {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.btnClose {
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.panelBody {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+}
+
+.photoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sectionLabel {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.packagePhoto {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.panelDetailsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.panelRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    padding: 4px 0;
+}
+
+.panelLabel {
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.panelValue {
+    font-weight: 600;
+    color: var(--text);
+    text-align: right;
+}
+
+.panelActions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.btnReport {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    text-align: center;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+}
+
+.btnReport:hover {
+    background: var(--surface-3);
+    border-color: var(--border-strong);
+}
+
+.empty {
+    padding: 60px 40px;
+    text-align: center;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* ── Desktop & Tablet Styling Layout ── */
+@media (min-width: 768px) {
+    .searchWrapper {
+        width: 360px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .listLayout {
+        grid-template-columns: 1fr 380px;
+    }
+
+    .cardsGrid {
+        height: 100%;
+    }
+
+    .detailsPanel {
+        height: max-content;
+        position: sticky;
+        top: 0;
+    }
+}

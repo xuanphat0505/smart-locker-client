@@ -4,7 +4,6 @@ import { PhotoUpload } from "@/components/Shipper/PhotoUpload";
 import { useShipperStore } from "@/store/userShiperStore";
 import { useTheme } from "@/hooks/useTheme";
 import { useAuthStore } from "@/store/useAuthStore";
-import { CursorGrid } from "@/components/Ui/CursorGrid/CursorGrid";
 import styles from "./PackageInfo.module.css";
 import { AppInput } from "@/components/Ui/AppInput";
 import { AppButton } from "@/components/Ui/AppButton";
@@ -71,7 +70,6 @@ export function PackageInfo() {
 
   return (
     <div className={`page ${styles.page}`}>
-      <CursorGrid />
       <header className="page-header">
         <button className="back-btn" onClick={() => navigate("/shipper")}>
           <svg
