@@ -1,0 +1,159 @@
+/* ======== WRAPPER ======== */
+.wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+}
+
+/* ======== SIDEBAR - an tren mobile ======== */
+.sidebar {
+  display: none; /* an mac dinh tren mobile */
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    z-index: 40;
+    padding: var(--spacing-lg) var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+}
+
+/* ======== MAIN CONTENT ======== */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-bottom: var(--bottom-nav-height); /* chua cho bottom nav */
+}
+
+@media (min-width: 768px) {
+  .main {
+    margin-left: var(--sidebar-width);
+    padding-bottom: var(--spacing-xl); /* khong can chua bottom nav */
+  }
+}
+
+/* ======== CONTENT WRAPPER - gioi han do rong ======== */
+.content {
+  width: 100%;
+  max-width: var(--content-max-mobile);
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .content {
+    max-width: var(--content-max-tablet);
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    max-width: var(--content-max-desktop);
+    padding: var(--spacing-xl) var(--spacing-2xl);
+  }
+}
+
+/* ======== BOTTOM NAV - chi hien tren mobile ======== */
+.bottomNav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--bottom-nav-height);
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  z-index: 50;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .bottomNav {
+    display: none; /* an tu tablet tro len */
+  }
+}
+
+.brand {
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: var(--spacing-lg);
+  padding: 0 var(--spacing-sm);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 0 var(--spacing-md);
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navItem:hover {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.navItemActive {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-right: 2px solid var(--accent);
+}
+
+.bottomItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font: inherit;
+  min-width: 48px;
+  padding: var(--spacing-xs);
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.bottomItem:active {
+  transform: scale(0.96);
+}
+
+.bottomItemActive {
+  color: var(--accent);
+}
+
+.icon {
+  display: inline-flex;
+  line-height: 1;
+}
+
+.bottomLabel {
+  font-size: 11px;
+  font-weight: 500;
+}

@@ -1,59 +1,86 @@
 .page {
     display: flex;
     flex-direction: column;
-    min-height: 100dvh;
-    background: var(--color-bg, #f1f3f9);
-    width: 100%; /* ← thêm dòng này */
-    max-width: 480px; /* ← và dòng này */
-    margin: 0 auto;
+    height: 100%;
+    max-height: 100dvh;
+    background: var(--bg);
+    width: 100%;
+    overflow: hidden;
 }
 
 .body {
     flex: 1;
-    padding: 24px 16px 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.splitLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.leftCol {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: 100%;
+}
+
+.rightCol {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
 }
 
 /* profile card */
 .profileCard {
     display: flex;
     align-items: center;
-    gap: 14px;
-    background: var(--color-surface, #fff);
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
 }
 
 .avatar {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: var(--color-primary, #4263eb);
+    background: var(--primary);
     color: #fff;
     font-size: 22px;
     font-weight: 700;
     display: grid;
     place-items: center;
     flex-shrink: 0;
+    box-shadow: 0 8px 18px var(--primary-soft);
 }
 
 .profileInfo {
     flex: 1;
+    text-align: left;
 }
 
 .name {
     font-size: 18px;
-    font-weight: 700;
-    color: var(--color-text, #212529);
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.2px;
 }
 
 .email {
     font-size: 13px;
-    color: var(--color-text-muted, #868e96);
-    margin-top: 2px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    font-weight: 500;
 }
 
 .editBtn {
@@ -63,65 +90,91 @@
     border: none;
     cursor: pointer;
     background: var(--primary-soft);
-    color: var(--color-primary, #4263eb);
+    color: var(--primary);
     display: grid;
     place-items: center;
+    transition: all 0.2s;
+}
+
+.editBtn:hover {
+    transform: scale(1.05);
+    background: var(--primary);
+    color: #fff;
 }
 
 .statsRow {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 12px;
 }
 
 .statBox {
-    background: var(--color-surface, #fff);
-    border-radius: 14px;
-    padding: 14px 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease;
+}
+
+.statBox:hover {
+    transform: translateY(-2px);
 }
 
 .statVal {
     font-size: 24px;
     font-weight: 800;
-    color: var(--color-primary, #4263eb);
+    color: var(--primary);
 }
 
 .statLabel {
-    font-size: 11px;
-    color: var(--color-text-muted, #868e96);
-    font-weight: 500;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
 }
 
 .groupLabel {
     font-size: 12px;
-    font-weight: 600;
-    color: var(--color-text-muted, #868e96);
-    letter-spacing: .06em;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: .08em;
     padding-left: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.menuGroup {
+    width: 100%;
 }
 
 .menuCard {
-    background: var(--color-surface, #fff);
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
     overflow: hidden;
 }
 
 .menuItem {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     width: 100%;
     padding: 14px 16px;
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
+    transition: background 0.2s ease;
+    color: var(--text-muted);
+}
+
+.menuItem:hover {
+    background: var(--surface-2);
 }
 
 .menuItemBorder {
@@ -133,10 +186,16 @@
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: var(--color-bg, #f1f3f9);
+    background: var(--surface-2);
     display: grid;
     place-items: center;
     flex-shrink: 0;
+    transition: transform 0.2s ease;
+    color: var(--primary);
+}
+
+.menuItem:hover .menuIcon {
+    transform: scale(1.06);
 }
 
 .menuText {
@@ -148,34 +207,64 @@
 
 .menuLabel {
     font-size: 14px;
-    font-weight: 500;
-    color: var(--color-text, #212529);
+    font-weight: 700;
+    color: var(--text);
 }
 
 .menuSub {
     font-size: 12px;
-    color: var(--color-text-muted, #868e96);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.menuItem > svg {
+    color: var(--text-muted);
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+}
+
+.menuItem:hover > svg {
+    transform: translateX(2px);
+    opacity: 1;
 }
 
 .logoutBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
-    height: 48px;
+    height: 44px;
     border-radius: 14px;
-    border: 1.5px solid #fa5252;
-    background: none;
-    color: #fa5252;
-    font-size: 15px;
-    font-weight: 600;
+    border: 1.5px solid #ef4444;
+    background: transparent;
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.logoutBtn:hover {
+    background: #ef4444;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
 }
 
 .version {
     text-align: center;
     font-size: 12px;
-    color: var(--color-text-muted, #868e96);
-    padding-bottom: 8px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* ── Responsive Styling ── */
+@media (min-width: 1024px) {
+    .splitLayout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        align-items: start;
+    }
 }

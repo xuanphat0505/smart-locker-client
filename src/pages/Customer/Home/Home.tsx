@@ -3,6 +3,8 @@ import {useNavigate} from 'react-router-dom'
 import {useCustomerStore} from '@/store/useCustomerStore.ts'
 import {EPackageStatus} from '@/types/customer.types.ts'
 import {MOCK_CUSTOMER_NAME} from '@/data/customer.mock.ts'
+import {Plasma} from '@/components/Ui/Plasma/Plasma'
+import {CursorGrid} from '@/components/Ui/CursorGrid/CursorGrid'
 import styles from './Home.module.css'
 import {useTheme} from '@/hooks/useTheme'
 
@@ -51,6 +53,13 @@ export function CustomerHome() {
 
     return (
         <div className={styles.page}>
+            <Plasma 
+                color={isDark ? '#B497CF' : '#c3b5e3'} 
+                speed={0.3} 
+                opacity={isDark ? 0.45 : 0.15} 
+                mouseInteractive={false}
+            />
+            <CursorGrid />
             <div className={styles.body}>
                 <div className={styles.greeting}>
                     <button
@@ -82,86 +91,94 @@ export function CustomerHome() {
                 </div>
 
 
-                {allWaiting > 0 && (
-                    <div className={styles.banner}>
-                        <p className={styles.bannerLabel}>HÀNG ĐANG CHỜ BẠN</p>
-                        <p className={styles.bannerCount}>{allWaiting} đơn hàng</p>
-                        <p className={styles.bannerSub}>
-                            Ngăn {waiting[0].slotId} · {waiting[0].slotLocation}
-                        </p>
-                    </div>
-                )}
+                <div className={styles.splitLayout}>
+                    <div className={styles.leftCol}>
+                        {allWaiting > 0 && (
+                            <div className={styles.banner}>
+                                <p className={styles.bannerLabel}>HÀNG ĐANG CHỜ BẠN</p>
+                                <p className={styles.bannerCount}>{allWaiting} đơn hàng</p>
+                                <p className={styles.bannerSub}>
+                                    Ngăn {waiting[0].slotId} · {waiting[0].slotLocation}
+                                </p>
+                            </div>
+                        )}
 
-                <div className={styles.quickWrap}>
-                    <p className={styles.sectionTitle}>Truy cập nhanh</p>
+                        <div className={styles.quickWrap}>
+                            <p className={styles.sectionTitle}>Truy cập nhanh</p>
 
-                    <div className={styles.quickGrid}>
-                        <button
-                            className={styles.quickBtn}
-                            onClick={() => navigate('/customer/open-locker')}
-                        >
-                            <span className={styles.quickIcon}>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                     strokeWidth="2">
-                                    <rect x="3" y="11" width="18" height="11" rx="2"/>
-                                    <path d="M7 11V7a5 5 0 0110 0v4"/>
-                                </svg>
-                            </span>
-                            <span className={styles.quickLabel}>Nhập OTP</span>
-                            <span className={styles.quickSub}>Mở tủ lấy hàng</span>
-                        </button>
-                        <button
-                            className={styles.quickBtn}
-                            onClick={() => navigate('/customer/history')}
-                        >
-                            <span className={styles.quickIcon}>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                     strokeWidth
-                                         ="2">
-                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                                    <polyline points="14 2 14 8 20 8"/>
-                                </svg>
-                            </span>
-                            <span className={styles.quickLabel}>Lịch sử</span>
-                            <span className={styles.quickSub}>Đơn đã nhận</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div className={styles.listWrap}>
-                    <div className={styles.listHeader}>
-                        <p className={styles.sectionTitle}>Hàng đang chờ</p>
-                        <button className={styles.viewAll}>Xem tất cả</button>
-                    </div>
-
-                    {isLoading ? (
-                        <div className={styles.loading}>
-                            <div className={styles.spinner}/>
+                            <div className={styles.quickGrid}>
+                                <button
+                                    className={styles.quickBtn}
+                                    onClick={() => navigate('/customer/open-locker')}
+                                >
+                                    <span className={styles.quickIcon}>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             strokeWidth="2">
+                                            <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                                        </svg>
+                                    </span>
+                                    <span className={styles.quickLabel}>Nhập OTP</span>
+                                    <span className={styles.quickSub}>Mở tủ lấy hàng</span>
+                                </button>
+                                <button
+                                    className={styles.quickBtn}
+                                    onClick={() => navigate('/customer/history')}
+                                >
+                                    <span className={styles.quickIcon}>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             strokeWidth="2">
+                                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                                            <polyline points="14 2 14 8 20 8"/>
+                                        </svg>
+                                    </span>
+                                    <span className={styles.quickLabel}>Lịch sử</span>
+                                    <span className={styles.quickSub}>Đơn đã nhận</span>
+                                </button>
+                            </div>
                         </div>
-                    ) : waiting.length === 0 ? (
-                        <p className={styles.empty}>Không có hàng đang chờ</p>
-                    ) : (
-                        waiting.map((pkg) => (
-                            <button
-                                key={pkg.id}
-                                className={styles.pkgCard}
-                                onClick={() => handleOpenOtp(pkg)}
-                            >
-                                <div className={styles.pkgSlot}>{pkg.slotId}</div>
+                    </div>
 
-                                <div className={styles.pkgInfo}>
-                                    <p className={styles.pkgCode}>
-                                        {pkg.orderCode} · {pkg.shipperName}
-                                    </p>
-                                    <p className={styles.pkgTime}>
-                                        {timeAgo(pkg.arrivedAt)}
-                                    </p>
-                                </div>
+                    <div className={styles.rightCol}>
+                        <div className={styles.listWrap}>
+                            <div className={styles.listHeader}>
+                                <p className={styles.sectionTitle}>Hàng đang chờ</p>
+                                <button className={styles.viewAll}>Xem tất cả</button>
+                            </div>
 
-                                <span className={styles.pkgBadge}>Mới</span>
-                            </button>
-                        ))
-                    )}
+                            <div className={styles.pkgList}>
+                                {isLoading ? (
+                                    <div className={styles.loading}>
+                                        <div className={styles.spinner}/>
+                                    </div>
+                                ) : waiting.length === 0 ? (
+                                    <p className={styles.empty}>Không có hàng đang chờ</p>
+                                ) : (
+                                    waiting.map((pkg, idx) => (
+                                        <button
+                                            key={pkg.id}
+                                            className={styles.pkgCard}
+                                            style={{ '--i': idx } as React.CSSProperties}
+                                            onClick={() => handleOpenOtp(pkg)}
+                                        >
+                                            <div className={styles.pkgSlot}>{pkg.slotId}</div>
+
+                                            <div className={styles.pkgInfo}>
+                                                <p className={styles.pkgCode}>
+                                                    {pkg.orderCode} · {pkg.shipperName}
+                                                </p>
+                                                <p className={styles.pkgTime}>
+                                                    {timeAgo(pkg.arrivedAt)}
+                                                </p>
+                                            </div>
+
+                                            <span className={styles.pkgBadge}>Mới</span>
+                                        </button>
+                                    ))
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

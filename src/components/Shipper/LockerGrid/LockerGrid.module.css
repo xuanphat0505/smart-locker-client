@@ -1,21 +1,28 @@
 .wrap {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
 }
 
 .legend {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 16px;
+    background: var(--surface-2);
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    align-self: flex-start;
 }
 
 .legendItem {
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
 }
 
 .dot {
@@ -25,104 +32,130 @@
 }
 
 .dotAvailable {
-    background: var(--green);
+    background: var(--success);
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
 }
 
 .dotOccupied {
-    background: var(--border);
+    background: var(--border-strong);
 }
 
 .dotMaintenance {
-    background: var(--red);
+    background: var(--danger);
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    background: var(--surface);
-    border-radius: 16px;
-    padding: 14px;
+    gap: 12px;
+    background-color: var(--surface);
     border: 1px solid var(--border);
-    box-shadow: var(--shadow);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.grid:hover {
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.06);
 }
 
 .slot {
     aspect-ratio: 1;
-    border-radius: 12px;
+    border-radius: 14px;
     border: 1.5px solid var(--border);
-    background: var(--surface-2);
+    background-color: var(--surface-2);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 6px;
     cursor: pointer;
-    transition: all .15s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     color: var(--text);
+    outline: none;
 }
 
-
 .slotAvail:hover {
-    border-color: var(--blue);
-    color: var(--blue);
+    border-color: var(--primary);
+    background: var(--surface);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.1);
 }
 
 .slotSelected {
-    border-color: var(--blue);
+    border-color: var(--primary);
     border-width: 2px;
-    color: var(--blue);
-    box-shadow: 0 0 0 3px var(--blue-faint);
+    color: var(--primary);
+    background: var(--surface);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15), 0 8px 20px rgba(37, 99, 235, 0.15);
 }
-
 
 .slotOccupied {
-    opacity: .5;
+    opacity: 0.45;
     cursor: not-allowed;
-    background: color-mix(in srgb, var(--border) 55%, var(--surface-2));
+    background: rgba(148, 163, 184, 0.06);
+    border-color: var(--border);
+    color: var(--text-muted);
 }
-
 
 .slotMaintenance {
-    background: rgba(220, 38, 38, 0.08);
-    border-color: rgba(220, 38, 38, 0.28);
+    background: rgba(220, 38, 38, 0.05);
+    border-color: rgba(220, 38, 38, 0.16);
     color: var(--danger);
     cursor: not-allowed;
+    opacity: 0.85;
 }
-
 
 .availDot {
     position: absolute;
-    top: 6px;
-    right: 6px;
-    width: 7px;
-    height: 7px;
+    top: 8px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: var(--green);
+    background: var(--success);
+    box-shadow: 0 0 6px var(--success);
 }
 
 .slotId {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 800;
-    letter-spacing: .3px;
+    letter-spacing: 0.3px;
 }
 
 .slotIcon {
-    opacity: .5;
+    opacity: 0.55;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .check {
     position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 18px;
-    height: 18px;
-    background: var(--blue);
+    bottom: -4px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+    animation: scaleIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 /* Loading */
@@ -131,7 +164,7 @@
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    padding: 40px;
+    padding: 60px 40px;
     color: var(--text-muted);
 }
 
@@ -139,9 +172,25 @@
     width: 32px;
     height: 32px;
     border: 3px solid var(--border);
-    border-top-color: var(--blue);
+    border-top-color: var(--primary);
     border-radius: 50%;
-    animation: spin .7s linear infinite;
+    animation: spin 0.8s linear infinite;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 14px;
+        padding: 24px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 16px;
+        padding: 28px;
+    }
 }
 
 @keyframes spin {

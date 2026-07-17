@@ -9,24 +9,29 @@
     bottom: 0;
     z-index: 100;
     width: 100%;
-    box-shadow: 0 -6px 20px rgba(15, 23, 42, 0.06);
+    height: 68px;
+    box-shadow: 0 -6px 20px rgba(15, 23, 42, 0.04);
+    box-sizing: border-box;
 }
 
 .item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 6px 16px;
+    padding: 6px 12px;
     color: var(--text-muted);
-    transition: color .2s ease, transform .15s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    border-radius: 12px;
 }
 
-.item:active {
-    transform: scale(0.98);
+.item:hover:not(.itemActive) {
+    color: var(--text);
+    background: var(--surface-2);
 }
 
 .itemActive {
@@ -34,10 +39,51 @@
 }
 
 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     line-height: 1;
 }
 
 .label {
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 700;
+}
+
+/* ── Responsive Desktop Sidebar ── */
+@media (min-width: 1024px) {
+    .nav {
+        flex-direction: column;
+        width: 220px;
+        height: 100%;
+        position: sticky;
+        top: 0;
+        left: 0;
+        border-right: 1px solid var(--border);
+        border-top: none;
+        justify-content: flex-start;
+        gap: 8px;
+        padding: 32px 16px;
+        box-shadow: none;
+        flex-shrink: 0;
+        order: -1; /* Sidebar on the left */
+    }
+
+    .item {
+        flex-direction: row;
+        width: 100%;
+        padding: 14px 16px;
+        gap: 12px;
+        align-items: center;
+        text-align: left;
+    }
+
+    .label {
+        font-size: 14px;
+    }
+
+    .itemActive {
+        background: var(--blue-faint);
+        color: var(--primary);
+    }
 }

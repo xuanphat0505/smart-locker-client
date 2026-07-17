@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
+    background: var(--bg);
 }
 
 .topbar {
@@ -10,6 +11,7 @@
     justify-content: space-between;
     padding: 16px 20px;
     border-bottom: 1px solid var(--border);
+    background: var(--surface);
 }
 
 .brand {
@@ -35,15 +37,41 @@
     padding: 2px 7px;
 }
 
-
 .body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding: 28px 20px;
+    overflow-y: auto;
+}
+
+.splitLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.leftCol {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 16px;
-    padding: 28px 20px 20px;
-    overflow-y: auto;
+    width: 100%;
+}
+
+.rightCol {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.detailsGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
 }
 
 /* Animation */
@@ -66,7 +94,6 @@
     inset: 12px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--success), #15803d);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -106,9 +133,10 @@
 .card {
     width: 100%;
     background: var(--surface);
-    border-radius: 14px;
-    padding: 16px 18px;
+    border-radius: 16px;
+    padding: 18px 20px;
     border: 1px solid var(--border);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
 }
 
 .cardSlot {
@@ -149,7 +177,7 @@
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 12px;
     width: 100%;
 }
 
@@ -164,16 +192,16 @@
     align-items: center;
     gap: 5px;
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 1px;
     color: var(--text-muted);
 }
 
 .otp {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 900;
     color: var(--text);
-    letter-spacing: 4px;
+    letter-spacing: 3px;
 }
 
 .size {
@@ -218,8 +246,10 @@
 .footer {
     font-size: 10px;
     color: var(--text-muted);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: .5px;
+    text-align: center;
+    margin-top: 8px;
 }
 
 .btnGhost {
@@ -240,4 +270,29 @@
 .btnGhost:hover {
     border-color: var(--blue);
     background: var(--surface-2);
+}
+
+/* ── Responsive Styling ── */
+@media (min-width: 1024px) {
+    .splitLayout {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 32px;
+        align-items: center;
+    }
+
+    .leftCol {
+        align-items: center;
+    }
+
+    /* Footer layout on Desktop Success page */
+    :global(.page-footer) {
+        flex-direction: row !important;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
+    :global(.page-footer) button {
+        max-width: 240px;
+    }
 }

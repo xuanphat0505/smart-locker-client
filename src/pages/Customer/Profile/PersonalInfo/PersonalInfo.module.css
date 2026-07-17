@@ -1,8 +1,10 @@
 .page {
     display: flex;
     flex-direction: column;
-    min-height: 100dvh;
-    background: var(--color-bg, #f1f3f9);
+    height: 100%;
+    max-height: 100dvh;
+    background: var(--bg);
+    overflow: hidden;
 }
 
 .header {
@@ -12,6 +14,7 @@
     padding: 16px;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
 }
 
 .backBtn {
@@ -24,6 +27,11 @@
     display: grid;
     place-items: center;
     color: var(--text);
+    transition: background 0.2s;
+}
+
+.backBtn:hover {
+    background: var(--primary-soft);
 }
 
 .title {
@@ -40,11 +48,17 @@
     font-size: 14px;
     font-weight: 600;
     background: var(--primary-soft);
-    color: var(--color-primary, #4263eb);
+    color: var(--primary);
+    transition: all 0.2s;
+}
+
+.editToggle:hover {
+    background: var(--primary);
+    color: #fff;
 }
 
 .editToggleActive {
-    background: var(--color-primary, #4263eb);
+    background: var(--primary);
     color: #fff;
 }
 
@@ -54,6 +68,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    overflow-y: auto;
 }
 
 .avatarWrap {
@@ -69,13 +84,21 @@
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    background: var(--color-primary, #4263eb);
+    background: var(--primary);
     color: #fff;
     font-size: 28px;
     font-weight: 700;
     display: grid;
     place-items: center;
-    box-shadow: 0 4px 16px rgba(66, 99, 235, .35);
+    box-shadow: 0 4px 16px var(--primary-soft);
+    overflow: hidden; /* Fix photo overflow issue */
+    position: relative;
+}
+
+.avatarImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .avatarEdit {
@@ -85,12 +108,18 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: var(--color-primary, #4263eb);
+    background: var(--primary);
     color: #fff;
     border: 2px solid #fff;
     cursor: pointer;
     display: grid;
     place-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.avatarEdit:hover {
+    transform: scale(1.1);
 }
 
 .avatarName {
@@ -109,8 +138,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #ebfbee;
-    color: #2f9e44;
+    background: var(--success-soft);
+    color: var(--success);
     font-size: 13px;
     font-weight: 500;
     border-radius: 12px;
@@ -134,6 +163,7 @@
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
     overflow: hidden;
+    border: 1px solid var(--border);
 }
 
 .fieldRow {
@@ -167,24 +197,27 @@
 }
 
 .fieldLocked {
-    color: var(--color-text-muted, #868e96);
+    color: var(--text-muted);
 }
 
 .inlineInput {
     flex: 1;
 }
 
-.inlineInput input {
+.inlineInput :global(input) {
     min-height: 38px;
     padding: 8px 12px;
     font-size: 14px;
     text-align: right;
-    color: var(--color-primary, #4263eb);
+    color: var(--primary);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
 }
 
 .note {
     font-size: 12px;
-    color: var(--color-text-muted, #868e96);
+    color: var(--text-muted);
     text-align: center;
     padding: 0 8px;
 }
@@ -221,7 +254,7 @@
 .sheetHandle {
     width: 40px;
     height: 4px;
-    background: #dee2e6;
+    background: var(--border);
     border-radius: 2px;
     margin: 0 auto 10px;
 }
@@ -285,16 +318,21 @@
     padding: 14px;
     border-radius: 12px;
     border: none;
-    background: #fff5f5;
-    color: #fa5252;
+    background: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
     font-size: 14px;
     font-weight: 600;
     margin-top: 6px;
     cursor: pointer;
     transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
 .sheetBtnDanger:hover {
-    background: #ffe3e3;
+    background: #ef4444;
+    color: #fff;
 }
-
